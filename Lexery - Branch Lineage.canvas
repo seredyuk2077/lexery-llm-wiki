@@ -1,0 +1,250 @@
+{
+	"nodes": [
+		{
+			"id": "txt-branch-header",
+			"type": "text",
+			"x": -400,
+			"y": -760,
+			"width": 400,
+			"height": 50,
+			"text": "# Lexery — Repository & Branch Evolution",
+			"color": "5"
+		},
+		{
+			"id": "grp-branch-families",
+			"type": "group",
+			"x": -860,
+			"y": -662,
+			"width": 1080,
+			"height": 542,
+			"label": "🌿 Branch Families",
+			"color": "4"
+		},
+		{
+			"id": "grp-legacy-era",
+			"type": "group",
+			"x": -860,
+			"y": -40,
+			"width": 700,
+			"height": 222,
+			"label": "📜 Legacy Era",
+			"color": "3"
+		},
+		{
+			"id": "grp-current",
+			"type": "group",
+			"x": 160,
+			"y": 262,
+			"width": 700,
+			"height": 222,
+			"label": "🚀 Current",
+			"color": "5"
+		},
+		{
+			"id": "branchFamilies",
+			"type": "file",
+			"file": "Lexery/Lexery - Legacy Branch Families.md",
+			"x": -820,
+			"y": -600,
+			"width": 300,
+			"height": 120
+		},
+		{
+			"id": "branchBefore",
+			"type": "file",
+			"file": "Lexery/Lexery - Branch before-LawDatabase.md",
+			"x": -820,
+			"y": -440,
+			"width": 300,
+			"height": 120
+		},
+		{
+			"id": "branchV3",
+			"type": "file",
+			"file": "Lexery/Lexery - Branch new-design-v3-final.md",
+			"x": -500,
+			"y": -440,
+			"width": 300,
+			"height": 120
+		},
+		{
+			"id": "branchSupreme",
+			"type": "file",
+			"file": "Lexery/Lexery - Branch Supreme Court Case Law RAG.md",
+			"x": -120,
+			"y": -600,
+			"width": 300,
+			"height": 120
+		},
+		{
+			"id": "branchLegalAgent",
+			"type": "file",
+			"file": "Lexery/Lexery - Branch Lexery Legal Agent Architecture.md",
+			"x": -120,
+			"y": -440,
+			"width": 300,
+			"height": 120
+		},
+		{
+			"id": "branchCodex",
+			"type": "file",
+			"file": "Lexery/Lexery - Branch codex legal-rag-foundation.md",
+			"x": -120,
+			"y": -280,
+			"width": 300,
+			"height": 120
+		},
+		{
+			"id": "legacyBeta",
+			"type": "file",
+			"file": "Lexery/Lexery - Legacy Beta App.md",
+			"x": -820,
+			"y": 22,
+			"width": 300,
+			"height": 120
+		},
+		{
+			"id": "legacyBridge",
+			"type": "file",
+			"file": "Lexery/Lexery - Legacy Architecture Bridge.md",
+			"x": -500,
+			"y": 22,
+			"width": 300,
+			"height": 120
+		},
+		{
+			"id": "repos",
+			"type": "file",
+			"file": "Lexery/Lexery - Repo Constellation.md",
+			"x": -200,
+			"y": 324,
+			"width": 300,
+			"height": 120
+		},
+		{
+			"id": "divergence",
+			"type": "file",
+			"file": "Lexery/Lexery - Branch Divergence.md",
+			"x": 200,
+			"y": 324,
+			"width": 300,
+			"height": 120
+		},
+		{
+			"id": "brain",
+			"type": "file",
+			"file": "Lexery/Lexery - Brain Architecture.md",
+			"x": 520,
+			"y": 324,
+			"width": 300,
+			"height": 120
+		},
+		{
+			"id": "naming",
+			"type": "file",
+			"file": "Lexery/Lexery - Naming Evolution.md",
+			"x": -200,
+			"y": 564,
+			"width": 300,
+			"height": 120
+		}
+	],
+	"edges": [
+		{
+			"id": "e1",
+			"fromNode": "legacyBeta",
+			"fromSide": "right",
+			"toNode": "legacyBridge",
+			"toSide": "left",
+			"label": "evolved to"
+		},
+		{
+			"id": "e2",
+			"fromNode": "legacyBridge",
+			"fromSide": "right",
+			"toNode": "repos",
+			"toSide": "left",
+			"label": "migrated to"
+		},
+		{
+			"id": "e3",
+			"fromNode": "branchFamilies",
+			"fromSide": "bottom",
+			"toNode": "branchBefore",
+			"toSide": "top",
+			"label": "family"
+		},
+		{
+			"id": "e4",
+			"fromNode": "branchFamilies",
+			"fromSide": "bottom",
+			"toNode": "branchV3",
+			"toSide": "top",
+			"label": "family"
+		},
+		{
+			"id": "e5",
+			"fromNode": "branchFamilies",
+			"fromSide": "right",
+			"toNode": "branchSupreme",
+			"toSide": "left",
+			"label": "family"
+		},
+		{
+			"id": "e6",
+			"fromNode": "branchFamilies",
+			"fromSide": "right",
+			"toNode": "branchLegalAgent",
+			"toSide": "left",
+			"label": "family"
+		},
+		{
+			"id": "e7",
+			"fromNode": "branchFamilies",
+			"fromSide": "right",
+			"toNode": "branchCodex",
+			"toSide": "left",
+			"label": "family"
+		},
+		{
+			"id": "e8",
+			"fromNode": "branchLegalAgent",
+			"fromSide": "right",
+			"toNode": "brain",
+			"toSide": "left",
+			"label": "direct ancestor"
+		},
+		{
+			"id": "e9",
+			"fromNode": "branchCodex",
+			"fromSide": "right",
+			"toNode": "brain",
+			"toSide": "left",
+			"label": "retrieval hardening"
+		},
+		{
+			"id": "e10",
+			"fromNode": "repos",
+			"fromSide": "right",
+			"toNode": "divergence",
+			"toSide": "left",
+			"label": "current split"
+		},
+		{
+			"id": "e11",
+			"fromNode": "legacyBeta",
+			"fromSide": "bottom",
+			"toNode": "naming",
+			"toSide": "left",
+			"label": "Mike Ross era"
+		},
+		{
+			"id": "e12",
+			"fromNode": "legacyBridge",
+			"fromSide": "bottom",
+			"toNode": "naming",
+			"toSide": "top",
+			"label": "Lexora era"
+		}
+	]
+}

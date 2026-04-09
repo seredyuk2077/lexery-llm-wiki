@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+    <key>Label</key>
+    <string>com.lexery.wiki-maintenance</string>
+    <key>ProgramArguments</key>
+    <array>
+        <string>/usr/local/bin/node</string>
+        <string>/Users/andriyseredyuk/Documents/Obsidian Vault/Lexery/_system/scripts/run-maintenance.mjs</string>
+    </array>
+    <key>StartCalendarInterval</key>
+    <dict>
+        <key>Hour</key>
+        <integer>8</integer>
+        <key>Minute</key>
+        <integer>0</integer>
+    </dict>
+    <key>StandardOutPath</key>
+    <string>/Users/andriyseredyuk/Documents/Obsidian Vault/Lexery/_system/logs/launchd-stdout.log</string>
+    <key>StandardErrorPath</key>
+    <string>/Users/andriyseredyuk/Documents/Obsidian Vault/Lexery/_system/logs/launchd-stderr.log</string>
+    <key>EnvironmentVariables</key>
+    <dict>
+        <key>PATH</key>
+        <string>/usr/local/bin:/usr/bin:/bin</string>
+        <key>OPENROUTER_API_KEY</key>
+        <string>REDACTED_OPENROUTER_KEY_ROTATE</string>
+    </dict>
+</dict>
+</plist>

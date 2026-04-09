@@ -1,0 +1,23 @@
+{
+  "budget_monthly_usd": 2,
+  "entries": [
+    {
+      "date": "2026-04-09",
+      "operation": "Initial wiki build + expansion",
+      "tier": 3,
+      "estimated_tokens": 500000,
+      "estimated_cost_usd": 5,
+      "note": "One-time setup cost"
+    },
+    {
+      "date": "2026-04-09",
+      "operation": "generate-delta summary",
+      "tier": 1,
+      "estimated_tokens": 518,
+      "estimated_cost_usd": 0.0002072,
+      "note": "auto: gpt-4o-mini via OpenRouter"
+    }
+  ],
+  "total_usd": 5.0002072,
+  "monthly_average_usd": null
+}

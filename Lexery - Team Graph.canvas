@@ -1,0 +1,181 @@
+{
+	"nodes": [
+		{
+			"id": "txt-team-header",
+			"type": "text",
+			"x": -400,
+			"y": -520,
+			"width": 400,
+			"height": 50,
+			"text": "# Lexery Team — Hybrid Human+Agent Model",
+			"color": "4"
+		},
+		{
+			"id": "grp-people",
+			"type": "group",
+			"x": -760,
+			"y": -422,
+			"width": 700,
+			"height": 702,
+			"label": "👥 People",
+			"color": "4"
+		},
+		{
+			"id": "grp-ownership",
+			"type": "group",
+			"x": -760,
+			"y": 360,
+			"width": 1020,
+			"height": 222,
+			"label": "🏗️ Ownership Domains",
+			"color": "5"
+		},
+		{
+			"id": "andrii",
+			"type": "file",
+			"file": "Lexery/Lexery - Andrii Serediuk.md",
+			"x": -720,
+			"y": -360,
+			"width": 300,
+			"height": 120
+		},
+		{
+			"id": "yehor",
+			"type": "file",
+			"file": "Lexery/Lexery - Yehor Puhach.md",
+			"x": -400,
+			"y": -360,
+			"width": 300,
+			"height": 120
+		},
+		{
+			"id": "team",
+			"type": "file",
+			"file": "Lexery/Lexery - Team and Operating Model.md",
+			"x": -560,
+			"y": -200,
+			"width": 300,
+			"height": 120
+		},
+		{
+			"id": "olexandr",
+			"type": "file",
+			"file": "Lexery/Lexery - Olexandr.md",
+			"x": -400,
+			"y": -40,
+			"width": 300,
+			"height": 120
+		},
+		{
+			"id": "prchron",
+			"type": "file",
+			"file": "Lexery/Lexery - PR Chronology.md",
+			"x": -720,
+			"y": 120,
+			"width": 300,
+			"height": 120
+		},
+		{
+			"id": "linear",
+			"type": "file",
+			"file": "Lexery/Lexery - Linear Roadmap.md",
+			"x": -400,
+			"y": 120,
+			"width": 300,
+			"height": 120
+		},
+		{
+			"id": "brain",
+			"type": "file",
+			"file": "Lexery/Lexery - Brain Architecture.md",
+			"x": -720,
+			"y": 422,
+			"width": 300,
+			"height": 120
+		},
+		{
+			"id": "api",
+			"type": "file",
+			"file": "Lexery/Lexery - API and Control Plane.md",
+			"x": -400,
+			"y": 422,
+			"width": 300,
+			"height": 120
+		},
+		{
+			"id": "portal",
+			"type": "file",
+			"file": "Lexery/Lexery - Portal Surface Map.md",
+			"x": -80,
+			"y": 422,
+			"width": 300,
+			"height": 120
+		}
+	],
+	"edges": [
+		{
+			"id": "e1",
+			"fromNode": "team",
+			"fromSide": "top",
+			"toNode": "andrii",
+			"toSide": "bottom",
+			"label": "founder"
+		},
+		{
+			"id": "e2",
+			"fromNode": "team",
+			"fromSide": "top",
+			"toNode": "yehor",
+			"toSide": "bottom",
+			"label": "backend"
+		},
+		{
+			"id": "e3",
+			"fromNode": "team",
+			"fromSide": "bottom",
+			"toNode": "olexandr",
+			"toSide": "top",
+			"label": "frontend"
+		},
+		{
+			"id": "e4",
+			"fromNode": "andrii",
+			"fromSide": "bottom",
+			"toNode": "brain",
+			"toSide": "top",
+			"label": "owns"
+		},
+		{
+			"id": "e5",
+			"fromNode": "yehor",
+			"fromSide": "bottom",
+			"toNode": "api",
+			"toSide": "top",
+			"label": "owns"
+		},
+		{
+			"id": "e6",
+			"fromNode": "olexandr",
+			"fromSide": "top",
+			"toNode": "portal",
+			"toSide": "bottom",
+			"label": "owns"
+		},
+		{
+			"id": "e7",
+			"fromNode": "team",
+			"fromSide": "bottom",
+			"toNode": "linear",
+			"toSide": "top",
+			"label": "plans"
+		},
+		{
+			"id": "e8",
+			"fromNode": "team",
+			"fromSide": "bottom",
+			"toNode": "prchron",
+			"toSide": "top",
+			"label": "ships"
+		}
+	]
+}

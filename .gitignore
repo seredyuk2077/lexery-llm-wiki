@@ -1,0 +1,9 @@
+# Lexery Second Brain
+
+# Obsidian internal
+.obsidian/workspace.json
+.obsidian/workspace-mobile.json
+.trash/
+
+# OS
+.DS_Store

@@ -1,0 +1,182 @@
+{
+	"nodes": [
+		{
+			"id": "grp-storage",
+			"type": "group",
+			"x": -800,
+			"y": -22,
+			"width": 380,
+			"height": 502,
+			"label": "💾 Storage",
+			"color": "1"
+		},
+		{
+			"id": "grp-cloud-providers",
+			"type": "group",
+			"x": -340,
+			"y": -22,
+			"width": 380,
+			"height": 222,
+			"label": "☁️ Cloud Providers",
+			"color": "5"
+		},
+		{
+			"id": "grp-retrieval-stack",
+			"type": "group",
+			"x": 120,
+			"y": -22,
+			"width": 700,
+			"height": 362,
+			"label": "🔗 Retrieval Stack",
+			"color": "4"
+		},
+		{
+			"id": "txt-infra-legend",
+			"type": "text",
+			"x": -1040,
+			"y": 560,
+			"width": 500,
+			"height": 120,
+			"text": "### Provider & zone colors\n- **Cyan** — Cloud / provider topology (services that power workers, APIs, and hosted components)\n- **Red** — Storage plane (object storage, Postgres, paths into durable data)\n- **Green** — Retrieval stack (LLDBI index, retrieval orchestration, DocList resolution)\n- **Unboxed** — Brain architecture & deployment docs sit outside the three planes for context",
+			"color": "5"
+		},
+		{
+			"id": "brain",
+			"type": "file",
+			"file": "Lexery/Lexery - Brain Architecture.md",
+			"x": -1040,
+			"y": 40,
+			"width": 300,
+			"height": 120
+		},
+		{
+			"id": "deployment",
+			"type": "file",
+			"file": "Lexery/Lexery - Deployment and Infra.md",
+			"x": -760,
+			"y": 40,
+			"width": 300,
+			"height": 120
+		},
+		{
+			"id": "storage",
+			"type": "file",
+			"file": "Lexery/Lexery - Storage Topology.md",
+			"x": -760,
+			"y": 180,
+			"width": 300,
+			"height": 120
+		},
+		{
+			"id": "memory",
+			"type": "file",
+			"file": "Lexery/Lexery - Memory and Documents.md",
+			"x": -760,
+			"y": 320,
+			"width": 300,
+			"height": 120
+		},
+		{
+			"id": "provider",
+			"type": "file",
+			"file": "Lexery/Lexery - Provider Topology.md",
+			"x": -300,
+			"y": 40,
+			"width": 300,
+			"height": 120
+		},
+		{
+			"id": "lldbI",
+			"type": "file",
+			"file": "Lexery/Lexery - LLDBI Surface.md",
+			"x": 160,
+			"y": 40,
+			"width": 300,
+			"height": 120
+		},
+		{
+			"id": "retrieval",
+			"type": "file",
+			"file": "Lexery/Lexery - Retrieval, LLDBI, DocList.md",
+			"x": 160,
+			"y": 180,
+			"width": 300,
+			"height": 120
+		},
+		{
+			"id": "doclist",
+			"type": "file",
+			"file": "Lexery/Lexery - DocList Surface.md",
+			"x": 480,
+			"y": 180,
+			"width": 300,
+			"height": 120
+		}
+	],
+	"edges": [
+		{
+			"id": "e1",
+			"fromNode": "provider",
+			"fromSide": "bottom",
+			"toNode": "storage",
+			"toSide": "top",
+			"label": "stores data"
+		},
+		{
+			"id": "e2",
+			"fromNode": "provider",
+			"fromSide": "left",
+			"toNode": "brain",
+			"toSide": "right",
+			"label": "powers"
+		},
+		{
+			"id": "e3",
+			"fromNode": "provider",
+			"fromSide": "right",
+			"toNode": "lldbI",
+			"toSide": "left",
+			"label": "hosts Qdrant"
+		},
+		{
+			"id": "e4",
+			"fromNode": "deployment",
+			"fromSide": "right",
+			"toNode": "provider",
+			"toSide": "left",
+			"label": "runs on"
+		},
+		{
+			"id": "e5",
+			"fromNode": "storage",
+			"fromSide": "right",
+			"toNode": "lldbI",
+			"toSide": "bottom",
+			"label": "Qdrant collections"
+		},
+		{
+			"id": "e6",
+			"fromNode": "storage",
+			"fromSide": "bottom",
+			"toNode": "memory",
+			"toSide": "top",
+			"label": "R2 + Postgres"
+		},
+		{
+			"id": "e7",
+			"fromNode": "retrieval",
+			"fromSide": "top",
+			"toNode": "lldbI",
+			"toSide": "bottom",
+			"label": "queries"
+		},
+		{
+			"id": "e8",
+			"fromNode": "retrieval",
+			"fromSide": "right",
+			"toNode": "doclist",
+			"toSide": "left",
+			"label": "resolves"
+		}
+	]
+}

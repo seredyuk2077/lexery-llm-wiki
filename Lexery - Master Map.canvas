@@ -1,0 +1,594 @@
+{
+	"nodes": [
+		{
+			"id": "txt-master-title",
+			"type": "text",
+			"x": 520,
+			"y": -320,
+			"width": 400,
+			"height": 50,
+			"text": "# LEXERY \u2014 Startup Second Brain",
+			"color": "5"
+		},
+		{
+			"id": "txt-master-sub",
+			"type": "text",
+			"x": 560,
+			"y": -262,
+			"width": 320,
+			"height": 40,
+			"text": "*Compiled knowledge \u2022 Karpathy-style \u2022 Self-maintaining*"
+		},
+		{
+			"id": "grp-history",
+			"type": "group",
+			"x": 0,
+			"y": -262,
+			"width": 380,
+			"height": 922,
+			"label": "\ud83c\udfdb\ufe0f History",
+			"color": "3"
+		},
+		{
+			"id": "grp-governance",
+			"type": "group",
+			"x": 460,
+			"y": -262,
+			"width": 380,
+			"height": 642,
+			"label": "\u2699\ufe0f Governance",
+			"color": "6"
+		},
+		{
+			"id": "grp-brain-runtime",
+			"type": "group",
+			"x": 1300,
+			"y": -262,
+			"width": 380,
+			"height": 782,
+			"label": "\ud83e\udde0 Brain & Runtime",
+			"color": "5"
+		},
+		{
+			"id": "grp-product-state",
+			"type": "group",
+			"x": 1760,
+			"y": -262,
+			"width": 380,
+			"height": 642,
+			"label": "\ud83d\udcca Product & State",
+			"color": "2"
+		},
+		{
+			"id": "grp-data-infra",
+			"type": "group",
+			"x": 2220,
+			"y": -262,
+			"width": 380,
+			"height": 502,
+			"label": "\ud83d\uddc4\ufe0f Data Layer",
+			"color": "1"
+		},
+		{
+			"id": "grp-team",
+			"type": "group",
+			"x": 790,
+			"y": 658,
+			"width": 1020,
+			"height": 362,
+			"label": "\ud83d\udc65 Team",
+			"color": "4"
+		},
+		{
+			"id": "sources",
+			"type": "file",
+			"file": "Lexery/Lexery - Source Map.md",
+			"x": 40,
+			"y": -200,
+			"width": 300,
+			"height": 120
+		},
+		{
+			"id": "timeline",
+			"type": "file",
+			"file": "Lexery/Lexery - Timeline.md",
+			"x": 40,
+			"y": -60,
+			"width": 300,
+			"height": 120
+		},
+		{
+			"id": "evolution",
+			"type": "file",
+			"file": "Lexery/Lexery - Idea Evolution.md",
+			"x": 40,
+			"y": 80,
+			"width": 300,
+			"height": 120
+		},
+		{
+			"id": "legacy-beta",
+			"type": "file",
+			"file": "Lexery/Lexery - Legacy Beta App.md",
+			"x": 40,
+			"y": 220,
+			"width": 300,
+			"height": 120
+		},
+		{
+			"id": "legacy-bridge",
+			"type": "file",
+			"file": "Lexery/Lexery - Legacy Architecture Bridge.md",
+			"x": 40,
+			"y": 360,
+			"width": 300,
+			"height": 120
+		},
+		{
+			"id": "naming",
+			"type": "file",
+			"file": "Lexery/Lexery - Naming Evolution.md",
+			"x": 40,
+			"y": 500,
+			"width": 300,
+			"height": 120
+		},
+		{
+			"id": "drift",
+			"type": "file",
+			"file": "Lexery/Lexery - Open Questions and Drift.md",
+			"x": 500,
+			"y": -200,
+			"width": 300,
+			"height": 120
+		},
+		{
+			"id": "glossary",
+			"type": "file",
+			"file": "Lexery/Lexery - Glossary.md",
+			"x": 500,
+			"y": -60,
+			"width": 300,
+			"height": 120
+		},
+		{
+			"id": "decisions",
+			"type": "file",
+			"file": "Lexery/Lexery - Decision Registry.md",
+			"x": 500,
+			"y": 80,
+			"width": 300,
+			"height": 120
+		},
+		{
+			"id": "drift-radar",
+			"type": "file",
+			"file": "Lexery/Lexery - Drift Radar.md",
+			"x": 500,
+			"y": 220,
+			"width": 300,
+			"height": 120
+		},
+		{
+			"id": "hub",
+			"type": "file",
+			"file": "Lexery/Lexery - Project Brain.md",
+			"x": 920,
+			"y": 150,
+			"width": 300,
+			"height": 120
+		},
+		{
+			"id": "brain",
+			"type": "file",
+			"file": "Lexery/Lexery - Brain Architecture.md",
+			"x": 1340,
+			"y": -200,
+			"width": 300,
+			"height": 120
+		},
+		{
+			"id": "ugraph",
+			"type": "file",
+			"file": "Lexery/Lexery - U1-U12 Runtime.md",
+			"x": 1340,
+			"y": -60,
+			"width": 300,
+			"height": 120
+		},
+		{
+			"id": "retrieval",
+			"type": "file",
+			"file": "Lexery/Lexery - Retrieval, LLDBI, DocList.md",
+			"x": 1340,
+			"y": 80,
+			"width": 300,
+			"height": 120
+		},
+		{
+			"id": "memory",
+			"type": "file",
+			"file": "Lexery/Lexery - Memory and Documents.md",
+			"x": 1340,
+			"y": 220,
+			"width": 300,
+			"height": 120
+		},
+		{
+			"id": "infra",
+			"type": "file",
+			"file": "Lexery/Lexery - Deployment and Infra.md",
+			"x": 1340,
+			"y": 360,
+			"width": 300,
+			"height": 120
+		},
+		{
+			"id": "biz",
+			"type": "file",
+			"file": "Lexery/Lexery - Business Model.md",
+			"x": 1800,
+			"y": -200,
+			"width": 300,
+			"height": 120
+		},
+		{
+			"id": "state",
+			"type": "file",
+			"file": "Lexery/Lexery - Current State.md",
+			"x": 1800,
+			"y": -60,
+			"width": 300,
+			"height": 120
+		},
+		{
+			"id": "divergence",
+			"type": "file",
+			"file": "Lexery/Lexery - Branch Divergence.md",
+			"x": 1800,
+			"y": 80,
+			"width": 300,
+			"height": 120
+		},
+		{
+			"id": "product",
+			"type": "file",
+			"file": "Lexery/Lexery - Product Surface.md",
+			"x": 1800,
+			"y": 220,
+			"width": 300,
+			"height": 120
+		},
+		{
+			"id": "providers",
+			"type": "file",
+			"file": "Lexery/Lexery - Provider Topology.md",
+			"x": 2260,
+			"y": -200,
+			"width": 300,
+			"height": 120
+		},
+		{
+			"id": "lldbi",
+			"type": "file",
+			"file": "Lexery/Lexery - LLDBI Surface.md",
+			"x": 2260,
+			"y": -60,
+			"width": 300,
+			"height": 120
+		},
+		{
+			"id": "doclist",
+			"type": "file",
+			"file": "Lexery/Lexery - DocList Surface.md",
+			"x": 2260,
+			"y": 80,
+			"width": 300,
+			"height": 120
+		},
+		{
+			"id": "team",
+			"type": "file",
+			"file": "Lexery/Lexery - Team and Operating Model.md",
+			"x": 830,
+			"y": 720,
+			"width": 300,
+			"height": 120
+		},
+		{
+			"id": "repos",
+			"type": "file",
+			"file": "Lexery/Lexery - Repo Constellation.md",
+			"x": 1150,
+			"y": 720,
+			"width": 300,
+			"height": 120
+		},
+		{
+			"id": "linear",
+			"type": "file",
+			"file": "Lexery/Lexery - Linear Roadmap.md",
+			"x": 1470,
+			"y": 720,
+			"width": 300,
+			"height": 120
+		},
+		{
+			"id": "andrii",
+			"type": "file",
+			"file": "Lexery/Lexery - Andrii Serediuk.md",
+			"x": 830,
+			"y": 860,
+			"width": 300,
+			"height": 120
+		},
+		{
+			"id": "yehor",
+			"type": "file",
+			"file": "Lexery/Lexery - Yehor Puhach.md",
+			"x": 1150,
+			"y": 860,
+			"width": 300,
+			"height": 120
+		},
+		{
+			"id": "olexandr",
+			"type": "file",
+			"file": "Lexery/Lexery - Olexandr.md",
+			"x": 1470,
+			"y": 860,
+			"width": 300,
+			"height": 120
+		}
+	],
+	"edges": [
+		{
+			"id": "e1",
+			"fromNode": "hub",
+			"fromSide": "left",
+			"toNode": "sources",
+			"toSide": "right",
+			"label": "sources"
+		},
+		{
+			"id": "e2",
+			"fromNode": "hub",
+			"fromSide": "left",
+			"toNode": "timeline",
+			"toSide": "right",
+			"label": "history"
+		},
+		{
+			"id": "e3",
+			"fromNode": "hub",
+			"fromSide": "left",
+			"toNode": "evolution",
+			"toSide": "right",
+			"label": "thesis"
+		},
+		{
+			"id": "e4",
+			"fromNode": "hub",
+			"fromSide": "bottom",
+			"toNode": "brain",
+			"toSide": "top",
+			"label": "brain"
+		},
+		{
+			"id": "e5",
+			"fromNode": "hub",
+			"fromSide": "right",
+			"toNode": "product",
+			"toSide": "left",
+			"label": "product"
+		},
+		{
+			"id": "e6",
+			"fromNode": "hub",
+			"fromSide": "bottom",
+			"toNode": "team",
+			"toSide": "top",
+			"label": "operators"
+		},
+		{
+			"id": "e7",
+			"fromNode": "hub",
+			"fromSide": "bottom",
+			"toNode": "linear",
+			"toSide": "top",
+			"label": "roadmap"
+		},
+		{
+			"id": "e8",
+			"fromNode": "timeline",
+			"fromSide": "bottom",
+			"toNode": "legacy-beta",
+			"toSide": "top",
+			"label": "starts here"
+		},
+		{
+			"id": "e9",
+			"fromNode": "timeline",
+			"fromSide": "bottom",
+			"toNode": "legacy-bridge",
+			"toSide": "top",
+			"label": "bridge"
+		},
+		{
+			"id": "e10",
+			"fromNode": "legacy-bridge",
+			"fromSide": "right",
+			"toNode": "brain",
+			"toSide": "left",
+			"label": "ancestor"
+		},
+		{
+			"id": "e11",
+			"fromNode": "legacy-bridge",
+			"fromSide": "right",
+			"toNode": "retrieval",
+			"toSide": "left",
+			"label": "retrieval lineage"
+		},
+		{
+			"id": "e12",
+			"fromNode": "legacy-beta",
+			"fromSide": "right",
+			"toNode": "product",
+			"toSide": "left",
+			"label": "product DNA"
+		},
+		{
+			"id": "e13",
+			"fromNode": "repos",
+			"fromSide": "right",
+			"toNode": "state",
+			"toSide": "bottom",
+			"label": "current repo"
+		},
+		{
+			"id": "e14",
+			"fromNode": "state",
+			"fromSide": "bottom",
+			"toNode": "divergence",
+			"toSide": "top",
+			"label": "split"
+		},
+		{
+			"id": "e15",
+			"fromNode": "product",
+			"fromSide": "top",
+			"toNode": "biz",
+			"toSide": "bottom",
+			"label": "plans"
+		},
+		{
+			"id": "e16",
+			"fromNode": "brain",
+			"fromSide": "bottom",
+			"toNode": "ugraph",
+			"toSide": "top",
+			"label": "stages"
+		},
+		{
+			"id": "e17",
+			"fromNode": "brain",
+			"fromSide": "bottom",
+			"toNode": "retrieval",
+			"toSide": "top",
+			"label": "evidence"
+		},
+		{
+			"id": "e18",
+			"fromNode": "brain",
+			"fromSide": "bottom",
+			"toNode": "memory",
+			"toSide": "top",
+			"label": "context"
+		},
+		{
+			"id": "e19",
+			"fromNode": "brain",
+			"fromSide": "bottom",
+			"toNode": "infra",
+			"toSide": "top",
+			"label": "deployment"
+		},
+		{
+			"id": "e20",
+			"fromNode": "drift",
+			"fromSide": "right",
+			"toNode": "state",
+			"toSide": "left",
+			"label": "conflicts"
+		},
+		{
+			"id": "e21",
+			"fromNode": "hub",
+			"fromSide": "left",
+			"toNode": "glossary",
+			"toSide": "right",
+			"label": "vocabulary"
+		},
+		{
+			"id": "e22",
+			"fromNode": "hub",
+			"fromSide": "left",
+			"toNode": "decisions",
+			"toSide": "right",
+			"label": "decisions"
+		},
+		{
+			"id": "e23",
+			"fromNode": "drift",
+			"fromSide": "bottom",
+			"toNode": "drift-radar",
+			"toSide": "top",
+			"label": "active drift"
+		},
+		{
+			"id": "e24",
+			"fromNode": "team",
+			"fromSide": "bottom",
+			"toNode": "andrii",
+			"toSide": "top",
+			"label": "founder"
+		},
+		{
+			"id": "e25",
+			"fromNode": "team",
+			"fromSide": "bottom",
+			"toNode": "yehor",
+			"toSide": "top",
+			"label": "backend"
+		},
+		{
+			"id": "e26",
+			"fromNode": "team",
+			"fromSide": "bottom",
+			"toNode": "olexandr",
+			"toSide": "top",
+			"label": "frontend"
+		},
+		{
+			"id": "e27",
+			"fromNode": "legacy-bridge",
+			"fromSide": "bottom",
+			"toNode": "naming",
+			"toSide": "top",
+			"label": "brand arc"
+		},
+		{
+			"id": "e28",
+			"fromNode": "retrieval",
+			"fromSide": "right",
+			"toNode": "lldbi",
+			"toSide": "left",
+			"label": "index"
+		},
+		{
+			"id": "e29",
+			"fromNode": "retrieval",
+			"fromSide": "right",
+			"toNode": "doclist",
+			"toSide": "left",
+			"label": "resolver"
+		},
+		{
+			"id": "e30",
+			"fromNode": "infra",
+			"fromSide": "right",
+			"toNode": "providers",
+			"toSide": "left",
+			"label": "services"
+		},
+		{
+			"id": "e31",
+			"fromNode": "andrii",
+			"fromSide": "right",
+			"toNode": "brain",
+			"toSide": "bottom",
+			"label": "owns"
+		}
+	]
+}

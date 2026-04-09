@@ -1,0 +1,322 @@
+{
+	"nodes": [
+		{
+			"id": "grp-control-plane",
+			"type": "group",
+			"x": 1410,
+			"y": -314,
+			"width": 700,
+			"height": 222,
+			"label": "🎛️ Control Plane",
+			"color": "6"
+		},
+		{
+			"id": "brain",
+			"type": "file",
+			"file": "Lexery/Lexery - Brain Architecture.md",
+			"x": 1450,
+			"y": -252,
+			"width": 300,
+			"height": 120
+		},
+		{
+			"id": "orch",
+			"type": "file",
+			"file": "Lexery/Lexery - ORCH and Clarification.md",
+			"x": 1770,
+			"y": -252,
+			"width": 300,
+			"height": 120
+		},
+		{
+			"id": "grp-ingestion",
+			"type": "group",
+			"x": 0,
+			"y": -12,
+			"width": 820,
+			"height": 162,
+			"label": "📥 Ingestion",
+			"color": "4"
+		},
+		{
+			"id": "u1",
+			"type": "file",
+			"file": "Lexery/Lexery - U1 Gateway.md",
+			"x": 40,
+			"y": 50,
+			"width": 240,
+			"height": 60
+		},
+		{
+			"id": "u2",
+			"type": "file",
+			"file": "Lexery/Lexery - U2 Query Profiling.md",
+			"x": 290,
+			"y": 50,
+			"width": 240,
+			"height": 60
+		},
+		{
+			"id": "u3",
+			"type": "file",
+			"file": "Lexery/Lexery - U3 Planning.md",
+			"x": 540,
+			"y": 50,
+			"width": 240,
+			"height": 60
+		},
+		{
+			"id": "grp-retrieval-evidence",
+			"type": "group",
+			"x": 900,
+			"y": -12,
+			"width": 1070,
+			"height": 162,
+			"label": "🔍 Retrieval & Evidence",
+			"color": "5"
+		},
+		{
+			"id": "u4",
+			"type": "file",
+			"file": "Lexery/Lexery - U4 Retrieval.md",
+			"x": 940,
+			"y": 50,
+			"width": 240,
+			"height": 60
+		},
+		{
+			"id": "u5",
+			"type": "file",
+			"file": "Lexery/Lexery - U5 Gate.md",
+			"x": 1190,
+			"y": 50,
+			"width": 240,
+			"height": 60
+		},
+		{
+			"id": "u6",
+			"type": "file",
+			"file": "Lexery/Lexery - U6 Recovery.md",
+			"x": 1440,
+			"y": 50,
+			"width": 240,
+			"height": 60
+		},
+		{
+			"id": "u7",
+			"type": "file",
+			"file": "Lexery/Lexery - U7 Evidence Assembly.md",
+			"x": 1690,
+			"y": 50,
+			"width": 240,
+			"height": 60
+		},
+		{
+			"id": "grp-reasoning-assembly",
+			"type": "group",
+			"x": 2050,
+			"y": -12,
+			"width": 570,
+			"height": 162,
+			"label": "⚖️ Reasoning & Assembly",
+			"color": "3"
+		},
+		{
+			"id": "u8",
+			"type": "file",
+			"file": "Lexery/Lexery - U8 Legal Reasoning.md",
+			"x": 2090,
+			"y": 50,
+			"width": 240,
+			"height": 60
+		},
+		{
+			"id": "u9",
+			"type": "file",
+			"file": "Lexery/Lexery - U9 Assemble.md",
+			"x": 2340,
+			"y": 50,
+			"width": 240,
+			"height": 60
+		},
+		{
+			"id": "grp-writing-delivery",
+			"type": "group",
+			"x": 2700,
+			"y": -12,
+			"width": 820,
+			"height": 162,
+			"label": "✍️ Writing & Delivery",
+			"color": "2"
+		},
+		{
+			"id": "u10",
+			"type": "file",
+			"file": "Lexery/Lexery - U10 Writer.md",
+			"x": 2740,
+			"y": 50,
+			"width": 240,
+			"height": 60
+		},
+		{
+			"id": "u11",
+			"type": "file",
+			"file": "Lexery/Lexery - U11 Verify.md",
+			"x": 2990,
+			"y": 50,
+			"width": 240,
+			"height": 60
+		},
+		{
+			"id": "u12",
+			"type": "file",
+			"file": "Lexery/Lexery - U12 Deliver.md",
+			"x": 3240,
+			"y": 50,
+			"width": 240,
+			"height": 60
+		},
+		{
+			"id": "grp-support",
+			"type": "group",
+			"x": 1410,
+			"y": 230,
+			"width": 700,
+			"height": 222,
+			"label": "📎 Context & Evidence Stores",
+			"color": "1"
+		},
+		{
+			"id": "retrieval",
+			"type": "file",
+			"file": "Lexery/Lexery - Retrieval, LLDBI, DocList.md",
+			"x": 1450,
+			"y": 292,
+			"width": 300,
+			"height": 120
+		},
+		{
+			"id": "memory",
+			"type": "file",
+			"file": "Lexery/Lexery - Memory and Documents.md",
+			"x": 1770,
+			"y": 292,
+			"width": 300,
+			"height": 120
+		},
+		{
+			"id": "txt-runtime-legend",
+			"type": "text",
+			"x": 40,
+			"y": 532,
+			"width": 500,
+			"height": 120,
+			"text": "### Zone colors\n- **Green** — Ingestion (U1–U3): gateway → profiling → planning\n- **Cyan** — Retrieval & evidence (U4–U7): retrieval, gate, recovery, assembly\n- **Yellow** — Reasoning & assembly (U8–U9): legal reasoning → assemble\n- **Orange** — Writing & delivery (U10–U12): writer → verify → deliver\n- **Purple** — Control plane: brain architecture + ORCH\n- **Red** — Support: retrieval index, memory, document stores",
+			"color": "6"
+		}
+	],
+	"edges": [
+		{
+			"id": "r0",
+			"fromNode": "brain",
+			"fromSide": "right",
+			"toNode": "orch",
+			"toSide": "left",
+			"label": "controller"
+		},
+		{
+			"id": "r1",
+			"fromNode": "u1",
+			"fromSide": "right",
+			"toNode": "u2",
+			"toSide": "left"
+		},
+		{
+			"id": "r2",
+			"fromNode": "u2",
+			"fromSide": "right",
+			"toNode": "u3",
+			"toSide": "left"
+		},
+		{
+			"id": "r3",
+			"fromNode": "u3",
+			"fromSide": "right",
+			"toNode": "u4",
+			"toSide": "left"
+		},
+		{
+			"id": "r4",
+			"fromNode": "u4",
+			"fromSide": "right",
+			"toNode": "u5",
+			"toSide": "left"
+		},
+		{
+			"id": "r5",
+			"fromNode": "u5",
+			"fromSide": "right",
+			"toNode": "u6",
+			"toSide": "left",
+			"label": "if weak"
+		},
+		{
+			"id": "r6",
+			"fromNode": "u6",
+			"fromSide": "right",
+			"toNode": "u7",
+			"toSide": "left"
+		},
+		{
+			"id": "r7",
+			"fromNode": "u7",
+			"fromSide": "right",
+			"toNode": "u8",
+			"toSide": "left"
+		},
+		{
+			"id": "r8",
+			"fromNode": "u8",
+			"fromSide": "right",
+			"toNode": "u9",
+			"toSide": "left"
+		},
+		{
+			"id": "r9",
+			"fromNode": "u9",
+			"fromSide": "right",
+			"toNode": "u10",
+			"toSide": "left"
+		},
+		{
+			"id": "r10",
+			"fromNode": "u10",
+			"fromSide": "right",
+			"toNode": "u11",
+			"toSide": "left"
+		},
+		{
+			"id": "r11",
+			"fromNode": "u11",
+			"fromSide": "right",
+			"toNode": "u12",
+			"toSide": "left"
+		},
+		{
+			"id": "r12",
+			"fromNode": "u4",
+			"fromSide": "bottom",
+			"toNode": "retrieval",
+			"toSide": "top",
+			"label": "evidence plane"
+		},
+		{
+			"id": "r13",
+			"fromNode": "u9",
+			"fromSide": "bottom",
+			"toNode": "memory",
+			"toSide": "top",
+			"label": "context"
+		}
+	]
+}

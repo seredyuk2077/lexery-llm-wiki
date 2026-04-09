@@ -1,0 +1,164 @@
+{
+	"nodes": [
+		{
+			"id": "txt-history-header",
+			"type": "text",
+			"text": "# Lexery — From Mike Ross to Legal Agent",
+			"x": 40,
+			"y": -120,
+			"width": 400,
+			"height": 50,
+			"color": "3"
+		},
+		{
+			"id": "txt-history-arrow",
+			"type": "text",
+			"text": "### 2025 → 2026",
+			"x": 480,
+			"y": -120,
+			"width": 320,
+			"height": 40,
+			"color": "3"
+		},
+		{
+			"id": "grp-timeline",
+			"type": "group",
+			"x": 0,
+			"y": -22,
+			"width": 1020,
+			"height": 502,
+			"label": "🕐 Timeline",
+			"color": "3"
+		},
+		{
+			"id": "timeline",
+			"type": "file",
+			"file": "Lexery/Lexery - Timeline.md",
+			"x": 40,
+			"y": 40,
+			"width": 300,
+			"height": 120
+		},
+		{
+			"id": "idea",
+			"type": "file",
+			"file": "Lexery/Lexery - Idea Evolution.md",
+			"x": 360,
+			"y": 40,
+			"width": 300,
+			"height": 120
+		},
+		{
+			"id": "beta",
+			"type": "file",
+			"file": "Lexery/Lexery - Legacy Beta App.md",
+			"x": 40,
+			"y": 180,
+			"width": 300,
+			"height": 120
+		},
+		{
+			"id": "bridge",
+			"type": "file",
+			"file": "Lexery/Lexery - Legacy Architecture Bridge.md",
+			"x": 360,
+			"y": 180,
+			"width": 300,
+			"height": 120
+		},
+		{
+			"id": "branches",
+			"type": "file",
+			"file": "Lexery/Lexery - Legacy Branch Families.md",
+			"x": 680,
+			"y": 180,
+			"width": 300,
+			"height": 120
+		},
+		{
+			"id": "corpus",
+			"type": "file",
+			"file": "Lexery/Lexery - Corpus Evolution.md",
+			"x": 680,
+			"y": 40,
+			"width": 300,
+			"height": 120
+		},
+		{
+			"id": "frontend",
+			"type": "file",
+			"file": "Lexery/Lexery - Frontend and Brand Evolution.md",
+			"x": 40,
+			"y": 320,
+			"width": 300,
+			"height": 120
+		},
+		{
+			"id": "repos",
+			"type": "file",
+			"file": "Lexery/Lexery - Repo Constellation.md",
+			"x": 360,
+			"y": 320,
+			"width": 300,
+			"height": 120
+		}
+	],
+	"edges": [
+		{
+			"id": "h1",
+			"fromNode": "timeline",
+			"fromSide": "right",
+			"toNode": "idea",
+			"toSide": "left",
+			"label": "conceptual change"
+		},
+		{
+			"id": "h2",
+			"fromNode": "timeline",
+			"fromSide": "bottom",
+			"toNode": "beta",
+			"toSide": "top",
+			"label": "starts as beta"
+		},
+		{
+			"id": "h3",
+			"fromNode": "timeline",
+			"fromSide": "bottom",
+			"toNode": "branches",
+			"toSide": "top",
+			"label": "parallel lines"
+		},
+		{
+			"id": "h4",
+			"fromNode": "timeline",
+			"fromSide": "bottom",
+			"toNode": "bridge",
+			"toSide": "top",
+			"label": "bridge repo"
+		},
+		{
+			"id": "h5",
+			"fromNode": "bridge",
+			"fromSide": "right",
+			"toNode": "corpus",
+			"toSide": "left",
+			"label": "infra deepening"
+		},
+		{
+			"id": "h6",
+			"fromNode": "beta",
+			"fromSide": "bottom",
+			"toNode": "frontend",
+			"toSide": "top",
+			"label": "product DNA"
+		},
+		{
+			"id": "h7",
+			"fromNode": "branches",
+			"fromSide": "bottom",
+			"toNode": "repos",
+			"toSide": "top",
+			"label": "absorbed later"
+		}
+	]
+}

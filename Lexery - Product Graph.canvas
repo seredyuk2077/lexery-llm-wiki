@@ -1,0 +1,164 @@
+{
+	"nodes": [
+		{
+			"id": "txt-product-header",
+			"type": "text",
+			"x": 40,
+			"y": -120,
+			"width": 400,
+			"height": 50,
+			"text": "# Lexery Product Surface",
+			"color": "4"
+		},
+		{
+			"id": "grp-product-layer",
+			"type": "group",
+			"x": 0,
+			"y": -22,
+			"width": 1140,
+			"height": 642,
+			"label": "🎯 Product Layer",
+			"color": "4"
+		},
+		{
+			"id": "grp-business",
+			"type": "group",
+			"x": 760,
+			"y": 118,
+			"width": 380,
+			"height": 222,
+			"label": "💰 Business",
+			"color": "2"
+		},
+		{
+			"id": "product",
+			"type": "file",
+			"file": "Lexery/Lexery - Product Surface.md",
+			"x": 40,
+			"y": 40,
+			"width": 300,
+			"height": 120
+		},
+		{
+			"id": "frontend",
+			"type": "file",
+			"file": "Lexery/Lexery - Frontend and Brand Evolution.md",
+			"x": 40,
+			"y": 180,
+			"width": 300,
+			"height": 120
+		},
+		{
+			"id": "api",
+			"type": "file",
+			"file": "Lexery/Lexery - API and Control Plane.md",
+			"x": 360,
+			"y": 180,
+			"width": 300,
+			"height": 120
+		},
+		{
+			"id": "biz",
+			"type": "file",
+			"file": "Lexery/Lexery - Business Model.md",
+			"x": 800,
+			"y": 180,
+			"width": 300,
+			"height": 120
+		},
+		{
+			"id": "state",
+			"type": "file",
+			"file": "Lexery/Lexery - Current State.md",
+			"x": 420,
+			"y": 40,
+			"width": 300,
+			"height": 120
+		},
+		{
+			"id": "div",
+			"type": "file",
+			"file": "Lexery/Lexery - Branch Divergence.md",
+			"x": 420,
+			"y": 320,
+			"width": 300,
+			"height": 120
+		},
+		{
+			"id": "gh",
+			"type": "file",
+			"file": "Lexery/Lexery - GitHub History.md",
+			"x": 420,
+			"y": 460,
+			"width": 300,
+			"height": 120
+		},
+		{
+			"id": "linear",
+			"type": "file",
+			"file": "Lexery/Lexery - Linear Roadmap.md",
+			"x": 800,
+			"y": 460,
+			"width": 300,
+			"height": 120
+		}
+	],
+	"edges": [
+		{
+			"id": "p1",
+			"fromNode": "product",
+			"fromSide": "bottom",
+			"toNode": "frontend",
+			"toSide": "top",
+			"label": "ui/brand"
+		},
+		{
+			"id": "p2",
+			"fromNode": "product",
+			"fromSide": "bottom",
+			"toNode": "api",
+			"toSide": "top",
+			"label": "control plane"
+		},
+		{
+			"id": "p3",
+			"fromNode": "product",
+			"fromSide": "bottom",
+			"toNode": "biz",
+			"toSide": "top",
+			"label": "plans"
+		},
+		{
+			"id": "p4",
+			"fromNode": "product",
+			"fromSide": "right",
+			"toNode": "state",
+			"toSide": "left",
+			"label": "snapshot"
+		},
+		{
+			"id": "p5",
+			"fromNode": "state",
+			"fromSide": "bottom",
+			"toNode": "div",
+			"toSide": "top",
+			"label": "split"
+		},
+		{
+			"id": "p6",
+			"fromNode": "div",
+			"fromSide": "bottom",
+			"toNode": "gh",
+			"toSide": "top",
+			"label": "remote history"
+		},
+		{
+			"id": "p7",
+			"fromNode": "biz",
+			"fromSide": "bottom",
+			"toNode": "linear",
+			"toSide": "top",
+			"label": "roadmap pressure"
+		}
+	]
+}

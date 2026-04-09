@@ -1,0 +1,39 @@
+{
+  "repos": [
+    {
+      "name": "Lexery",
+      "path": "__PATH_LEXERY_MONOREPO__",
+      "remote": "lexeryAI/Lexery",
+      "default_branch": "dev",
+      "tracked_branches": [
+        "dev",
+        "legal-agent-brain-dev"
+      ],
+      "last_processed_sha": "2841bf3b405a27322032f220d89b354a5c05076e",
+      "last_sync": "2026-04-09T14:02:36Z"
+    },
+    {
+      "name": "Ukrainan-Lawyer-LLM-BETA (public)",
+      "path": "__PATH_UA_LLM_BETA__",
+      "remote": "seredyuk2077/Ukrainan-Lawyer-LLM-BETA",
+      "default_branch": "main",
+      "tracked_branches": [
+        "main"
+      ],
+      "last_processed_sha": null,
+      "last_sync": null
+    },
+    {
+      "name": "Ukrainan-Lawyer-LLM-BETA (bridge)",
+      "path": "__PATH_UA_LLM_BETA_BRIDGE__",
+      "remote": "seredyuk2077/Ukrainan-Lawyer-LLM-BETA",
+      "default_branch": "main",
+      "tracked_branches": [
+        "main",
+        "feature/lexery-legal-agent-architecture"
+      ],
+      "last_processed_sha": null,
+      "last_sync": null
+    }
+  ]
+}
