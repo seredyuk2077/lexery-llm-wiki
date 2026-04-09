@@ -45,6 +45,27 @@ layer: meta
 
 # Lexery - Log
 
+## [2026-04-09] V5 Karpathy alignment | 3-layer architecture + operations + raw sources
+
+- Архітектура вирівняна з [Karpathy LLM Wiki](https://gist.github.com/karpathy/442a6bf555914893e9891c11519de94f):
+  - **Layer 1 (raw/)** — 30 immutable source files: 10 PRs (JSON+MD), 66 commits, 4 architecture docs, 3 DB snapshots
+  - **Layer 2 (wiki)** — 69 wiki pages, 7 canvases, 8244 total lines, 119 avg lines/page
+  - **Layer 3 (schema)** — `AGENTS.md` з conventions, workflows, operations для будь-якого LLM агента
+- Операції:
+  - **Ingest** (`ingest.mjs`) — 29 raw sources processed, logged
+  - **Lint** (`lint.mjs`) — 0 errors, 0 warnings, 0 info. Clean health check.
+  - **Suggest** (`suggest-links.mjs`) — 599 targeted link suggestions
+- Live Supabase data витягнуто через MCP:
+  - Legal Agent DB: 26,661 runs (17,169 completed, 277 failed, 9,039 stuck)
+  - 242 tenants, 928 sessions, 7,224 messages, 3,553 memory items
+  - Legislation RAG: 374 docs, 966 import jobs
+  - [[Lexery - Current State]] enriched з production metrics
+- Git ініціалізовано: vault = git repo з 2 commits
+- Maintenance pipeline розширено: +ingest +lint (9 scripts total)
+- Thin pages виправлено: U11 Verify, U12 Deliver, Branch before-LawDatabase deepened
+- Index.md переписано у Karpathy стилі: кожна з 69 сторінок з summary + layer
+- Broken wikilinks виправлено, lint false positives (canvas links, table escapes) фільтруються
+
 ## [2026-04-09] V4 encyclopedia pass | architecture + canvases + self-growth
 
 - Архітектура з коду:
