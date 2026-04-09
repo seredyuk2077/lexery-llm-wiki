@@ -11,6 +11,9 @@ status: observed
 layer: brain
 ---
 
+> [!info] Compiled from
+> - `raw/architecture-docs/app-README.md`
+
 # Lexery - U6 Recovery
 
 ## Runtime Role
@@ -67,3 +70,7 @@ U6 is where Lexery tries to recover truthfully instead of fabricating completene
 - [[Lexery - Import Proposal Loop]]
 - [[Lexery - Retry and Recovery]]
 - [[Lexery - U4 Retrieval]]
+- [[Lexery - Run Lifecycle]]
+- [[Lexery - Coverage Gap Honesty]]
+- [[Lexery - Brain Architecture]]
+- [[Lexery - Retrieval, LLDBI, DocList]]

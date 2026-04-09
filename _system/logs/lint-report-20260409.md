@@ -2,7 +2,7 @@
 
 | Metric | Value |
 |--------|-------|
-| Pages | 69 |
+| Pages | 72 |
 | Issues | 0 |
 | Errors | 0 |
 | Warnings | 0 |

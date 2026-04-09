@@ -11,6 +11,10 @@ status: observed
 layer: brain
 ---
 
+> [!info] Compiled from
+> - `raw/architecture-docs/app-README.md`
+> - `raw/architecture-docs/CURRENT_PIPELINE_STATE.md`
+
 # Lexery - ORCH and Clarification
 
 ## Short Read
@@ -94,6 +98,7 @@ Its main conceptual leap is **bounded orchestration with explicit clarification 
 
 ## See Also
 
+- [[Lexery - Pipeline Health Dashboard]]
 - [[Lexery - Brain Architecture]]
 - [[Lexery - U1-U12 Runtime]]
 - [[Lexery - Branch Divergence]]
@@ -104,3 +109,10 @@ Its main conceptual leap is **bounded orchestration with explicit clarification 
 - [[Lexery - Public Trace]]
 - [[Lexery - Andrii Serediuk]]
 - [[Lexery - Provider Topology]]
+- [[Lexery - Coverage Gap Honesty]]
+- [[Lexery - U4 Retrieval]]
+- [[Lexery - U10 Writer]]
+- [[Lexery - LLDBI Surface]]
+- [[Lexery - Retrieval, LLDBI, DocList]]
+- [[Lexery - Log]]
+- [[Lexery - Import Proposal Loop]]

@@ -90,7 +90,7 @@ Frontend evolution in Lexery is not just polish. It records a real conceptual sh
 As of `2026-03-15`, frontend was moving in two tracks:
 
 - architecture/refactor track led by Yehor
-- feature/UI track led by Olexandr
+- feature/UI track led by [[Lexery - Olexandr|Olexandr]]
 
 ### Meaning
 

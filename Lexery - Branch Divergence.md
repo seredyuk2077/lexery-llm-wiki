@@ -94,3 +94,4 @@ It is reconciling:
 - [[Lexery - Product Surface]]
 - [[Lexery - Brain Architecture]]
 - [[Lexery - Open Questions and Drift]]
+- [[Lexery - Decision Registry]]

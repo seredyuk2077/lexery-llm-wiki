@@ -59,7 +59,7 @@ layer: history
 - `2026-02-06`:
   `feat(architecture): Lexery Legal AI Agent — повна архітектурна документація`
 - Далі very fast sequence:
-  `U1 Gateway`, `U2 classify`, `U3 plan`, `U4 CacheRAG`, `U5 Gate`, architecture docs, verifiers, tools.
+  `[[Lexery - U1 Gateway|U1 Gateway]]`, `U2 classify`, `U3 plan`, `U4 CacheRAG`, `U5 Gate`, architecture docs, verifiers, tools.
 - До `2026-02-08` вже видно явну форму `U1 → U12`.
 
 ### 2026-02 — Linear formalization

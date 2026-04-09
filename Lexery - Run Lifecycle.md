@@ -13,6 +13,10 @@ status: observed
 layer: brain
 ---
 
+> [!info] Compiled from
+> - `raw/codebase-snapshots/supabase-schema-2026-04-09.md`
+> - `raw/codebase-snapshots/supabase-live-stats-2026-04-09.md`
+
 # Lexery — Run Lifecycle
 
 A **Legal Agent run** is the unit of work from accepted user request through pipeline stages to a terminal outcome. This note summarizes **states**, **persistence**, and **resume** behavior; pair it with [[Lexery - Contracts and Run Schema]] for field-level contracts.
@@ -86,3 +90,11 @@ Operators and harnesses may use [[Lexery - Public Trace|GET `/v1/runs/:id/events
 - [[Lexery - Brain Architecture]]
 - [[Lexery - Retry and Recovery]]
 - [[Lexery - Coverage Gap Honesty]]
+
+## See Also
+
+- [[Lexery - Pipeline Health Dashboard]]
+- [[Lexery - Retrieval, LLDBI, DocList]]
+- [[Lexery - U6 Recovery]]
+- [[Lexery - U1-U12 Runtime]]
+- [[Lexery - Decision Registry]]

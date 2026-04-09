@@ -62,7 +62,7 @@ layer: meta
   - [[Lexery - Current State]] enriched з production metrics
 - Git ініціалізовано: vault = git repo з 2 commits
 - Maintenance pipeline розширено: +ingest +lint (9 scripts total)
-- Thin pages виправлено: U11 Verify, U12 Deliver, Branch before-LawDatabase deepened
+- Thin pages виправлено: [[Lexery - U11 Verify|U11 Verify]], [[Lexery - U12 Deliver|U12 Deliver]], [[Lexery - Branch before-LawDatabase|Branch before-LawDatabase]] deepened
 - Index.md переписано у Karpathy стилі: кожна з 69 сторінок з summary + layer
 - Broken wikilinks виправлено, lint false positives (canvas links, table escapes) фільтруються
 
@@ -186,3 +186,8 @@ This file is append-only. New ingest or major synthesis passes should be added a
 - [[Lexery - Source Map]]
 - [[Lexery - Branch Divergence]]
 - [[Lexery - Timeline]]
+- [[Lexery - Open Questions and Drift]]
+- [[Lexery - ORCH and Clarification]]
+- [[Lexery - Linear Roadmap]]
+- [[Lexery - U1-U12 Runtime]]
+- [[Lexery - Retrieval, LLDBI, DocList]]

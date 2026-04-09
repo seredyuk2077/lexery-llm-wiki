@@ -11,6 +11,9 @@ status: observed
 layer: data
 ---
 
+> [!info] Compiled from
+> - `raw/codebase-snapshots/supabase-schema-2026-04-09.md`
+
 # Lexery - Deployment and Infra
 
 ## Infrastructure Stack At A Glance
@@ -132,6 +135,7 @@ Documentation about desired deploy topology is richer than hard proof of current
 
 ## See Also
 
+- [[Lexery - Technology Stack]]
 - [[Lexery - Product Surface]]
 - [[Lexery - Brain Architecture]]
 - [[Lexery - Retrieval, LLDBI, DocList]]
@@ -140,3 +144,5 @@ Documentation about desired deploy topology is richer than hard proof of current
 - [[Lexery - Storage Topology]]
 - [[Lexery - Decision Registry]]
 - [[Lexery - Drift Radar]]
+- [[Lexery - Import Proposal Loop]]
+- [[Lexery - DocList Surface]]

@@ -11,6 +11,10 @@ status: observed
 layer: brain
 ---
 
+> [!info] Compiled from
+> - `raw/architecture-docs/app-README.md`
+> - `raw/architecture-docs/CURRENT_PIPELINE_STATE.md`
+
 # Lexery - U1-U12 Runtime
 
 ## Why This Page Exists
@@ -154,7 +158,13 @@ It is a **legal reasoning contract**:
 
 ## See Also
 
+- [[Lexery - Pipeline Health Dashboard]]
 - [[Lexery - Brain Architecture]]
 - [[Lexery - Retrieval, LLDBI, DocList]]
 - [[Lexery - Memory and Documents]]
 - [[Lexery - Linear Roadmap]]
+- [[Lexery - Run Lifecycle]]
+- [[Lexery - Retry and Recovery]]
+- [[Lexery - Public Trace]]
+- [[Lexery - Coverage Gap Honesty]]
+- [[Lexery - Log]]

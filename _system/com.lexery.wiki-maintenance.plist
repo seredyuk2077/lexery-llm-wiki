@@ -7,7 +7,7 @@
     <key>ProgramArguments</key>
     <array>
         <string>/usr/local/bin/node</string>
-        <string>/Users/andriyseredyuk/Documents/Obsidian Vault/Lexery/_system/scripts/run-maintenance.mjs</string>
+        <string>__PATH_LEXERY_MONOREPO__/LLM Wiki/_system/scripts/run-maintenance.mjs</string>
     </array>
     <key>StartCalendarInterval</key>
     <dict>
@@ -17,9 +17,9 @@
         <integer>0</integer>
     </dict>
     <key>StandardOutPath</key>
-    <string>/Users/andriyseredyuk/Documents/Obsidian Vault/Lexery/_system/logs/launchd-stdout.log</string>
+    <string>__PATH_LEXERY_MONOREPO__/LLM Wiki/_system/logs/launchd-stdout.log</string>
     <key>StandardErrorPath</key>
-    <string>/Users/andriyseredyuk/Documents/Obsidian Vault/Lexery/_system/logs/launchd-stderr.log</string>
+    <string>__PATH_LEXERY_MONOREPO__/LLM Wiki/_system/logs/launchd-stderr.log</string>
     <key>EnvironmentVariables</key>
     <dict>
         <key>PATH</key>

@@ -109,3 +109,9 @@ Companion pages: [[Lexery - Open Questions and Drift]] (narrative), [[Lexery - U
 - [[Lexery - Current State]]
 - [[Lexery - ORCH and Clarification]]
 - [[Lexery - Index]]
+
+## See Also
+
+- [[Lexery - Yehor Puhach]]
+- [[Lexery - Olexandr]]
+- [[Lexery - Brain Architecture]]

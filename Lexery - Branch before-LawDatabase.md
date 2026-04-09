@@ -51,7 +51,7 @@ This branch sits right after:
 
 ## Зв’язок з еволюцією ідеї та корпусу
 
-- [[Lexery - Idea Evolution]] — *навіщо* продукт і який user promise; гілка показує момент, коли обіцянка ще була ближчою до «зручний доступ до норм», ніж до «агент з **U11 Verify** і **post-draft policy**».
+- [[Lexery - Idea Evolution]] — *навіщо* продукт і який user promise; гілка показує момент, коли обіцянка ще була ближчою до «зручний доступ до норм», ніж до «агент з **[[Lexery - U11 Verify|U11 Verify]]** і **post-draft policy**».
 - [[Lexery - Corpus Evolution]] — *з чого* складається довіра відповіді; після LawDatabase змінюються не лише таблиці, а й припущення всього downstream (**RAG**, **DocList**, **gate**).
 
 ## Хронологія (контекст)

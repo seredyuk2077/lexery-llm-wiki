@@ -11,6 +11,9 @@ status: observed
 layer: brain
 ---
 
+> [!info] Compiled from
+> - `raw/architecture-docs/app-README.md`
+
 # Lexery - U2 Query Profiling
 
 ## Роль у Pipeline
@@ -80,3 +83,7 @@ U2 — перша глибока «розуміюча» стадія після 
 - [[Lexery - Retrieval, LLDBI, DocList]]
 - [[Lexery - LLDBI Surface]]
 - [[Lexery - Contracts and Run Schema]]
+- [[Lexery - U5 Gate]]
+- [[Lexery - U8 Legal Reasoning]]
+- [[Lexery - U7 Evidence Assembly]]
+- [[Lexery - Public Trace]]

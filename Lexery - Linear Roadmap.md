@@ -141,3 +141,5 @@ Linear у Lexery важливий не просто як таск-трекер. 
 - [[Lexery - Yehor Puhach]]
 - [[Lexery - Olexandr]]
 - [[Lexery - Decision Registry]]
+- [[Lexery - PR Chronology]]
+- [[Lexery - Log]]

@@ -11,6 +11,9 @@ status: observed
 layer: data
 ---
 
+> [!info] Compiled from
+> - `raw/codebase-snapshots/supabase-schema-2026-04-09.md` (`mm_memory_items`, `mm_doc_records`)
+
 # Lexery - Memory and Documents
 
 ## Why This Page Matters
@@ -106,6 +109,7 @@ The implementation is partially present and still being hardened.
 
 ## See Also
 
+- [[Lexery - Pipeline Health Dashboard]]
 - [[Lexery - Brain Architecture]]
 - [[Lexery - Product Surface]]
 - [[Lexery - Linear Roadmap]]
@@ -115,3 +119,6 @@ The implementation is partially present and still being hardened.
 - [[Lexery - U9 Assemble]]
 - [[Lexery - Run Lifecycle]]
 - [[Lexery - Unknowns Queue]]
+- [[Lexery - Retrieval, LLDBI, DocList]]
+- [[Lexery - LLDBI Surface]]
+- [[Lexery - Import Proposal Loop]]

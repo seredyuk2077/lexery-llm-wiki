@@ -10,6 +10,13 @@ status: observed
 layer: meta
 ---
 
+> [!info] Compiled from
+> - `raw/architecture-docs/`
+> - `raw/github-prs/`
+> - `raw/github-commits/`
+> - `raw/codebase-snapshots/`
+> - Codebase analysis and session synthesis
+
 # Lexery - Source Map
 
 ## Purpose
@@ -123,3 +130,4 @@ layer: meta
 - [[Lexery - Repo Constellation]]
 - [[Lexery - Timeline]]
 - [[Lexery - Open Questions and Drift]]
+- [[Lexery - Unknowns Queue]]

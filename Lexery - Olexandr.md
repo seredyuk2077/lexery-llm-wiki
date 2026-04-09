@@ -15,6 +15,11 @@ status: observed
 layer: team
 ---
 
+> [!info] Compiled from
+> - `raw/github-prs/pr-4.md`
+> - `raw/github-prs/pr-7.md`
+> - `raw/github-prs/pr-10.md`
+
 # Olexandr (Sasha / Sanya)
 
 **Olexandr** — у команді його часто називають **Сашею** або **Санею** (українські зменшувальні). У Telegram зазвичай видно ім’я «Sanya»; публічний контакт у чатах: `@dilove_yapko`. На GitHub — **`alexbach093`**.
@@ -79,3 +84,9 @@ layer: team
 - [[Lexery - Contracts and Run Schema]]
 - [[Lexery - Business Model]]
 - [[Lexery - Current State]]
+
+## See Also
+
+- [[Lexery - Who Built What]]
+- [[Lexery - Drift Radar]]
+- [[Lexery - Decision Registry]]

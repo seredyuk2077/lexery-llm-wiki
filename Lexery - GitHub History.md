@@ -10,6 +10,10 @@ status: observed
 layer: history
 ---
 
+> [!info] Compiled from
+> - `raw/github-commits/commits-2026.txt`
+> - `raw/github-prs/all-prs.json`
+
 # Lexery - GitHub History
 
 ## Current Main Monorepo Repo
@@ -127,6 +131,7 @@ Snapshot for the **last 30 commits** (all from **Andriy** on branch `legal-agent
 
 ## See Also
 
+- [[Lexery - Who Built What]]
 - [[Lexery - Legacy Branch Families]]
 - [[Lexery - Branch Divergence]]
 - [[Lexery - Repo Constellation]]

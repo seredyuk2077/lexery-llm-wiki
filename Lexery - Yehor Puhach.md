@@ -14,6 +14,15 @@ status: observed
 layer: team
 ---
 
+> [!info] Compiled from
+> - `raw/github-prs/pr-1.md`
+> - `raw/github-prs/pr-2.md`
+> - `raw/github-prs/pr-3.md`
+> - `raw/github-prs/pr-5.md`
+> - `raw/github-prs/pr-6.md`
+> - `raw/github-prs/pr-8.md`
+> - `raw/github-prs/pr-9.md`
+
 # Yehor Puhach
 
 Профіль учасника команди Lexery: бекенд-інженер і спеціаліст з інфраструктури, який системно будує основу API, auth і storage, на яку спираються портал і agent pipeline. Матеріал зібраний з публічних PR на `lexeryAI/Lexery`, згадок у Telegram та контексту роботи в Linear — без психологічних ярликів, придатний для показу самому Єгору.
@@ -109,3 +118,9 @@ layer: team
 - [[Lexery - Andrii Serediuk]]
 - [[Lexery - Olexandr]]
 - [[Lexery - Portal Surface Map]]
+
+## See Also
+
+- [[Lexery - Who Built What]]
+- [[Lexery - Drift Radar]]
+- [[Lexery - Decision Registry]]

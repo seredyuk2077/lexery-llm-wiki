@@ -11,6 +11,11 @@ status: observed
 layer: brain
 ---
 
+> [!info] Compiled from
+> - `raw/architecture-docs/LEXERY_LEGAL_AI_AGENT_ARCHITECTURE.md`
+> - `raw/architecture-docs/app-README.md`
+> - `raw/architecture-docs/MEGA_DIAGRAM_FULL.md`
+
 # Lexery - Brain Architecture
 
 ## Best Short Definition
@@ -171,6 +176,8 @@ Single GitHub Action: `.github/workflows/lldbi-brain-admin.yml`
 
 ## See Also
 
+- [[Lexery - Pipeline Health Dashboard]]
+- [[Lexery - Technology Stack]]
 - [[Lexery - U1-U12 Runtime]]
 - [[Lexery - Retrieval, LLDBI, DocList]]
 - [[Lexery - Memory and Documents]]
@@ -182,3 +189,12 @@ Single GitHub Action: `.github/workflows/lldbi-brain-admin.yml`
 - [[Lexery - Run Lifecycle]]
 - [[Lexery - Public Trace]]
 - [[Lexery - Glossary]]
+- [[Lexery - Coverage Gap Honesty]]
+- [[Lexery - U4 Retrieval]]
+- [[Lexery - Retry and Recovery]]
+- [[Lexery - Drift Radar]]
+- [[Lexery - U6 Recovery]]
+- [[Lexery - U11 Verify]]
+- [[Lexery - U9 Assemble]]
+- [[Lexery - U12 Deliver]]
+- [[Lexery - U10 Writer]]

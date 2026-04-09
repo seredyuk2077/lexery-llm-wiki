@@ -11,6 +11,9 @@ status: observed
 layer: brain
 ---
 
+> [!info] Compiled from
+> - `raw/architecture-docs/app-README.md`
+
 # Lexery - U5 Gate
 
 ## Роль у Pipeline
@@ -76,3 +79,7 @@ Gate з’явився в bridge-репозиторії разом з ранні
 - [[Lexery - Retry and Recovery]]
 - [[Lexery - U3 Planning]]
 - [[Lexery - U8 Legal Reasoning]]
+- [[Lexery - U2 Query Profiling]]
+- [[Lexery - Import Proposal Loop]]
+- [[Lexery - LLDBI Surface]]
+- [[Lexery - U11 Verify]]

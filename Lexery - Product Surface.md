@@ -120,6 +120,7 @@ This page is about the user-facing and control-plane layer around the Brain:
 
 ## See Also
 
+- [[Lexery - Technology Stack]]
 - [[Lexery - Business Model]]
 - [[Lexery - Current State]]
 - [[Lexery - Branch Divergence]]

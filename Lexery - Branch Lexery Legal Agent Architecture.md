@@ -38,7 +38,7 @@ This is the clearest pre-monorepo home of the Lexery Brain idea.
 
 ### Phase 3 — staged implementation
 
-- U1 Gateway
+- [[Lexery - U1 Gateway|U1 Gateway]]
 - U2 classify
 - U3 plan
 - U4 retrieval

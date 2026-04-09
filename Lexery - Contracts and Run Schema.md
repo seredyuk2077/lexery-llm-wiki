@@ -10,6 +10,9 @@ status: observed
 layer: product
 ---
 
+> [!info] Compiled from
+> - `raw/codebase-snapshots/supabase-schema-2026-04-09.md` (runs table)
+
 # Lexery - Contracts and Run Schema
 
 ## Why This Page Exists

@@ -11,6 +11,9 @@ status: observed
 layer: brain
 ---
 
+> [!info] Compiled from
+> - `raw/architecture-docs/app-README.md`
+
 # Lexery - U9 Assemble
 
 ## Runtime Role
@@ -66,3 +69,4 @@ into something the writer can use without losing provenance.
 - [[Lexery - Memory and Documents]]
 - [[Lexery - Provider Topology]]
 - [[Lexery - Run Lifecycle]]
+- [[Lexery - Brain Architecture]]

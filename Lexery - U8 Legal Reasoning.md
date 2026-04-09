@@ -11,6 +11,9 @@ status: observed
 layer: brain
 ---
 
+> [!info] Compiled from
+> - `raw/architecture-docs/app-README.md`
+
 # Lexery - U8 Legal Reasoning
 
 ## Роль у Pipeline
@@ -79,3 +82,9 @@ U8 перетворює **`evidence_assembly`** (з U7) на обмежений 
 - [[Lexery - Glossary]]
 - [[Lexery - Provider Topology]]
 - [[Lexery - Contracts and Run Schema]]
+- [[Lexery - U3 Planning]]
+- [[Lexery - U2 Query Profiling]]
+- [[Lexery - Retry and Recovery]]
+- [[Lexery - Project Brain]]
+- [[Lexery - U4 Retrieval]]
+- [[Lexery - U11 Verify]]

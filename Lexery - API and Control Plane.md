@@ -10,6 +10,11 @@ status: observed
 layer: product
 ---
 
+> [!info] Compiled from
+> - `raw/architecture-docs/app-README.md`
+> - `raw/codebase-snapshots/supabase-schema-2026-04-09.md`
+> - Direct codebase analysis: `apps/api/`
+
 # Lexery - API and Control Plane
 
 ## What This Layer Is
@@ -116,7 +121,9 @@ layer: product
 
 ## See Also
 
+- [[Lexery - Technology Stack]]
 - [[Lexery - Product Surface]]
 - [[Lexery - Business Model]]
 - [[Lexery - Branch Divergence]]
 - [[Lexery - Memory and Documents]]
+- [[Lexery - Current State]]

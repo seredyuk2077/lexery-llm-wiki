@@ -13,6 +13,10 @@ status: observed
 layer: data
 ---
 
+> [!info] Compiled from
+> - `raw/codebase-snapshots/monorepo-packages-2026-04-09.md`
+> - Direct codebase analysis: `apps/lldbi/`
+
 # Lexery — LLDBI Surface
 
 **LLDBI** (Lexery Legislation DataBase Index) is the vector-backed legislation corpus that powers retrieval against Ukrainian acts. It sits alongside [[Lexery - DocList Surface|DocList]] (catalog and disambiguation) and feeds [[Lexery - Retrieval, LLDBI, DocList|retrieval]] paths in the Legal Agent.
@@ -92,3 +96,9 @@ For **inspect** and related identifier handling, casing matters: e.g. **`ВР`**
 - [[Lexery - Deployment and Infra]]
 - [[Lexery - Provider Topology]]
 - [[Lexery - Storage Topology]]
+
+## See Also
+
+- [[Lexery - ORCH and Clarification]]
+- [[Lexery - Memory and Documents]]
+- [[Lexery - U5 Gate]]

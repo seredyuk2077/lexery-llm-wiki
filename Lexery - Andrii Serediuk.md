@@ -268,6 +268,7 @@ layer: team
 
 ## See Also
 
+- [[Lexery - Who Built What]]
 - [[Lexery - Team and Operating Model]]
 - [[Lexery - Brain Architecture]]
 - [[Lexery - GitHub History]]

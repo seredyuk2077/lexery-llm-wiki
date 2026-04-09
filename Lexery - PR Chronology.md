@@ -13,6 +13,18 @@ status: observed
 layer: team
 ---
 
+> [!info] Compiled from
+> - `raw/github-prs/pr-1.md`
+> - `raw/github-prs/pr-2.md`
+> - `raw/github-prs/pr-3.md`
+> - `raw/github-prs/pr-4.md`
+> - `raw/github-prs/pr-5.md`
+> - `raw/github-prs/pr-6.md`
+> - `raw/github-prs/pr-7.md`
+> - `raw/github-prs/pr-8.md`
+> - `raw/github-prs/pr-9.md`
+> - `raw/github-prs/pr-10.md`
+
 # PR chronology (`lexeryAI/Lexery`)
 
 Ledger of **pull requests** on the main Lexery application monorepo as of the observed snapshot. For repo topology and older history, see [[Lexery - GitHub History]]. For *who* does what, see [[Lexery - Team and Operating Model]], [[Lexery - Andrii Serediuk]], [[Lexery - Yehor Puhach]], and [[Lexery - Olexandr]].
@@ -75,3 +87,8 @@ Ledger of **pull requests** on the main Lexery application monorepo as of the ob
 ## Українською (коротко)
 
 **Каденція:** близько одного PR на день, усі в `dev`. **Префікси:** Frontend / Backend / Agent. **Виняток:** Brain часто в `legal-agent-brain-dev` без PR у цьому репо — див. [[Lexery - GitHub History|історію GitHub]].
+
+## See Also
+
+- [[Lexery - Who Built What]]
+- [[Lexery - Linear Roadmap]]

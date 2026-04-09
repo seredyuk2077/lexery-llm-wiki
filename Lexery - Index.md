@@ -10,6 +10,9 @@ status: observed
 layer: meta
 ---
 
+> [!info] Compiled from
+> - Codebase analysis and session synthesis
+
 # Lexery — Index
 
 > Каталог усіх сторінок wiki. Оновлюється при кожному ingest.
@@ -24,6 +27,7 @@ layer: meta
 | [[Lexery - Public Trace]] | Виконавчий trace і події API для спостереження за run | brain |
 | [[Lexery - ORCH and Clarification]] | Обмежена оркестрація, пауза/відновлення, runtime control | brain |
 | [[Lexery - Retry and Recovery]] | Контракти повторів і обмежені механізми відновлення | brain |
+| [[Lexery - Pipeline Health Dashboard]] | Зведений health-дашборд pipeline: метрики, funnel, MM, throughput | brain |
 | [[Lexery - Coverage Gap Honesty]] | Як система чесно поводиться при браку доказів | brain |
 | [[Lexery - U1 Gateway]] | Intake: HTTP/черга, R2-вкладення | brain |
 | [[Lexery - U2 Query Profiling]] | Класифікація запиту, LLDBI hints, виявлення домену | brain |
@@ -56,6 +60,7 @@ layer: meta
 | [[Lexery - Contracts and Run Schema]] | Спільні boundary-об’єкти run, вкладень, auth snapshot | product |
 | [[Lexery - Business Model]] | Плани, feature gating, монетизація, pricing drift | product |
 | [[Lexery - Current State]] | Спостережуваний стан репо та GitHub на дату зрізу | product |
+| [[Lexery - Technology Stack]] | Єдиний довідник runtime, AI, storage, monorepo, infra | product |
 | [[Lexery - Branch Divergence]] | Розходження `origin/dev` і `legal-agent-brain-dev` | product |
 | [[Lexery - Frontend Refactor Context]] | Linear-документ про логіку refactor vs feature | product |
 
@@ -84,6 +89,7 @@ layer: meta
 | Page | Summary | Layer |
 |------|---------|-------|
 | [[Lexery - Team and Operating Model]] | Люди, ролі, agent-assisted розробка | team |
+| [[Lexery - Who Built What]] | Мапа контрибуцій: хто що будував у репо | team |
 | [[Lexery - Andrii Serediuk]] | Засновник, архітектурна влада, власник Brain-домену | team |
 | [[Lexery - Yehor Puhach]] | Backend engineer: NestJS, monorepo, auth | team |
 | [[Lexery - Olexandr]] | Frontend engineer: portal / workspace UI | team |
@@ -140,7 +146,7 @@ Raw immutable sources live in `raw/`:
 
 ## Statistics
 
-- **Pages:** 69
+- **Pages:** 72
 - **Canvases:** 7
 - **Raw sources:** 29
 - **Frontmatter coverage:** 100%

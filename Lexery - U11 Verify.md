@@ -11,6 +11,9 @@ status: observed
 layer: brain
 ---
 
+> [!info] Compiled from
+> - `raw/architecture-docs/app-README.md`
+
 # Lexery - U11 Verify
 
 ## Runtime Role
@@ -89,3 +92,7 @@ U11 у поточному **Brain** — це насамперед **deterministi
 - [[Lexery - Coverage Gap Honesty]]
 - [[Lexery - Retry and Recovery]]
 - [[Lexery - Run Lifecycle]]
+- [[Lexery - Brain Architecture]]
+- [[Lexery - U4 Retrieval]]
+- [[Lexery - U5 Gate]]
+- [[Lexery - U8 Legal Reasoning]]

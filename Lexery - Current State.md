@@ -10,6 +10,9 @@ status: observed
 layer: product
 ---
 
+> [!info] Compiled from
+> - `raw/codebase-snapshots/supabase-live-stats-2026-04-09.md`
+
 # Lexery - Current State
 
 ## Snapshot Date
@@ -156,6 +159,8 @@ Lexery зараз already має:
 
 ## See Also
 
+- [[Lexery - Pipeline Health Dashboard]]
+- [[Lexery - Technology Stack]]
 - [[Lexery - Branch Divergence]]
 - [[Lexery - Product Surface]]
 - [[Lexery - Brain Architecture]]
@@ -165,3 +170,4 @@ Lexery зараз already має:
 - [[Lexery - Andrii Serediuk]]
 - [[Lexery - Yehor Puhach]]
 - [[Lexery - Olexandr]]
+- [[Lexery - API and Control Plane]]

@@ -13,6 +13,10 @@ status: observed
 layer: data
 ---
 
+> [!info] Compiled from
+> - `raw/codebase-snapshots/monorepo-packages-2026-04-09.md`
+> - `raw/architecture-docs/app-README.md`
+
 # Lexery — DocList Surface
 
 **DocList** is the **document list / legislation catalog resolver** layer: it turns messy user language and partial identifiers into **structured act identity** against the Rada legislation catalog. It pairs with [[Lexery - LLDBI Surface|LLDBI]] (what is indexed) in [[Lexery - Retrieval, LLDBI, DocList|retrieval]].
@@ -77,3 +81,9 @@ The **DocList updater** lineage starts in the public beta repo under paths such 
 - [[Lexery - Legacy Beta App]]
 - [[Lexery - Retry and Recovery]]
 - [[Lexery - Coverage Gap Honesty]]
+
+## See Also
+
+- [[Lexery - Storage Topology]]
+- [[Lexery - Decision Registry]]
+- [[Lexery - Deployment and Infra]]

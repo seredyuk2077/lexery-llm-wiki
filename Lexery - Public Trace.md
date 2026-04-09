@@ -13,6 +13,10 @@ status: observed
 layer: brain
 ---
 
+> [!info] Compiled from
+> - `raw/architecture-docs/app-README.md`
+> - `raw/codebase-snapshots/supabase-schema-2026-04-09.md`
+
 # Lexery — Public Trace
 
 The **public execution trace** exposes a **stream of stage and decision events** for a run so clients, dashboards, and harnesses can observe progress **without** scraping internal logs. It complements the full [[Lexery - Run Lifecycle|run snapshot]].
@@ -67,3 +71,9 @@ The **agentivity live verification harness** uses this trace to measure **real p
 - [[Lexery - API and Control Plane]]
 - [[Lexery - Contracts and Run Schema]]
 - [[Lexery - Retry and Recovery]]
+
+## See Also
+
+- [[Lexery - U2 Query Profiling]]
+- [[Lexery - U1-U12 Runtime]]
+- [[Lexery - Coverage Gap Honesty]]

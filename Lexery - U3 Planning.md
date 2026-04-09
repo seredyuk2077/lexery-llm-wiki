@@ -11,6 +11,9 @@ status: observed
 layer: brain
 ---
 
+> [!info] Compiled from
+> - `raw/architecture-docs/app-README.md`
+
 # Lexery - U3 Planning
 
 ## Роль у Pipeline
@@ -62,6 +65,7 @@ U3 відповідає на питання **«де шукати?»** до то
 
 ## See Also
 
+- [[Lexery - Pipeline Health Dashboard]]
 - [[Lexery - U2 Query Profiling]]
 - [[Lexery - U4 Retrieval]]
 - [[Lexery - U5 Gate]]
@@ -75,3 +79,8 @@ U3 відповідає на питання **«де шукати?»** до то
 - [[Lexery - Import Proposal Loop]]
 - [[Lexery - Contracts and Run Schema]]
 - [[Lexery - ORCH and Clarification]]
+- [[Lexery - U7 Evidence Assembly]]
+- [[Lexery - U8 Legal Reasoning]]
+- [[Lexery - Retry and Recovery]]
+- [[Lexery - Coverage Gap Honesty]]
+- [[Lexery - Project Brain]]

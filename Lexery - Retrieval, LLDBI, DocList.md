@@ -11,6 +11,11 @@ status: observed
 layer: data
 ---
 
+> [!info] Compiled from
+> - `raw/architecture-docs/app-README.md`
+> - `raw/architecture-docs/LEXERY_LEGAL_AI_AGENT_ARCHITECTURE.md`
+> - `raw/architecture-docs/CURRENT_PIPELINE_STATE.md`
+
 # Lexery - Retrieval, LLDBI, DocList
 
 ## Short Read
@@ -140,6 +145,7 @@ It is a layered legal evidence system built from:
 
 ## See Also
 
+- [[Lexery - Technology Stack]]
 - [[Lexery - Brain Architecture]]
 - [[Lexery - U1-U12 Runtime]]
 - [[Lexery - Legacy Architecture Bridge]]
@@ -150,3 +156,8 @@ It is a layered legal evidence system built from:
 - [[Lexery - Provider Topology]]
 - [[Lexery - Storage Topology]]
 - [[Lexery - Coverage Gap Honesty]]
+- [[Lexery - Run Lifecycle]]
+- [[Lexery - Memory and Documents]]
+- [[Lexery - ORCH and Clarification]]
+- [[Lexery - U6 Recovery]]
+- [[Lexery - Log]]

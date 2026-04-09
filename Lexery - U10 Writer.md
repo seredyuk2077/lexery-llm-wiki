@@ -11,6 +11,9 @@ status: observed
 layer: brain
 ---
 
+> [!info] Compiled from
+> - `raw/architecture-docs/app-README.md`
+
 # Lexery - U10 Writer
 
 ## Runtime Role
@@ -72,3 +75,6 @@ U10 is where all prior bounded work can still be ruined if the answer layer beco
 - [[Lexery - Retry and Recovery]]
 - [[Lexery - Run Lifecycle]]
 - [[Lexery - Provider Topology]]
+- [[Lexery - ORCH and Clarification]]
+- [[Lexery - U4 Retrieval]]
+- [[Lexery - Brain Architecture]]

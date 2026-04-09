@@ -11,6 +11,9 @@ status: observed
 layer: brain
 ---
 
+> [!info] Compiled from
+> - `raw/architecture-docs/app-README.md`
+
 # Lexery - U12 Deliver
 
 ## Runtime Role
@@ -89,3 +92,4 @@ U12 is where Lexery stops being an internal runtime and becomes an actual user-v
 - [[Lexery - API and Control Plane]]
 - [[Lexery - Run Lifecycle]]
 - [[Lexery - Public Trace]]
+- [[Lexery - Brain Architecture]]

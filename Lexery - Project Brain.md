@@ -14,6 +14,11 @@ status: observed
 layer: meta
 ---
 
+> [!info] Compiled from
+> - `raw/architecture-docs/app-README.md`
+> - `raw/architecture-docs/LEXERY_LEGAL_AI_AGENT_ARCHITECTURE.md`
+> - Codebase analysis and session synthesis
+
 ![[logo-brand.png|300]]
 
 # Lexery — Project Brain
@@ -36,6 +41,7 @@ layer: meta
 > - [[Lexery - Run Lifecycle]] — стани і переходи run
 > - [[Lexery - Coverage Gap Honesty]] — чесність при відсутності evidence
 > - [[Lexery - Retry and Recovery]] — retry контракти
+> - [[Lexery - Pipeline Health Dashboard]] — зведені метрики pipeline та funnel
 
 > [!example] 🗄️ Data & Retrieval
 > - [[Lexery - Retrieval, LLDBI, DocList]] — retrieval plane
@@ -54,6 +60,7 @@ layer: meta
 > - [[Lexery - Business Model]] — pricing, plans, monetization
 > - [[Lexery - Current State]] — observed стан на сьогодні
 > - [[Lexery - Branch Divergence]] — розбіжність гілок
+> - [[Lexery - Technology Stack]] — runtime, AI, storage, monorepo, infra
 
 > [!info] 🕐 History & Evolution
 > - [[Lexery - Timeline]] — хронологія від beta до monorepo
@@ -73,6 +80,7 @@ layer: meta
 > - [[Lexery - Olexandr]] — frontend engineer
 > - [[Lexery - Linear Roadmap]] — Linear projects/issues
 > - [[Lexery - PR Chronology]] — хронологія pull requests
+> - [[Lexery - Who Built What]] — мапа контрибуцій по людях і доменах
 
 > [!danger] 🛡️ Governance & Meta
 > - [[Lexery - Decision Registry]] — реєстр рішень
@@ -1092,3 +1100,12 @@ Lexery — це не "ще один чат до LLM". Це спроба побу
 - [[Lexery - Timeline]]
 
 Але на цей момент цей файл already працює як головний hub note.
+
+## See Also
+
+- [[Lexery - Pipeline Health Dashboard]]
+- [[Lexery - Technology Stack]]
+- [[Lexery - Who Built What]]
+- [[Lexery - U8 Legal Reasoning]]
+- [[Lexery - U7 Evidence Assembly]]
+- [[Lexery - U3 Planning]]

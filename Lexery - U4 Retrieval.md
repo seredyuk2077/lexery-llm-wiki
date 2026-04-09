@@ -11,6 +11,9 @@ status: observed
 layer: brain
 ---
 
+> [!info] Compiled from
+> - `raw/architecture-docs/app-README.md`
+
 # Lexery - U4 Retrieval
 
 ## Runtime Role
@@ -69,3 +72,10 @@ Current runtime docs explicitly say U4 already had the strongest intelligence in
 - [[Lexery - Coverage Gap Honesty]]
 - [[Lexery - U3 Planning]]
 - [[Lexery - U6 Recovery]]
+- [[Lexery - ORCH and Clarification]]
+- [[Lexery - Brain Architecture]]
+- [[Lexery - U7 Evidence Assembly]]
+- [[Lexery - Import Proposal Loop]]
+- [[Lexery - U8 Legal Reasoning]]
+- [[Lexery - U10 Writer]]
+- [[Lexery - U11 Verify]]

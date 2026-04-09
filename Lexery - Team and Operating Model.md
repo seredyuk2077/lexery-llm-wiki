@@ -125,6 +125,7 @@ Architecture decisions ─── Андрій (final authority)
 
 ## See Also
 
+- [[Lexery - Who Built What]]
 - [[Lexery - Andrii Serediuk]]
 - [[Lexery - Yehor Puhach]]
 - [[Lexery - Olexandr]]

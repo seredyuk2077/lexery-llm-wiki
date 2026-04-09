@@ -25,7 +25,7 @@ layer: product
 Frontend was moving in two parallel tracks:
 
 - architecture/refactor track led by Yehor
-- feature/UI track led by Olexandr
+- feature/UI track led by [[Lexery - Olexandr|Olexandr]]
 
 ## The Core Problem
 

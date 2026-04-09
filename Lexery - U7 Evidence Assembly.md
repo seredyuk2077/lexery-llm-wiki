@@ -11,6 +11,9 @@ status: observed
 layer: brain
 ---
 
+> [!info] Compiled from
+> - `raw/architecture-docs/app-README.md`
+
 # Lexery - U7 Evidence Assembly
 
 ## Роль у Pipeline
@@ -75,3 +78,8 @@ U7 **нормалізує пакет доказів** після retrieval (і �
 - [[Lexery - Decision Registry]]
 - [[Lexery - U5 Gate]]
 - [[Lexery - Glossary]]
+- [[Lexery - U3 Planning]]
+- [[Lexery - U4 Retrieval]]
+- [[Lexery - Retry and Recovery]]
+- [[Lexery - U2 Query Profiling]]
+- [[Lexery - Project Brain]]

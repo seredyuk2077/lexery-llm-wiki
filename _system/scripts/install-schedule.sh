@@ -2,7 +2,7 @@
 # Symlink LaunchAgent plist and load it (macOS).
 set -euo pipefail
 
-ROOT="/Users/andriyseredyuk/Documents/Obsidian Vault/Lexery/_system"
+ROOT="__PATH_LEXERY_MONOREPO__/LLM Wiki/_system"
 PLIST_SRC="${ROOT}/com.lexery.wiki-maintenance.plist"
 LA_DIR="${HOME}/Library/LaunchAgents"
 LA_DEST="${LA_DIR}/com.lexery.wiki-maintenance.plist"

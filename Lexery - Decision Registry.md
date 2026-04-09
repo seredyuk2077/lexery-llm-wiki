@@ -120,3 +120,13 @@ For unresolved tension and drift, see [[Lexery - Open Questions and Drift]].
 ## Українською (коротко)
 
 **Реєстр рішень:** ORCH і агентність, монорепо, NestJS, Redis-черги, LLDBI як джерело істини для корпусу, OpenRouter, Supabase, стадія уточнення, DocList (дельти), міст Brain ↔ LLDBI. Деталі — у відповідних нотатках і ADR у репозиторії.
+
+## See Also
+
+- [[Lexery - Unknowns Queue]]
+- [[Lexery - Run Lifecycle]]
+- [[Lexery - DocList Surface]]
+- [[Lexery - Yehor Puhach]]
+- [[Lexery - Olexandr]]
+- [[Lexery - Provider Topology]]
+- [[Lexery - Branch Divergence]]
