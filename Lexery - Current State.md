@@ -18,7 +18,7 @@ layer: product
 ## Snapshot Date
 
 - This page reflects the observed local + GitHub state on:
-  `2026-04-09`
+`2026-04-09`
 
 ## One-Screen Summary
 
@@ -36,34 +36,34 @@ Lexery зараз already має:
 ### Branch
 
 - Current local branch:
-  `legal-agent-brain-dev`
+`legal-agent-brain-dev`
 - Remote tracking:
-  `origin/legal-agent-brain-dev`
+`origin/legal-agent-brain-dev`
 - Status:
-  ahead by `10` commits
+ahead by `10` commits
 
 ### Worktree
 
 - Dirty worktree concentrated in:
-  `apps/brain`, `apps/lldbi`, `apps/doclist-resolver-api`, `docs`
+`apps/brain`, `apps/lldbi`, `apps/doclist-resolver-api`, `docs`
 - Untracked files:
-  `apps/brain/lib/redis-shared.ts`
-  `apps/brain/tools/u4/test_query_rewrite_phase_units.ts`
+`apps/brain/lib/redis-shared.ts`
+`apps/brain/tools/u4/test_query_rewrite_phase_units.ts`
 
 ### Meaning
 
 - `Observed`:
-  the active center of work is still Brain/runtime, not just product shell.
+the active center of work is still Brain/runtime, not just product shell.
 
 ## Current Remote Mainline Status
 
 - Default branch:
-  `dev`
+`dev`
 - `origin/dev` contains:
-  auth refactor, shared contracts, subscription plan UI, richer frontend profile/auth work.
+auth refactor, shared contracts, subscription plan UI, richer frontend profile/auth work.
 - Divergence vs local `HEAD`:
-  `21` commits only on `origin/dev`
-  `26` commits only on local `HEAD`
+`21` commits only on `origin/dev`
+`26` commits only on local `HEAD`
 
 ## What Is Already Real
 
@@ -76,7 +76,7 @@ Lexery зараз already має:
 ### Brain surfaces
 
 - `apps/brain` has module directories for:
-  gateway, classify, plan, retrieval, gate, expand, doclist, import, assemble, reasoning, verify, write, deliver, mm, orchestrator.
+gateway, classify, plan, retrieval, gate, expand, doclist, import, assemble, reasoning, verify, write, deliver, mm, orchestrator.
 - Recent branch history shows active ORCH / clarification / retry / bounded recovery work.
 
 ### Infra surfaces
@@ -95,51 +95,59 @@ Lexery зараз already має:
 ## Strongest Current Truth
 
 - `Observed`:
-  `apps/brain` is the most mature technical surface in domain depth.
+`apps/brain` is the most mature technical surface in domain depth.
 - `Observed`:
-  `origin/dev` is the most current product-shell/mainline surface.
+`origin/dev` is the most current product-shell/mainline surface.
 - `Inferred`:
-  the project’s central integration problem is not “what should we build?” but “how do we merge the two already-moving systems?”
+the project’s central integration problem is not “what should we build?” but “how do we merge the two already-moving systems?”
 
 ## Live Production Metrics (Supabase, 2026-04-09)
 
 ### Pipeline Throughput
 
-| Metric | Value |
-|--------|-------|
-| Total runs | **26,661** |
-| Completed | 17,169 (64.4%) |
-| Failed | 277 (1.0%) |
-| Stuck (Intake/Profiling/Planning) | 9,039 (33.9%) |
-| In-flight (U10-U12) | 195 |
+
+| Metric                            | Value          |
+| --------------------------------- | -------------- |
+| Total runs                        | **26,661**     |
+| Completed                         | 17,169 (64.4%) |
+| Failed                            | 277 (1.0%)     |
+| Stuck (Intake/Profiling/Planning) | 9,039 (33.9%)  |
+| In-flight (U10-U12)               | 195            |
+
 
 ### Daily Volume (14-day)
 
 Пік: **1,122 runs** (Mar 27) — ймовірно load test. Поточний рівень: **~200-300 runs/day**.
 
-| Period | Avg runs/day |
-|--------|-------------|
-| Mar 26–31 | ~575 |
-| Apr 1–4 | ~448 |
-| Apr 5–9 | ~183 |
+
+| Period    | Avg runs/day |
+| --------- | ------------ |
+| Mar 26–31 | ~575         |
+| Apr 1–4   | ~448         |
+| Apr 5–9   | ~183         |
+
 
 ### Memory Manager
 
-| Table | Rows | Note |
-|-------|------|------|
+
+| Table           | Rows  | Note                     |
+| --------------- | ----- | ------------------------ |
 | mm_memory_items | 3,553 | Extracted user knowledge |
-| mm_outbox | 3,564 | 3,548 done, 35 pending |
-| mm_summaries | 321 | Case summaries |
-| mm_doc_records | 679 | Uploaded documents |
+| mm_outbox       | 3,564 | 3,548 done, 35 pending   |
+| mm_summaries    | 321   | Case summaries           |
+| mm_doc_records  | 679   | Uploaded documents       |
+
 
 ### User Data
 
-| Table | Rows |
-|-------|------|
-| tenants | 242 |
-| chat_sessions | 928 |
-| messages | 7,224 |
-| projects | 0 (new feature) |
+
+| Table         | Rows            |
+| ------------- | --------------- |
+| tenants       | 242             |
+| chat_sessions | 928             |
+| messages      | 7,224           |
+| projects      | 0 (new feature) |
+
 
 > [!warning] Stuck Runs
 > ~9,039 runs (34%) зупинилися на ранніх стадіях. Ймовірні причини: timeouts до впровадження ORCH, queue issues в Redis, cancelled requests. Потребує forensic аналізу — див. [[Lexery - Retry and Recovery]], [[Lexery - ORCH and Clarification]].
@@ -159,8 +167,6 @@ Lexery зараз already має:
 
 ## See Also
 
-- [[Lexery - Pipeline Health Dashboard]]
-- [[Lexery - Technology Stack]]
 - [[Lexery - Branch Divergence]]
 - [[Lexery - Product Surface]]
 - [[Lexery - Brain Architecture]]
@@ -170,4 +176,3 @@ Lexery зараз already має:
 - [[Lexery - Andrii Serediuk]]
 - [[Lexery - Yehor Puhach]]
 - [[Lexery - Olexandr]]
-- [[Lexery - API and Control Plane]]

@@ -17,60 +17,75 @@ layer: data
 
 This note lists **where durable and ephemeral data live**. Use it alongside [[Lexery - Provider Topology]] when tracing a bug from **UI** → **API** → **worker** → **DB/vector/object store**.
 
+## Cloudflare R2 — Object Storage
+
+Два окремі бакети забезпечують розділення legislation data від runtime artifacts:
+
+### `legislation` bucket
+
+Зберігає **canonical act JSON** — структуровані файли нормативних актів, отримані з [[Lexery - DocList Surface|Rada catalog]]. Кожен файл містить повний текст акту, metadata (назва, номер, дата прийняття, статус) і structured article breakdown. Ці файли є source of truth для ingestion pipeline — [[Lexery - LLDBI Surface|LLDBI]] chunking і Qdrant indexing читають саме звідси.
+
+### `lexery-legal-agent` bucket
+
+Зберігає runtime і pipeline artifacts:
+
+- **Run artifacts** — intermediate outputs від [[Lexery - Brain Architecture|Brain]] stages для post-hoc analysis
+- **MM offload** — multi-modal document content, що занадто великий для inline storage в Supabase snapshots
+- **Document chunks** — pre-processed chunks для [[Lexery - U9 Assemble|assembly]] stage
+- **User uploads** — файли, завантажені через [[Lexery - Portal Surface Map|Portal]] attachments
+
+Доступ через **presigned URLs** — Portal і Brain ніколи не зберігають R2 credentials на клієнті.
+
 ## Supabase / Postgres — LegalAgentDB
+
+**Source of truth** для legal agent execution history і corpus gap ticketing.
 
 **Tables / concerns** (representative):
 
-- **`legal_agent_runs`** — [[Lexery - Run Lifecycle|run]] rows and **`snapshot`** payloads (traces, ORCH, public trace mirrors)
-- **`legislation_import_proposals`** — [[Lexery - Import Proposal Loop|import proposal]] queue and decisions
+- **`legal_agent_runs`** — [[Lexery - Run Lifecycle|run]] rows і **`snapshot`** payloads (traces, ORCH, public trace mirrors)
+- **`legal_agent_sessions`** — user sessions з conversation history і workspace binding
+- **`legislation_import_proposals`** — [[Lexery - Import Proposal Loop|import proposal]] queue і decisions
+- **`legal_agent_memory`** — [[Lexery - Memory and Documents|long-horizon memory]] entries: summaries, extracted facts, user context across runs
 
-This database is the **source of truth** for **legal agent execution history** and **corpus gap ticketing**.
+## Supabase / Postgres — Legislation RAG DB
 
-## Supabase / Postgres — App DB (Prisma)
+Окремий Supabase проєкт для legislation catalog management:
 
-Accessed through the **NestJS** API with **Prisma**:
+- **`legislation_documents`** — **374 акти** з metadata, qdrant_status tracking (`indexed` / `pending` / `failed`), last sync timestamps
+- **`legislation_import_jobs`** — **966 processed jobs**: кожен job відповідає за import або re-index конкретного акту
+- **`legislation_chunks_metadata`** — tracking для chunk-level indexing status, quality scores, version history
 
-- Users, workspaces, subscriptions
-- Auth-adjacent application data
-
-Keep **LegalAgentDB** vs **App DB** credentials separate in configuration — cross-DB joins do not exist at the SQL layer.
+Ізоляція від LegalAgentDB — на рівні окремих Supabase projects і credentials. Cross-DB joins не існують.
 
 ## Redis
 
-Redis holds **transient** and **coordination** state:
+Redis holds **transient** і **coordination** state:
 
-- **BullMQ** queues — commonly **one queue per pipeline stage** ([[Lexery - Brain Architecture]])
-- **RunContext** — per-run working state during active processing
-- **Shared client pool** — namespace via **`REDIS_QUEUE_NAMESPACE`** (and related env) for **multi-tenant / multi-env isolation**
+- **BullMQ** queues — зазвичай **one queue per pipeline stage** ([[Lexery - Brain Architecture]])
+- **RunContext** — per-run working state під час активної обробки: intermediate results, stage outputs, retry counters
+- **Run context cache** — швидкий доступ до frequently read run data без Supabase roundtrips
+- **Shared client pool** — namespace via **`REDIS_QUEUE_NAMESPACE`** (і related env) для **multi-tenant / multi-env isolation**
 
 > [!warning] Redis is not the archive
-> If Redis is flushed, **reconstruct** state from **Supabase snapshots** and replay policy — do not assume queues are durable.
+> Якщо Redis flushed, **reconstruct** state з **Supabase snapshots** і replay policy — не вважайте queues durable.
 
 ## Qdrant
 
-Vector indices for:
+Vector indices розподілені по кількох collections:
 
-- **Legislation acts** — **`lexery_legislation_acts`** (~**374** acts observed)
-- **Legislation chunks** — **`lexery_legislation_chunks`** (~**21,266** chunks observed)
-- **Memory** semantic index — see [[Lexery - Memory and Documents]]
+- **Legislation chunks** — **`lexery_legislation_chunks`** (~**21,266** chunks): semantic search по текстах нормативних актів, кожен chunk прив'язаний до конкретного акту і статті
+- **Legislation acts** — **`lexery_legislation_acts`** (~**374** acts): metadata-level vectors для act-level similarity і [[Lexery - DocList Surface|disambiguation]]
+- **Lexery-LA Memory semantic** — vectors для [[Lexery - Memory and Documents|agent memory]]: user context, conversation summaries, extracted legal patterns
+- **MM Docs** — vectors для [[Lexery - U9 Assemble|multi-modal document]] content: tables, diagrams, structured data з uploaded documents
 
-Mismatch between **DocList catalog** and **Qdrant** drives [[Lexery - Import Proposal Loop|import proposals]].
-
-## Cloudflare R2
-
-Object storage for:
-
-- **Legislation document files** (source PDFs / derivatives depending on pipeline)
-- **User-uploaded documents** with **presigned** access patterns
-
-If R2 has the file but Qdrant lacks chunks, the issue is **ingestion/indexing**, not upload.
+Mismatch між **DocList catalog** і **Qdrant** drives [[Lexery - Import Proposal Loop|import proposals]]. Cross-check: [[Lexery - Coverage Gap Honesty]].
 
 ## Local filesystem
 
-**Production** does not rely on local disk for authoritative data — only **dev/test artifacts** and ephemeral worker scratch (if configured).
+**Production** does not rely on local disk for authoritative data — only **dev/test artifacts** і ephemeral worker scratch (if configured).
 
 > [!info] Debugging uploads
-> For “I uploaded a file” issues, verify **R2 object**, **DB metadata**, and **processing job** in that order.
+> Для "I uploaded a file" issues, verify **R2 object**, **DB metadata**, і **processing job** — саме в такому порядку.
 
 ## Related
 
@@ -81,6 +96,7 @@ If R2 has the file but Qdrant lacks chunks, the issue is **ingestion/indexing**,
 - [[Lexery - API and Control Plane]]
 - [[Lexery - Retrieval, LLDBI, DocList]]
 - [[Lexery - Run Lifecycle]]
+- [[Lexery - Cost Ledger]]
 
 ## See Also
 

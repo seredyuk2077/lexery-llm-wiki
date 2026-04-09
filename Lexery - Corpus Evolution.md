@@ -101,6 +101,47 @@ Lexery’s corpus story evolved through:
 
 This is one of the clearest signs that the project is trying to build defensible legal infrastructure, not only a nicer UI around an LLM.
 
+## Повна хронологія корпусу (енциклопедичний огляд)
+
+Нижче — стисла **timeline** від «немає корпусу» до сучасного legislation-стеку; технічні терміни лишаються англійською, як у коді та інфрі.
+
+1. **No corpus (early beta)** — застосунок показує правові списки й знання, але без виробничого **pipeline** даних; **grounding** часто **app-local**.
+2. **Basic Ukrainian laws** — перші зібрані набори норм як **knowledge base**; ручні або напівавтоматичні оновлення.
+3. **Supreme Court exploration** — гілка [[Lexery - Branch Supreme Court Case Law RAG|Supreme Court Case Law RAG]] і документація **benchmark**; перевірка гіпотези, що **RAG** має тягнути не лише статті кодексів.
+4. **rada.gov.ua integration** — коміти на кшталт `rada gov UA API + data base upd`; перехід до канонічного джерела оновлень і **catalog**-дисципліни.
+5. **Law database management** — екрани й процеси «керувати актами»; корпус стає **operational asset**.
+6. **DocList / validation waves (січень 2026)** — **daily updater**, **Qdrant sync**, **type** / **applicability** валідації, **soak** та **batch** імпорти, **health** до нуля критичних.
+7. **Standalone LLDBI** — пакування **Lexery Legislation DB Infra** як підсистеми з **R2** та переносимими прогонами.
+8. **Monorepo Brain + brain-admin** — корпус у **feedback loop** з агентом: [[Lexery - Branch Lexery Legal Agent Architecture|architecture]] задає **runtime**, **brain-admin** — контур імпорту та пропозицій.
+
+## Поточний стан: `legislation_documents` і Qdrant
+
+У **Supabase** канонічні метадані актів зосереджені навколо таблиці **`legislation_documents`** (і пов’язаних записів): юридичні ідентифікатори, стан публікації, зв’язки з **DocList**, прапорці оновлення. Тексти проходять **chunking**, потім індексуються в **Qdrant** для **semantic retrieval** у стадіях на кшталт [[Lexery - U4 Retrieval|U4]].
+
+Це розділення ролей типове для зрілих **RAG** систем: **Postgres** як **source of truth**, **vector DB** як прискорювач пошуку зі зворотним зв’язком через **sync** jobs.
+
+## Імпортний pipeline: brain-admin → proposals → process approved
+
+Сучасний імпорт у монорепо описується ланцюгом **`apps/lldbi/brain-admin`**:
+
+- **Batch**-операції збирають зміни або прогалини корпусу; формуються **import proposals** (що саме додати/оновити).
+- Операторський контур **review** відсікає ризиковані зміни; **conservative worker policy** зменшує шанс «тихо зламати» канон.
+- Після затвердження спрацьовує **process approved**: застосування змін до **DB**, підготовка до **re-chunk** / **re-index** у **Qdrant** залежно від політики деплою.
+
+Такий **human-in-the-loop** імпорт узгоджується з вимогою юридичної інфри: помилка в тексті акту дорожча за затримку релізу.
+
+## DocList: щоденний інкрементальний оновлювач з Ради
+
+**DocList** — окремий контур узгодження каталогу з **rada.gov.ua**: **daily incremental updater** підтягує зміни, щоб корпус не «старів мовчки». На хвилях валідації це поєднувалось з **root-fix** кампаніями для типів документів і **applicability**, щоб метадані не роз’їжджались між джерелом і **DB**.
+
+Для Brain це критично: **retrieval honesty** залежить від того, чи існує документ у каталозі й чи правильно він класифікований.
+
+## Майбутнє: прапорець `auto_update`
+
+У схемі даних існує **`auto_update`** (або еквівалентний прапорець на рівні документа/запису каталогу) як **hook** для повністю автоматичного оновлення тексту акту з офіційного джерела. **Observed** у поточному стані: значення **false для всіх документів** — тобто автоматичні «нічні» оновлення вмісту ще не увімкнені як дефолт; оновлення проходять через керовані процеси (**brain-admin**, ручні затвердження, обмежені батчі).
+
+Це раціональний компроміс: спочатку стабілізувати **truth** каталогу й **index**, потім поступово розширювати автоматизацію з **audit**-гейтами.
+
 ## See Also
 
 - [[Lexery - Retrieval, LLDBI, DocList]]

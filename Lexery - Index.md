@@ -150,3 +150,4 @@ Raw immutable sources live in `raw/`:
 - **Canvases:** 7
 - **Raw sources:** 29
 - **Frontmatter coverage:** 100%
+- [[Lexery - Contributing]]

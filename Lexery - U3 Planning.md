@@ -58,10 +58,40 @@ U3 відповідає на питання **«де шукати?»** до то
 
 `SearchPlan` довго був центральним об’єктом у легасі-архітектурі; контракт-first (LEX-105) формалізував audit у RunRecord. Пізніше розділили **U3 vs U3a**, щоби відділити політику джерел від конкретних executable steps і прибрати mismatch, коли в steps були «фантомні» doclist/import кроки, які U4 не виконував. `explicit_act_title_probe` навмисно звузили після інцидентів з широкими трудовими / multi-act запитами.
 
+## Test Coverage
+
+| Тест | Фокус |
+|---|---|
+| `test_plan_consumer_units.ts` | Rules engine → plan → persist → enqueue; degraded plan fallback |
+| `u3_plan_test.ts` | Integration: повний цикл U3 → U3a → SearchStep[] enqueue |
+
+## Критичний Bottleneck: Planning Stuck Runs
+
+За даними [[Lexery - Pipeline Health Dashboard|Pipeline Health Dashboard]], **7 449 runs (28% від загальної кількості)** застрягли зі статусом `Planning`. Це найбільша single-stage затримка в pipeline. Причини:
+
+- **I/O timeout до Supabase** при persist `search_plan` — transient network errors, які `withTransientPlanIoRetry` не завжди відловлює.
+- **Відсутній або partial `query_profile`** з [[Lexery - U2 Query Profiling|U2]] — degraded plan генерується, але RunContext update може не завершитися.
+- **BullMQ backpressure** — при високому concurrency enqueue U4 може бути відкладений, а run залишається в `Planning` status.
+- **Unhandled edge cases** в `context_mode` resolution — mixed-mode запити з ambiguous routing можуть зависати на rules evaluation.
+
+Моніторинг: `reason_codes` у `runs.search_plan` JSONB дозволяють post-hoc triage; [[Lexery - Decision Registry|Decision Registry]] трекає зміни порогів і правил.
+
+## `search_plan` JSONB Structure
+
+Поле `runs.search_plan` зберігає повний audit:
+
+- **`sources`** — об'єкт з прапорцями `use_lldbi`, `use_memory`, `use_doclist`, `use_web` та thresholds
+- **`steps`** — масив `SearchStep[]` (тільки executable: `lldbi_chunks`, `lldbi_acts`, `memory`); фантомні `doclist` / `import_fast` / `web` НЕ потрапляють
+- **`reason_codes`** — масив рядків: `CONTEXT_MODE_UNRESOLVED`, `DEGRADED_STRUCTURAL_LEGAL_FALLBACK`, `EXPLICIT_ACT_TITLE_PROBE`, тощо
+- **`built_at`** — ISO timestamp побудови (LEX-105 формалізація)
+- **`degraded_no_profile`** — boolean marker якщо plan побудований без повного query_profile
+
+Це основний контракт між U3 і downstream: [[Lexery - U4 Retrieval|U4]] виконує `steps`, [[Lexery - U5 Gate|U5]]/[[Lexery - U6 Recovery|U6]] читають `sources` для expand/recovery policy.
+
 ## Known Drift
 
-- Коментарі в старих файлах інколи кажуть «enqueue U9» після gate — фактичний шлях після U5: **U6 або U7** (див. U5).
-- `SearchStepKind` у types ще містить `doclist` / `import_fast` / `web`, але builder їх не емітить — джерело правди для DocList — `SearchPlan.sources` + U6.
+- Коментарі в старих файлах інколи кажуть «enqueue U9» після gate — фактичний шлях після U5: **U6 або U7** (див. [[Lexery - U5 Gate|U5]]).
+- `SearchStepKind` у types ще містить `doclist` / `import_fast` / `web`, але builder їх не емітить — джерело правди для DocList — `SearchPlan.sources` + [[Lexery - U6 Recovery|U6]].
 
 ## See Also
 

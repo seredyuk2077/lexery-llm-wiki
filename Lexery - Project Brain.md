@@ -1109,3 +1109,4 @@ Lexery — це не "ще один чат до LLM". Це спроба побу
 - [[Lexery - U8 Legal Reasoning]]
 - [[Lexery - U7 Evidence Assembly]]
 - [[Lexery - U3 Planning]]
+- [[Lexery - Contributing]]

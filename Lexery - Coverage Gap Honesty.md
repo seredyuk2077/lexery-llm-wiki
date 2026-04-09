@@ -31,6 +31,36 @@ Representative values (as used across stages):
 
 Exact enums live in code; names here track operational meaning.
 
+## Specific DocList Reason Codes
+
+Окрім generic coverage statuses, [[Lexery - DocList Surface|DocList]] і downstream stages генерують конкретні reason codes, що точно описують nature of the gap:
+
+### `ACT_FOUND_IN_CATALOG_NOT_INDEXED`
+
+Акт **існує** в Qdrant catalog (`lexery_legislation_acts`) — система знає про його існування, має metadata (назва, номер, дата). Але сам текст **не проіндексований** — відповідних chunks у `lexery_legislation_chunks` немає. Це означає, що [[Lexery - U4 Retrieval|U4]] не може виконати semantic search по тексту цього акту.
+
+Причини: акт додано до каталогу через [[Lexery - DocList Surface|DocList updater]], але ingestion pipeline ще не обробив його текст — або через чергу, або через помилку при chunking/embedding.
+
+### `ACT_FOUND_BUT_ARTICLE_NOT_RETRIEVED`
+
+Акт **проіндексований** — chunks є в [[Lexery - LLDBI Surface|Qdrant]], і загальний semantic search по акту працює. Але конкретна стаття, на яку вказує запит, **не була retrieved** — або через недостатню precision embedding, або через те, що стаття занадто коротка / generic для quality semantic match.
+
+Це тонший gap ніж `NOT_INDEXED` — акт доступний, але granularity retrieval недостатня для конкретного питання.
+
+### Resolution через import proposals
+
+Коли [[Lexery - Brain Architecture|Brain]] pipeline зустрічає `ACT_FOUND_IN_CATALOG_NOT_INDEXED`, brain-admin workflow (`.github/workflows/lldbi-brain-admin.yml`) генерує **import proposal** — запис у `legislation_import_proposals` таблиці, що сигналізує: "цей акт потрібно проіндексувати". [[Lexery - LLDBI Surface|LLDBI]] admin interface показує ці proposals для manual approval або автоматичної обробки.
+
+## LLDBI Hints from U2
+
+[[Lexery - U2 Query Profiling|U2 Query Profiling]] отримує early signals від [[Lexery - LLDBI Surface|LLDBI]] про стан корпусу ще **до** retrieval. Ці hints включають:
+
+- чи акт взагалі присутній у каталозі
+- приблизна кількість indexed chunks для релевантних актів
+- дата останнього оновлення індексу
+
+U2 передає ці hints у [[Lexery - U4 Retrieval|U4 retrieval strategy]] — якщо LLDBI сигналізує про бідний корпус для конкретного акту, retrieval може адаптувати query strategy (ширші rewrites, alternative act identifiers) замість naive semantic search.
+
 ## Resolution chain (effective gap)
 
 When multiple layers emit signals, precedence follows:
@@ -43,7 +73,9 @@ This ordering prefers **late-stage assembly truth** over earlier retrieval noise
 
 ## U10 Writer: `resolveEffectiveCoverageGap(runContext)`
 
-[[Lexery - U10 Writer|U10]] calls **`resolveEffectiveCoverageGap(runContext)`** to decide what gap narrative and constraints apply **before** drafting. That function is the **single choke point** for “what should the writer believe about coverage?”
+[[Lexery - U10 Writer|U10]] calls **`resolveEffectiveCoverageGap(runContext)`** to decide what gap narrative and constraints apply **before** drafting. That function is the **single choke point** for "what should the writer believe about coverage?"
+
+Якщо gap = `likely_missing_act`, writer отримує explicit instruction: сформулювати відповідь з чесним disclosure — "цей нормативний акт наразі не проіндексований у системі, тому відповідь базується на загальних правових принципах" замість hallucinated citations.
 
 ## U11 Verifier: relaxed citation rules
 
@@ -52,7 +84,7 @@ When **`coverage_gap != none`**, [[Lexery - U11 Verify|U11]] **relaxes citation 
 > [!info] Policy intent
 > Relaxation is **not** a license to hallucinate; it is recognition that **verification criteria must match available evidence**.
 
-## Terminal blockers and “write-compatible” corpus gaps
+## Terminal blockers and "write-compatible" corpus gaps
 
 Certain [[Lexery - DocList Surface|DocList]] outcomes are treated as **write-compatible terminal blockers** for corpus-gap answers, including:
 
@@ -72,7 +104,7 @@ That demonstrates the intended coupling: **insufficient evidence** is **compatib
 
 ## Open questions
 
-See [[Lexery - Open Questions and Drift]] for naming drift, enum expansion, and product copy around “we don’t have this act indexed yet.”
+See [[Lexery - Open Questions and Drift]] for naming drift, enum expansion, and product copy around "we don't have this act indexed yet."
 
 ## Related
 
@@ -84,6 +116,7 @@ See [[Lexery - Open Questions and Drift]] for naming drift, enum expansion, and 
 - [[Lexery - Open Questions and Drift]]
 - [[Lexery - Retrieval, LLDBI, DocList]]
 - [[Lexery - Retry and Recovery]]
+- [[Lexery - U2 Query Profiling]]
 
 ## See Also
 

@@ -21,19 +21,54 @@ layer: data
 
 **DocList** is the **document list / legislation catalog resolver** layer: it turns messy user language and partial identifiers into **structured act identity** against the Rada legislation catalog. It pairs with [[Lexery - LLDBI Surface|LLDBI]] (what is indexed) in [[Lexery - Retrieval, LLDBI, DocList|retrieval]].
 
-## Three applications
+## Three Applications (Package Detail)
+
+### `@lexery/doclist-resolver-api`
+
+**Cloudflare Worker** для act resolution і disambiguation. Розгорнутий як edge function, забезпечує low-latency lookup для [[Lexery - Brain Architecture|Brain]] pipeline. Приймає partial act identifiers (назва, номер, фрагменти тексту) і повертає structured act identity з confidence scores. При multiple matches повертає `AMBIGUOUS_ACT_MATCH` з ranked candidates для [[Lexery - ORCH and Clarification|clarification]].
+
+### `@lexery/doclist-updater-db`
+
+**Daily incremental updater** — забезпечує синхронізацію каталогу з даними Верховної Ради:
+
+1. Завантажує delta з Rada API (нові акти, зміни до існуючих)
+2. Парсить structured metadata (назва, номер, дата, статус)
+3. Генерує embeddings для act-level vectors
+4. Оновлює Qdrant collection `lexery_legislation_acts`
+5. Оновлює Supabase `legislation_documents` таблицю
+
+Працює як scheduled job — або через cron, або через GitHub Actions trigger.
+
+### `@lexery/doclist-full-import`
+
+**Full catalog importer** для початкового наповнення або повного rebuild. На відміну від updater, обробляє **весь** каталог Ради від початку, не тільки delta. Використовується при:
+
+- Initial setup нового environment
+- Rebuild після schema changes в Qdrant
+- Recovery після data corruption
 
 | App | Responsibility |
 |-----|----------------|
-| **`doclist-resolver-api`** | Lookup and **disambiguation** for act identification |
+| **`doclist-resolver-api`** | Lookup і **disambiguation** для act identification |
 | **`doclist-full-import`** | **Bulk** catalog import / rebuild workflows |
 | **`doclist-updater-db`** | **Incremental** updates as the catalog changes |
 
 Together they keep the **catalog** aligned with parliament data while exposing a **stable API** for the agent pipeline.
 
+## Catalog Numbers
+
+Поточний стан каталогу (observed):
+
+- **374 acts** у Supabase `legislation_documents` таблиці
+- Кожен акт має **`qdrant_status`** tracking: `indexed` (chunks є в Qdrant), `pending` (в черзі на indexing), `failed` (помилка при processing)
+- **966 import jobs** processed — кожен job відповідає за import або re-index конкретного акту, tracked у `legislation_import_jobs`
+- **~21,266 chunks** у Qdrant `lexery_legislation_chunks` collection
+
+Ці числа ростуть по мірі додавання нових актів через [[Lexery - Import Proposal Loop|import proposals]] і regular updater runs.
+
 ## Role in the product
 
-**Rada legislation catalog** → **structured lookup** → Brain can ask “which act does this query mean?”
+**Rada legislation catalog** → **structured lookup** → Brain can ask "which act does this query mean?"
 
 When [[Lexery - Brain Architecture|Brain]] must bind a query to a concrete act, DocList is the authority for **catalog membership** and **identifier normalization** (subject to the caveats below). [[Lexery - LLDBI Surface|LLDBI]] then answers whether that act is **indexed** for vector search.
 
@@ -69,7 +104,7 @@ This ordering reduces accidental binding when [[Lexery - U4 Retrieval|query rewr
 The **DocList updater** lineage starts in the public beta repo under paths such as `scripts/legislation/Documentation List DB/UpdaterDB/`. The current split apps are the production evolution of that script-era updater.
 
 > [!info] Catalog vs index
-> DocList can say “act exists”; [[Lexery - LLDBI Surface|LLDBI]] must still contain chunks for **retrieval**. Always cross-check both when triaging “missing law” reports.
+> DocList can say "act exists"; [[Lexery - LLDBI Surface|LLDBI]] must still contain chunks for **retrieval**. Always cross-check both when triaging "missing law" reports.
 
 ## Related
 
@@ -81,9 +116,11 @@ The **DocList updater** lineage starts in the public beta repo under paths such 
 - [[Lexery - Legacy Beta App]]
 - [[Lexery - Retry and Recovery]]
 - [[Lexery - Coverage Gap Honesty]]
+- [[Lexery - Storage Topology]]
 
 ## See Also
 
 - [[Lexery - Storage Topology]]
 - [[Lexery - Decision Registry]]
 - [[Lexery - Deployment and Infra]]
+- [[Lexery - Provider Topology]]

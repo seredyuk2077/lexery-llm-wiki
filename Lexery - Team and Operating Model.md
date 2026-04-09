@@ -136,3 +136,4 @@ Architecture decisions ─── Андрій (final authority)
 - [[Lexery - Decision Registry]]
 - [[Lexery - Drift Radar]]
 - [[Lexery - Brain Architecture]]
+- [[Lexery - Contributing]]

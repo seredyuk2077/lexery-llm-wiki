@@ -15,61 +15,96 @@ layer: data
 
 # Lexery — Provider Topology
 
-Lexery’s backend spans multiple **external providers**. This note is a **map**, not a billing sheet: use it to know **who owns what dependency** when debugging [[Lexery - Brain Architecture|Brain]], [[Lexery - LLDBI Surface|LLDBI]], and [[Lexery - API and Control Plane|API]].
+Lexery's backend spans multiple **external providers**. This note is a **map**, not a billing sheet: use it to know **who owns what dependency** when debugging [[Lexery - Brain Architecture|Brain]], [[Lexery - LLDBI Surface|LLDBI]], and [[Lexery - API and Control Plane|API]].
 
 ## LLM routing: OpenRouter
 
-**OpenRouter** fronts model selection and vendor routing. Representative assignments (evolve with prompts):
+**OpenRouter** є єдиним LLM provider для всіх model calls у системі. Замість прямих API-ключів до OpenAI, Anthropic чи інших провайдерів, Lexery маршрутизує всі запити через OpenRouter, що дає:
 
-- **`gpt-5.2`** — [[Lexery - ORCH and Clarification|ORCH]] decisions
-- **`gpt-5-nano` / `gpt-4o-mini`** — meta-triage and lighter tasks
-- Additional models — [[Lexery - U10 Writer|writer]] / [[Lexery - U11 Verify|verifier]] stacks per stage configuration
+- **Multi-model routing** — один API endpoint для всіх моделей, без окремих SDK чи credentials per vendor
+- **Cost tracking** — централізований dashboard з per-request cost visibility, budget alerts, usage breakdowns по моделях
+- **Fallback** — якщо primary model provider недоступний, OpenRouter може автоматично переключитися на альтернативу
+- **Unified billing** — один рахунок замість N окремих provider invoices
+
+### Key Precedence
+
+Система використовує ієрархію API ключів:
+
+1. **`OPENROUTER_API_KEY_BRAIN`** — dedicated key для [[Lexery - Brain Architecture|Brain]] pipeline; має priority і окремий budget ceiling
+2. **`OPENROUTER_API_KEY_ONLINE`** — fallback key для online/portal requests; використовується коли Brain key не задано або для non-pipeline calls
+
+Ця ієрархія дозволяє ізолювати Brain pipeline billing від Portal user-facing traffic.
+
+### Model Tiers
+
+Кожна модель обрана під конкретний тип задачі в pipeline:
+
+| Tier | Model | Призначення | Вартість |
+|------|-------|-------------|----------|
+| **Premium** | `gpt-5.2` | [[Lexery - ORCH and Clarification|ORCH]] decisions, [[Lexery - U8 Legal Reasoning|U8 Legal Reasoning]], [[Lexery - U10 Writer|U10 Writer]] — задачі, де якість юридичного аналізу критична | Висока |
+| **Classification** | `gpt-4o-mini` | [[Lexery - U2 Query Profiling|U2 Query Profiling]], meta-triage, intent classification — швидкі lightweight tasks | Низька |
+| **Routine** | `gpt-5-nano` | Delta summaries, [[Lexery - Memory and Documents|memory]] operations, routine formatting — максимально дешеві повторювані задачі | Мінімальна |
 
 > [!info] Model drift
-> Exact model IDs change with evals; treat OpenRouter as the **integration point** and code/config as **source of truth**.
+> Exact model IDs змінюються з evals; трактуйте OpenRouter як **integration point**, а code/config як **source of truth**.
 
 ## Compute / hosting: Azure
 
-**Azure** is the documented deployment target for **Brain** and **API** (see `docs/architecture/backend` in-repo). Pair with [[Lexery - Deployment and Infra]] for environments and secrets.
+**Azure** є задокументованою deployment target для **Brain** і **API** (див. `docs/architecture/backend` in-repo). Pair with [[Lexery - Deployment and Infra]] для environments і secrets.
 
-## Databases: Supabase (two logical DBs)
+## Databases: Supabase (два проєкти)
 
-- **LegalAgentDB** — [[Lexery - Run Lifecycle|runs]], [[Lexery - Import Proposal Loop|import proposals]], legal-agent tables
-- **Main app DB** — auth, workspaces, subscriptions — typically via **Prisma** from the **NestJS** API layer
+Lexery використовує **два окремі Supabase проєкти** (не просто logical databases):
 
-Both are **Postgres** under the hood; isolation is **logical** and **credential**-based.
+- **LegalAgentDB** (`lexery-legal-agent-db`) — [[Lexery - Run Lifecycle|runs]], [[Lexery - Import Proposal Loop|import proposals]], legal-agent tables, sessions, [[Lexery - Memory and Documents|memory]]
+- **Legislation RAG DB** (`legislation-RAG`) — legislation documents, import jobs, catalog metadata для [[Lexery - DocList Surface|DocList]]
+
+Обидва — **Postgres** під капотом; ізоляція — на рівні **Supabase projects** і **credentials**. Cross-DB joins не існують на SQL рівні.
 
 ## Redis
 
-**Redis** backs:
+**Redis** забезпечує:
 
-- **BullMQ** job queues (often **one queue per pipeline stage**)
-- **Run context** for in-flight processing
-- Shared client management (e.g. **`redis-shared.ts`** patterns)
+- **BullMQ** job queues — зазвичай **one queue per pipeline stage** ([[Lexery - Brain Architecture]])
+- **Run context cache** — per-run working state під час активної обробки, що зберігає intermediate results між stages
+- **Shared client management** (наприклад, **`redis-shared.ts`** patterns) з namespace isolation через **`REDIS_QUEUE_NAMESPACE`**
 
-See [[Lexery - Storage Topology]] for how this differs from durable snapshots.
+Див. [[Lexery - Storage Topology]] для різниці між Redis ephemeral state і durable snapshots.
 
-## Qdrant
+## Qdrant Cloud
 
-**Qdrant** is the **vector database** for legislation and memory collections, including:
+**Qdrant Cloud** — vector database для legislation і memory collections:
 
-- **`lexery_legislation_acts`**
-- **`lexery_legislation_chunks`**
-- **Memory** collections for long-horizon agent features
+- **`lexery_legislation_acts`** — metadata по ~374 нормативних актах
+- **`lexery_legislation_chunks`** — ~21,266 текстових chunks для semantic search
+- **Lexery-LA Memory** — semantic index для [[Lexery - Memory and Documents|long-horizon agent memory]]
+- **MM Docs** — vectors для [[Lexery - U9 Assemble|document assembly]] і multi-modal content
 
 Cross-link: [[Lexery - LLDBI Surface]].
 
-## Object storage: Cloudflare R2
+## Object storage: Cloudflare R2 (два бакети)
 
-**Cloudflare R2** stores **legislation documents** and **user uploads**, often via **presigned URLs** for controlled direct access. Pair with [[Lexery - Retrieval, LLDBI, DocList|retrieval]] when debugging “file present but chunks missing.”
+**Cloudflare R2** зберігає дані у двох окремих бакетах:
+
+- **`legislation`** — canonical act JSON files, structured legislation data від [[Lexery - DocList Surface|Rada catalog]]
+- **`lexery-legal-agent`** — run artifacts, [[Lexery - U9 Assemble|MM offload]], document chunks, user uploads
+
+Доступ через **presigned URLs** для controlled direct access. Pair з [[Lexery - Retrieval, LLDBI, DocList|retrieval]] при debug "file present but chunks missing."
+
+## Cloudflare Workers
+
+**Cloudflare Workers** хостять lightweight API services:
+
+- **`@lexery/doclist-resolver-api`** — act resolution і disambiguation endpoint для [[Lexery - DocList Surface|DocList]]
+- Інші workers для edge-level routing і caching
 
 ## Legislative source: Rada API
 
-The **Verkhovna Rada** data feeds power [[Lexery - DocList Surface|DocList]] catalog updates and related importers.
+**Verkhovna Rada** data feeds забезпечують [[Lexery - DocList Surface|DocList]] catalog updates і related importers.
 
 ## CI: GitHub Actions
 
-**GitHub Actions** runs portal CI and scheduled jobs such as **`.github/workflows/lldbi-brain-admin.yml`** for [[Lexery - LLDBI Surface|LLDBI brain-admin]] scanning.
+**GitHub Actions** запускає portal CI і scheduled jobs, зокрема **`.github/workflows/lldbi-brain-admin.yml`** для [[Lexery - LLDBI Surface|LLDBI brain-admin]] scanning.
 
 ## Related
 
@@ -80,6 +115,7 @@ The **Verkhovna Rada** data feeds power [[Lexery - DocList Surface|DocList]] cat
 - [[Lexery - Retrieval, LLDBI, DocList]]
 - [[Lexery - DocList Surface]]
 - [[Lexery - API and Control Plane]]
+- [[Lexery - Cost Ledger]]
 
 ## See Also
 
