@@ -162,3 +162,5 @@ Resource usage: <1 minute execution, <50 MB RAM, runs once daily. Практич
 - [[Lexery - Unknowns Queue]]
 - [[Lexery - Pipeline Health Dashboard]]
 - [[Lexery - Technology Stack]]
+- [[Lexery - Brain Test and Verify Map]]
+- [[Lexery - Brain Environment Reference]]

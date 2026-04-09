@@ -1110,3 +1110,6 @@ Lexery — це не "ще один чат до LLM". Це спроба побу
 - [[Lexery - U7 Evidence Assembly]]
 - [[Lexery - U3 Planning]]
 - [[Lexery - Contributing]]
+- [[Lexery - Brain Test and Verify Map]]
+- [[Lexery - Brain Environment Reference]]
+- [[Lexery - Legal Agent Quality Priorities]]

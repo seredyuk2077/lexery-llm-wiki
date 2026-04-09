@@ -41,6 +41,9 @@ layer: meta
 | [[Lexery - U10 Writer]] | Стадія writer / Legal Agent і генерація тексту | brain |
 | [[Lexery - U11 Verify]] | Верифікація виходу та узгодженість із джерелами | brain |
 | [[Lexery - U12 Deliver]] | Доставка результату клієнту та фіналізація run | brain |
+| [[Lexery - Brain Test and Verify Map]] | Повний каталог pnpm scripts: unit, verify, stress, forensics | brain |
+| [[Lexery - Brain Environment Reference]] | Довідник змінних середовища `apps/brain/lib/config.ts` | brain |
+| [[Lexery - Legal Agent Quality Priorities]] | Пріоритети якості: soft queries, RAG mindset, мінімальні чеки | brain |
 
 ## Architecture & Infrastructure
 
@@ -146,8 +149,8 @@ Raw immutable sources live in `raw/`:
 
 ## Statistics
 
-- **Pages:** 72
+- **Pages:** 75+ (каталог вище + canvas-и; точне число — `wc -l Lexery\ -\ *.md`)
 - **Canvases:** 7
-- **Raw sources:** 29
+- **Raw sources:** `raw/` (оновлюється `scan-codebase.mjs`)
 - **Frontmatter coverage:** 100%
 - [[Lexery - Contributing]]

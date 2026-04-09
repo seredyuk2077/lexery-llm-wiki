@@ -134,3 +134,5 @@ sources: 3
 - [[Lexery - Contracts and Run Schema]]
 - [[Lexery - API and Control Plane]]
 - [[Lexery - Memory and Documents]]
+- [[Lexery - Brain Test and Verify Map]]
+- [[Lexery - Brain Environment Reference]]

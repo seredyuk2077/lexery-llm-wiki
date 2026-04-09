@@ -70,6 +70,28 @@ U2 — перша глибока «розуміюча» стадія після 
 - У розмовній документації інколи кажуть «law_domain / query_type» — у коді канонічні імена полів: **`domain`** (і `domainHint`) та **`intent`**; «specificity / complexity» не окремі поля, а похідні від `entities`, `ambiguity`, `routing_flags` і meta.
 - Дуже широкі legal queries раніше могли помилково потрапляти під DocList probe; правила U3 (`explicit_act_title_probe`) звузили це — але U2 все одно має давати стабільні `entities` / intent.
 
+## Змінні середовища (вибірка)
+
+Повний довідник: [[Lexery - Brain Environment Reference]]. Для U2 критичні:
+
+| Variable | Ефект |
+|----------|--------|
+| `U2_DISABLE_CONSUMER` | Повністю вимикає stage (операційний аварійний важіль) |
+| `USE_RULE_BASED_CLASSIFIER` | Примусово rules / без LLM classify |
+| `U2_INTENT_LLM_ENABLED` / `U2_DOMAIN_LLM_ENABLED` | Підмножини LLM шляху |
+| `U2_GATING_ENABLED` + `U2_GATING_CONFIDENCE_THRESHOLD` | Пропуск дорогого LLM при високій rules confidence |
+| `U2_AI_DOMAIN_*` | Окремий cheap call для «слабкого» general legal domain |
+| `U2_WORKER_CONCURRENCY` / `U2_LLM_CONCURRENCY` | Паралелізм workers vs OpenRouter |
+| `CLF_MODEL_ID` / `CLF_TIMEOUT_SEC` | Основна classify модель і timeout |
+| `OPENROUTER_API_KEY_BRAIN` | Без ключа — degraded/rules шлях |
+
+## Верифікація та регресія
+
+- `pnpm brain:verify:u2-cues`, `brain:verify:u2-domain:*`, `brain:verify:u2-routing:*`
+- Юніти: `brain:test:u2-classify-json-units`, `test_u2_*` у `tools/u2/` та `tools/_units/`
+
+Детальна карта: [[Lexery - Brain Test and Verify Map]].
+
 ## See Also
 
 - [[Lexery - U1 Gateway]]
@@ -87,3 +109,5 @@ U2 — перша глибока «розуміюча» стадія після 
 - [[Lexery - U8 Legal Reasoning]]
 - [[Lexery - U7 Evidence Assembly]]
 - [[Lexery - Public Trace]]
+- [[Lexery - Brain Environment Reference]]
+- [[Lexery - Brain Test and Verify Map]]

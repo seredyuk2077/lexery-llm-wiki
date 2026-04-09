@@ -159,13 +159,13 @@ Canonical architecture documentation lives under `apps/brain/docs/architecture/`
 
 ## Testing Infrastructure
 
-Roughly **61** test-oriented TypeScript modules under `apps/brain/tools/`, with naming conventions:
+**90+** test / verify / stress entrypoints під `apps/brain/tools/` (інвентар у `raw/codebase-snapshots/test-inventory.txt` після `scan-codebase.mjs`). Узгоджені імена:
 
-- `test_*_units.ts` — unit test suites per stage
-- `stress_test_*.ts` — load / stress tests (especially U4 retrieval)
-- `verify_*.ts` — live verification harnesses
+- `test_*_units.ts` — unit suites per stage
+- `stress_test_*.ts` — навантаження (особливо U4)
+- `verify_*.ts` — live harnesses
 
-Script aliases in the monorepo: `pnpm brain:test:*` / `pnpm brain:verify:*`.
+Повний каталог **pnpm** script aliases: [[Lexery - Brain Test and Verify Map]] (`pnpm brain:test:*`, `pnpm brain:verify:*`, forensics, MM, ORCH).
 
 ## CI/CD
 
@@ -198,3 +198,6 @@ Single GitHub Action: `.github/workflows/lldbi-brain-admin.yml`
 - [[Lexery - U9 Assemble]]
 - [[Lexery - U12 Deliver]]
 - [[Lexery - U10 Writer]]
+- [[Lexery - Legal Agent Quality Priorities]]
+- [[Lexery - Brain Test and Verify Map]]
+- [[Lexery - Brain Environment Reference]]

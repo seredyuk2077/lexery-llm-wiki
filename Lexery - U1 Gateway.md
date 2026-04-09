@@ -47,8 +47,8 @@ Rate-limiting працює per-tenant: `RUNS_PER_MINUTE` і `MAX_CONCURRENT_RUNS
 
 При intake U1 створює запис з такими ключовими колонками:
 
-- **`id`** — internal auto-increment PK
-- **`run_id`** — UUID, зовнішній ідентифікатор run (повертається клієнту)
+- **`id`** — UUID primary key у Postgres (Supabase)
+- **`run_id`** — текстовий зовнішній ідентифікатор run (контракт API / trace; не плутати з `id`)
 - **`tenant_id`** — ідентифікатор тенанта (з auth token або dev override)
 - **`user_id`** — ідентифікатор користувача (nullable для anonymous)
 - **`query`** — оригінальний текст запиту; при перевищенні `QUERY_R2_THRESHOLD_BYTES` тіло мігрує до R2, у колонці лишається ref
@@ -100,6 +100,20 @@ Legacy bridge repo мав окремий `U1 Gateway/Intake + R2 bucket migratio
 
 У міру зрілості production-інтеграцій U1 має перестати бути переважно dev-friendly intake і стати суворішим bridge від `apps/api` [[Lexery - API and Control Plane|control plane]]: формальна валідація контрактів, tenant isolation, structured error responses.
 
+## HTTP surface (коротко)
+
+Окрім `POST /v1/runs`, Brain зазвичай експонує (точний набір — `server.ts` / gateway):
+
+- **`GET /health`** — liveness для оркестраторів і load balancer
+- **`GET /v1/runs/:id`** / **`GET /v1/runs/:id/events`** — перегляд run і [[Lexery - Public Trace|public trace]] (див. API docs у репо)
+- **`POST /v1/runs/:id/clarification`** — відповідь на clarification (resume path)
+
+Версіонування API: префікс **`/v1/`** узгоджений з [[Lexery - Contracts and Run Schema|shared contracts]].
+
+## Зв’язок із env (gateway + limits)
+
+Повний перелік: [[Lexery - Brain Environment Reference]]. Мінімум для U1: `BRAIN_PORT`, `DEV_*`, `RUNS_PER_MINUTE`, `MAX_CONCURRENT_RUNS`, R2/Supabase ключі для persistence та вкладень.
+
 ## See Also
 
 - [[Lexery - API and Control Plane]]
@@ -107,3 +121,5 @@ Legacy bridge repo мав окремий `U1 Gateway/Intake + R2 bucket migratio
 - [[Lexery - Brain Architecture]]
 - [[Lexery - Run Lifecycle]]
 - [[Lexery - Public Trace]]
+- [[Lexery - Brain Environment Reference]]
+- [[Lexery - Brain Test and Verify Map]]

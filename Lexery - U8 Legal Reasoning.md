@@ -65,6 +65,30 @@ U8 перетворює **`evidence_assembly`** (з U7) на обмежений 
 - Верхньорівневі описи інколи кажуть «U8 генерує legal argument» — у коді це **routing / readiness**, не фінальний текст (той у U9/U10).
 - README посилається на конкретні json proof у `tools/_reports/` — шляхи в репо можуть змінюватись; джерело правди — `reasoning/consumer.ts` + unit tests.
 
+## ORCH і U8
+
+Якщо `orchEnabled` (**`ORCH_ENABLED=true`**), після U8 `resolveReasoningNextStep` може направити run у **ORCH** замість прямого enqueue U9/U6 — див. `orchestrator/runtime.ts` і [[Lexery - ORCH and Clarification]]. Коли ORCH вимкнено, лишається чиста політика `recommended_next_action` без LLM-арбітражу на цьому кроці.
+
+## Продуктовий пріоритет (контекст)
+
+З [[Lexery - Brain Architecture]] і внутрішніх нотаток (`codex/LEGAL_AGENT_CONTEXT.md`): якість на **м’яких**, «advocate-style» запитах важливіша за ідеальні відповіді лише на явних цитатах. U8 прямо впливає на це через **`ready_for_write`** і дозвіл **чесних corpus-gap** шляхів без безкінечного U6 — щоб pipeline не «ламався» вигаданими вимогами до цитат там, де evidence_assembly уже зафіксував gap.
+
+## Таблиця `recommended_next_action` (канонічні значення)
+
+| Action | Коли типово |
+|--------|----------------|
+| `RUN_U9` | Доказів достатньо, немає блокерів або дозволений coverage-gap write |
+| `RUN_U6` | Слабкі докази, потрібен expand / retrieval retry |
+| `ASK_USER_CLARIFICATION` | DocList ambiguity, clarification не закрита |
+| (через ORCH) | Складні гілки після inline orchestrator |
+
+Точні імена — у `LegalReasoningResult` у `apps/brain/lib/pipeline/contracts.ts`; при зміні enum оновлювати цю нотатку.
+
+## Верифікація
+
+- `pnpm brain:test:u7-u8-units`
+- Повна карта: [[Lexery - Brain Test and Verify Map]]
+
 ## See Also
 
 - [[Lexery - U7 Evidence Assembly]]
@@ -88,3 +112,4 @@ U8 перетворює **`evidence_assembly`** (з U7) на обмежений 
 - [[Lexery - Project Brain]]
 - [[Lexery - U4 Retrieval]]
 - [[Lexery - U11 Verify]]
+- [[Lexery - Brain Environment Reference]]

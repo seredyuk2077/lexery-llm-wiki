@@ -121,6 +121,9 @@ Brain `lib/config` (see snapshot `raw/codebase-snapshots/brain-config.ts`) maps 
 - [[Lexery - Brain Architecture]]
 - [[Lexery - Project Brain]]
 - [[Lexery - Source Map]] — where terminology is grounded in repo paths vs inference.
+- [[Lexery - Brain Test and Verify Map]] — усі `pnpm brain:*` scripts у одному місці.
+- [[Lexery - Brain Environment Reference]] — env knobs з `config.ts`.
+- [[Lexery - Legal Agent Quality Priorities]] — пріоритет soft queries і RAG-дисципліна.
 
 ---
 

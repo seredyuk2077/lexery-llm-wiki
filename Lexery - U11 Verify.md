@@ -81,7 +81,25 @@ U11 у поточному **Brain** — це насамперед **deterministi
 ## Відомі обмеження
 
 - Немає повного **critic / web verification loop** — лише правила та евристики на основі **evidence**, **reasoning** і тексту відповіді.
-- Поведінка залежить від **mode** (**law**, **docs_only**, **coverage gap**): ті самі слова відповіді можуть дати різний **`verdict`**.
+- Поведінка залежить від **mode** (**law**, `docs_only`, **coverage gap**): ті самі слова відповіді можуть дати різний **`verdict`**.
+
+## Env: межа retry_write
+
+**`U11_DIRECT_WRITE_RETRY_MAX`** (default **1**) — скільки разів U11 може відправити run назад у U10 без зациклення. Після вичерпання ліміту run має піти в **`failed_*`** або інший термінальний шлях згідно з політикою. Деталі: [[Lexery - Brain Environment Reference]].
+
+## Corpus-gap і `verdict: complete` (2026-04)
+
+Коли **`coverage_gap`** чесно відображає відсутність корпусу (наприклад `ACT_FOUND_IN_CATALOG_NOT_INDEXED`), U11 може завершити з **`complete`** навіть без «ідеальних» law citations — це узгоджено з [[Lexery - Coverage Gap Honesty]] і зміни в [[Lexery - U10 Writer|U10]] / evidence assembly, щоб не перетворювати чесну відповідь на безкінечний `retry_write → STOP_FAILED`.
+
+## Типові вердикти (шпаргалка)
+
+| Verdict | Наступний крок |
+|---------|----------------|
+| `complete` | U12 deliver |
+| `retry_write` | U10 з очищенням stale writer artifacts (обмежено env) |
+| `retry_retrieval` | U6 / U4 recovery |
+| `ask_user` | Clarification UX, потім resume |
+| `failed_*` | Термінальна помилка / політика |
 
 ## See Also
 
@@ -96,3 +114,5 @@ U11 у поточному **Brain** — це насамперед **deterministi
 - [[Lexery - U4 Retrieval]]
 - [[Lexery - U5 Gate]]
 - [[Lexery - U8 Legal Reasoning]]
+- [[Lexery - Brain Environment Reference]]
+- [[Lexery - Brain Test and Verify Map]]

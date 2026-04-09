@@ -85,6 +85,31 @@ For **inspect** and related identifier handling, casing matters: e.g. **`ВР`**
 
 `brainSignalCount` varies by scan window and hybrid configuration. One recent **hybrid** scan reported on the order of **54 signals** from **310 runs** — useful as a rough magnitude for dashboards, not as a fixed SLA.
 
+## R2 і canonical JSON
+
+Законодавчі артефакти для індексації живуть у **legislation** bucket (див. [[Lexery - Storage Topology]]): env `LLDBI_R2_BUCKET` / `R2_LEGISLATION_BUCKET` з опційним `LLDBI_R2_PREFIX`. Brain U4 читає snippets і повні traces через окремий **lexery-legal-agent** bucket — не плутати ролі двох bucket-ів.
+
+## Legislation Supabase (metadata)
+
+Таблиця **`legislation_documents`** (окремий Supabase project) тримає **metadata** актів: `qdrant_status`, `validity_status`, `chunks_count`, `r2_key`, sync health. Поточний знімок: **374** документи, усі **`indexed`** у Qdrant; частина **in_force** / **expired** — див. [[Lexery - Pipeline Health Dashboard]]. Це не заміна LLDBI vector index, а **джерело правди** для імпорту й моніторингу.
+
+## Операційний цикл (operator view)
+
+1. **Користувачі / Brain** створюють тиск на корпус через retrieval + `doclist_trace` / `lldbi_admin_hints`.
+2. **`brain-admin`** (у `apps/lldbi/brain-admin/`) агрегує сигнали з недавніх runs.
+3. **GitHub Actions** `.github/workflows/lldbi-brain-admin.yml` запускає batch (weekly / manual).
+4. **Import proposals** потрапляють у `legislation_import_proposals`; після review — індексація в Qdrant + оновлення R2.
+
+## Конфіг Brain, що торкається LLDBI
+
+У `apps/brain/lib/config.ts`: `LLDBI_COLLECTION_*`, `LLDBI_TOP_K`, `LLDBI_EMBED_*`, `QDRANT_*` (legislation cluster), `ACT_TAXONOMY_TTL_SEC`, `LLDBI_ADMIN_HINTS_ENABLED`. Деталі: [[Lexery - Brain Environment Reference]].
+
+## Розширені тести / аудити
+
+- `pnpm brain:audit:lldbi-act-coverage`
+- `pnpm brain:verify:lldbi-kku115`
+- Retrieval suite: [[Lexery - Brain Test and Verify Map]]
+
 ## Related
 
 - [[Lexery - Retrieval, LLDBI, DocList]]
@@ -102,3 +127,5 @@ For **inspect** and related identifier handling, casing matters: e.g. **`ВР`**
 - [[Lexery - ORCH and Clarification]]
 - [[Lexery - Memory and Documents]]
 - [[Lexery - U5 Gate]]
+- [[Lexery - Brain Environment Reference]]
+- [[Lexery - Brain Test and Verify Map]]

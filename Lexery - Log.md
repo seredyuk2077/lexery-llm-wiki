@@ -10,6 +10,15 @@ status: observed
 layer: meta
 ---
 
+## [2026-04-09] V9 — Encyclopedia scale-up
+
+- **Нові сторінки:** [[Lexery - Brain Test and Verify Map]], [[Lexery - Brain Environment Reference]], [[Lexery - Legal Agent Quality Priorities]] (кодекс якості з `codex/LEGAL_AGENT_CONTEXT.md`)
+- **Розширено:** [[Lexery - U1 Gateway]] (HTTP surface, виправлено UUID `runs.id`), [[Lexery - U2 Query Profiling]] (env + verify), [[Lexery - LLDBI Surface]] (R2, Supabase metadata, ops cycle), [[Lexery - U8 Legal Reasoning]] (ORCH, пріоритет soft queries, таблиця actions), [[Lexery - U11 Verify]] (retry cap, corpus-gap complete)
+- **Index / Automation:** посилання на нові довідники
+- **Мета:** зробити wiki **більшою і самодостатньою** без зовнішнього «здогадування» по скриптах і env
+
+---
+
 ## [2026-04-09] V8 — Autonomous System + Deep Fill
 
 ### Що зроблено
