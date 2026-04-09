@@ -38,7 +38,9 @@ const steps = [
   ['sync-linear.mjs', false],
   ['generate-delta.mjs', false],
   ['update-log.mjs', false],
+  ['ingest.mjs', false],
   ['suggest-links.mjs', false],
+  ['lint.mjs', false],
 ];
 
 let report = `# Maintenance run — ${todayIsoDate()}\n\nStarted: ${ts()}\n\n`;

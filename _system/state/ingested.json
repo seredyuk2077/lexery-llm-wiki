@@ -1,0 +1,120 @@
+{
+  "files": {
+    "raw/architecture-docs/CURRENT_PIPELINE_STATE.md": {
+      "mtime": "2026-04-09T16:00:28.865Z",
+      "ingested_at": "2026-04-09T16:04:39.743Z"
+    },
+    "raw/architecture-docs/LEXERY_LEGAL_AI_AGENT_ARCHITECTURE.md": {
+      "mtime": "2026-04-09T16:00:28.860Z",
+      "ingested_at": "2026-04-09T16:04:39.745Z"
+    },
+    "raw/architecture-docs/MEGA_DIAGRAM_FULL.md": {
+      "mtime": "2026-04-09T16:00:28.862Z",
+      "ingested_at": "2026-04-09T16:04:39.745Z"
+    },
+    "raw/architecture-docs/app-README.md": {
+      "mtime": "2026-04-09T16:00:28.864Z",
+      "ingested_at": "2026-04-09T16:04:39.745Z"
+    },
+    "raw/codebase-snapshots/monorepo-packages-2026-04-09.md": {
+      "mtime": "2026-04-09T16:03:13.102Z",
+      "ingested_at": "2026-04-09T16:04:39.746Z"
+    },
+    "raw/codebase-snapshots/supabase-schema-2026-04-09.md": {
+      "mtime": "2026-04-09T16:03:08.973Z",
+      "ingested_at": "2026-04-09T16:04:39.746Z"
+    },
+    "raw/github-commits/commits-2026.txt": {
+      "mtime": "2026-04-09T16:00:25.644Z",
+      "ingested_at": "2026-04-09T16:04:39.746Z"
+    },
+    "raw/github-commits/commits-pre-2026.txt": {
+      "mtime": "2026-04-09T16:00:25.649Z",
+      "ingested_at": "2026-04-09T16:04:39.746Z"
+    },
+    "raw/github-prs/all-prs.json": {
+      "mtime": "2026-04-09T16:00:23.375Z",
+      "ingested_at": "2026-04-09T16:04:39.747Z"
+    },
+    "raw/github-prs/pr-1.json": {
+      "mtime": "2026-04-09T16:00:24.525Z",
+      "ingested_at": "2026-04-09T16:04:39.748Z"
+    },
+    "raw/github-prs/pr-1.md": {
+      "mtime": "2026-04-09T16:00:50.271Z",
+      "ingested_at": "2026-04-09T16:04:39.749Z"
+    },
+    "raw/github-prs/pr-10.json": {
+      "mtime": "2026-04-09T16:00:31.496Z",
+      "ingested_at": "2026-04-09T16:04:39.749Z"
+    },
+    "raw/github-prs/pr-10.md": {
+      "mtime": "2026-04-09T16:00:50.555Z",
+      "ingested_at": "2026-04-09T16:04:39.749Z"
+    },
+    "raw/github-prs/pr-2.json": {
+      "mtime": "2026-04-09T16:00:25.368Z",
+      "ingested_at": "2026-04-09T16:04:39.750Z"
+    },
+    "raw/github-prs/pr-2.md": {
+      "mtime": "2026-04-09T16:00:50.299Z",
+      "ingested_at": "2026-04-09T16:04:39.750Z"
+    },
+    "raw/github-prs/pr-3.json": {
+      "mtime": "2026-04-09T16:00:26.029Z",
+      "ingested_at": "2026-04-09T16:04:39.751Z"
+    },
+    "raw/github-prs/pr-3.md": {
+      "mtime": "2026-04-09T16:00:50.331Z",
+      "ingested_at": "2026-04-09T16:04:39.751Z"
+    },
+    "raw/github-prs/pr-4.json": {
+      "mtime": "2026-04-09T16:00:26.721Z",
+      "ingested_at": "2026-04-09T16:04:39.751Z"
+    },
+    "raw/github-prs/pr-4.md": {
+      "mtime": "2026-04-09T16:00:50.359Z",
+      "ingested_at": "2026-04-09T16:04:39.752Z"
+    },
+    "raw/github-prs/pr-5.json": {
+      "mtime": "2026-04-09T16:00:27.424Z",
+      "ingested_at": "2026-04-09T16:04:39.752Z"
+    },
+    "raw/github-prs/pr-5.md": {
+      "mtime": "2026-04-09T16:00:50.392Z",
+      "ingested_at": "2026-04-09T16:04:39.752Z"
+    },
+    "raw/github-prs/pr-6.json": {
+      "mtime": "2026-04-09T16:00:28.215Z",
+      "ingested_at": "2026-04-09T16:04:39.752Z"
+    },
+    "raw/github-prs/pr-6.md": {
+      "mtime": "2026-04-09T16:00:50.434Z",
+      "ingested_at": "2026-04-09T16:04:39.752Z"
+    },
+    "raw/github-prs/pr-7.json": {
+      "mtime": "2026-04-09T16:00:29.135Z",
+      "ingested_at": "2026-04-09T16:04:39.752Z"
+    },
+    "raw/github-prs/pr-7.md": {
+      "mtime": "2026-04-09T16:00:50.471Z",
+      "ingested_at": "2026-04-09T16:04:39.753Z"
+    },
+    "raw/github-prs/pr-8.json": {
+      "mtime": "2026-04-09T16:00:29.963Z",
+      "ingested_at": "2026-04-09T16:04:39.753Z"
+    },
+    "raw/github-prs/pr-8.md": {
+      "mtime": "2026-04-09T16:00:50.504Z",
+      "ingested_at": "2026-04-09T16:04:39.753Z"
+    },
+    "raw/github-prs/pr-9.json": {
+      "mtime": "2026-04-09T16:00:30.754Z",
+      "ingested_at": "2026-04-09T16:04:39.753Z"
+    },
+    "raw/github-prs/pr-9.md": {
+      "mtime": "2026-04-09T16:00:50.530Z",
+      "ingested_at": "2026-04-09T16:04:39.753Z"
+    }
+  }
+}

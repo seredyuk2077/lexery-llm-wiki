@@ -98,6 +98,49 @@ Lexery зараз already має:
 - `Inferred`:
   the project’s central integration problem is not “what should we build?” but “how do we merge the two already-moving systems?”
 
+## Live Production Metrics (Supabase, 2026-04-09)
+
+### Pipeline Throughput
+
+| Metric | Value |
+|--------|-------|
+| Total runs | **26,661** |
+| Completed | 17,169 (64.4%) |
+| Failed | 277 (1.0%) |
+| Stuck (Intake/Profiling/Planning) | 9,039 (33.9%) |
+| In-flight (U10-U12) | 195 |
+
+### Daily Volume (14-day)
+
+Пік: **1,122 runs** (Mar 27) — ймовірно load test. Поточний рівень: **~200-300 runs/day**.
+
+| Period | Avg runs/day |
+|--------|-------------|
+| Mar 26–31 | ~575 |
+| Apr 1–4 | ~448 |
+| Apr 5–9 | ~183 |
+
+### Memory Manager
+
+| Table | Rows | Note |
+|-------|------|------|
+| mm_memory_items | 3,553 | Extracted user knowledge |
+| mm_outbox | 3,564 | 3,548 done, 35 pending |
+| mm_summaries | 321 | Case summaries |
+| mm_doc_records | 679 | Uploaded documents |
+
+### User Data
+
+| Table | Rows |
+|-------|------|
+| tenants | 242 |
+| chat_sessions | 928 |
+| messages | 7,224 |
+| projects | 0 (new feature) |
+
+> [!warning] Stuck Runs
+> ~9,039 runs (34%) зупинилися на ранніх стадіях. Ймовірні причини: timeouts до впровадження ORCH, queue issues в Redis, cancelled requests. Потребує forensic аналізу — див. [[Lexery - Retry and Recovery]], [[Lexery - ORCH and Clarification]].
+
 ## Current Risks
 
 - branch divergence

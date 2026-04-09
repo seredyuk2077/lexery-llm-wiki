@@ -10,6 +10,39 @@ status: observed
 layer: meta
 ---
 
+## [2026-04-09] ingest | 29 raw sources processed
+
+- **architecture-docs/CURRENT_PIPELINE_STATE.md** — Lexery Legal Agent — Current Pipeline State
+- **architecture-docs/LEXERY_LEGAL_AI_AGENT_ARCHITECTURE.md** — Lexery Legal AI Agent — Повна архітектура
+- **architecture-docs/MEGA_DIAGRAM_FULL.md** — Lexery Legal AI Agent — Current Full Architecture
+- **architecture-docs/app-README.md** — Lexery Legal Agent — Implementation Architecture
+- **codebase-snapshots/monorepo-packages-2026-04-09.md** — Lexery Monorepo Package Snapshot — 2026-04-09
+- **codebase-snapshots/supabase-schema-2026-04-09.md** — Supabase Database Schema Snapshot — 2026-04-09
+- **github-commits/commits-2026.txt** — 67 lines, 8698 chars
+- **github-commits/commits-pre-2026.txt** — 1 lines, 0 chars
+- **github-prs/all-prs.json** — JSON array with 10 items
+- **github-prs/pr-1.json** — JSON object with 14 top-level keys
+- **github-prs/pr-1.md** — PR #1: chore: migrate frontend and configurate it to use monorepo infra
+- **github-prs/pr-10.json** — JSON object with 14 top-level keys
+- **github-prs/pr-10.md** — PR #10: [Frontend] feat: subscription plans
+- **github-prs/pr-2.json** — JSON object with 14 top-level keys
+- **github-prs/pr-2.md** — PR #2: [Backend] feat: add storage controller/service with uploading functionality
+- **github-prs/pr-3.json** — JSON object with 14 top-level keys
+- **github-prs/pr-3.md** — PR #3: [Backend] feat: tweak user schema and auth service to match new auth data
+- **github-prs/pr-4.json** — JSON object with 14 top-level keys
+- **github-prs/pr-4.md** — PR #4: Redesign system prompt editor
+- **github-prs/pr-5.json** — JSON object with 14 top-level keys
+- **github-prs/pr-5.md** — PR #5: [Backend / Agent] feat: add shared contracts(zod/types) for backend and agent
+- **github-prs/pr-6.json** — JSON object with 14 top-level keys
+- **github-prs/pr-6.md** — PR #6: [Agent] chore: change doclist script names to prevent errors
+- **github-prs/pr-7.json** — JSON object with 14 top-level keys
+- **github-prs/pr-7.md** — PR #7: [Frontend] feat: auth pages
+- **github-prs/pr-8.json** — JSON object with 14 top-level keys
+- **github-prs/pr-8.md** — PR #8: [Frontend] chore: refactor auth
+- **github-prs/pr-9.json** — JSON object with 14 top-level keys
+- **github-prs/pr-9.md** — PR #9: [Frontend] feat: add infra for email/sms/oauth registration
+
+
 # Lexery - Log
 
 ## [2026-04-09] V4 encyclopedia pass | architecture + canvases + self-growth
@@ -23,7 +56,7 @@ layer: meta
   - Master Map: 6 clean columns, 29 file cards, 31 edges, 0 overlaps
   - Runtime Graph: 6 zone groups, 16 file cards, pipeline stages at 240×60
 - Broken links fixed:
-  - `[[See Also]]` у Glossary → plain text
+  - `See Also` у Glossary → plain text (was broken wikilink)
   - Backticked non-existent page names у Project Brain → actual wikilinks
   - Logo embeds verified (Obsidian resolves by basename)
 - Link suggestion engine:

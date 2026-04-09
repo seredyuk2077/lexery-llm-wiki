@@ -10,178 +10,137 @@ status: observed
 layer: meta
 ---
 
-# Lexery - Index
+# Lexery — Index
 
-## Purpose
+> Каталог усіх сторінок wiki. Оновлюється при кожному ingest.
 
-Це content-oriented index для всієї Lexery wiki у стилі Karpathy: одна точка, з якої можна пройти по всіх сторінках як по compiled knowledge base.
+## Brain (Pipeline)
 
-## Hubs
+| Page | Summary | Layer |
+|------|---------|-------|
+| [[Lexery - U1-U12 Runtime]] | Повний довідник 12-етапного pipeline від Gateway до Deliver | brain |
+| [[Lexery - Brain Architecture]] | Верхньорівнева архітектура `apps/brain` і межі сервісу | brain |
+| [[Lexery - Run Lifecycle]] | Стани run, переходи та схема snapshot | brain |
+| [[Lexery - Public Trace]] | Виконавчий trace і події API для спостереження за run | brain |
+| [[Lexery - ORCH and Clarification]] | Обмежена оркестрація, пауза/відновлення, runtime control | brain |
+| [[Lexery - Retry and Recovery]] | Контракти повторів і обмежені механізми відновлення | brain |
+| [[Lexery - Coverage Gap Honesty]] | Як система чесно поводиться при браку доказів | brain |
+| [[Lexery - U1 Gateway]] | Intake: HTTP/черга, R2-вкладення | brain |
+| [[Lexery - U2 Query Profiling]] | Класифікація запиту, LLDBI hints, виявлення домену | brain |
+| [[Lexery - U3 Planning]] | Планування виконання та маршрутизація стадій | brain |
+| [[Lexery - U4 Retrieval]] | RAG, пошук по корпусу, підготовка контексту | brain |
+| [[Lexery - U5 Gate]] | Перевірки якості та політики після retrieval | brain |
+| [[Lexery - U6 Recovery]] | Відновлення та альтернативні шляхи при збоях | brain |
+| [[Lexery - U7 Evidence Assembly]] | Збір і структурування evidence для reasoning | brain |
+| [[Lexery - U8 Legal Reasoning]] | Юридичне міркування на базі зібраних доказів | brain |
+| [[Lexery - U9 Assemble]] | Збірка фінального контенту з проміжних артефактів | brain |
+| [[Lexery - U10 Writer]] | Стадія writer / Legal Agent і генерація тексту | brain |
+| [[Lexery - U11 Verify]] | Верифікація виходу та узгодженість із джерелами | brain |
+| [[Lexery - U12 Deliver]] | Доставка результату клієнту та фіналізація run | brain |
 
-- [[Lexery - Project Brain]]
-  central hub and master navigation page.
-- [[Lexery - Master Map.canvas|Lexery Master Map Canvas]]
-  top-level visual overview of the whole wiki.
+## Architecture & Infrastructure
 
-## Meta
-
-- [[Lexery - Source Map]]
-  source hierarchy, trust model, repos included, document clusters.
-- [[Lexery - Index]]
-  this catalog page.
-- [[Lexery - Log]]
-  chronological wiki maintenance / ingest log.
-- [[Lexery - Open Questions and Drift]]
-  known contradictions, incomplete truths, unresolved integration questions.
-
-## History
-
-- [[Lexery - Timeline]]
-  chronological evolution from beta app to current monorepo.
-- [[Lexery - Idea Evolution]]
-  conceptual transformation of the product.
-- [[Lexery - Repo Constellation]]
-  all relevant repos and their roles.
-- [[Lexery - Legacy Beta App]]
-  earliest consumer-facing product identity.
-- [[Lexery - Legacy Architecture Bridge]]
-  the critical bridge repo where Brain/system architecture emerged.
-- [[Lexery - Legacy Branch Families]]
-  historical branch lines such as `new-design-v3-final`, `feature/supreme-court-case-law-rag`, `codex/legal-rag-foundation`.
-- [[Lexery - Branch before-LawDatabase]]
-  checkpoint branch before deeper law-database acceleration.
-- [[Lexery - Branch new-design-v3-final]]
-  design v3 and law-database convergence branch.
-- [[Lexery - Branch Supreme Court Case Law RAG]]
-  case-law and corpus-engineering mega-branch.
-- [[Lexery - Branch Lexery Legal Agent Architecture]]
-  clearest direct ancestor of current Brain.
-- [[Lexery - Branch codex legal-rag-foundation]]
-  late retrieval-hardening precursor branch.
-- [[Lexery - Corpus Evolution]]
-  legislation/DocList/LLDBI evolution as a separate historical subsystem.
-- [[Lexery - Frontend and Brand Evolution]]
-  UI/workspace/branding evolution from beta to Lexery workspace product.
-- [[Lexery - Frontend Refactor Context]]
-  Linear document on refactor-vs-feature integration logic.
-- [[Lexery - Naming Evolution]]
-  Mike Ross → Ukrainian Lawyer → Lexora → Lexery AI.
-
-## Operating Model
-
-- [[Lexery - Team and Operating Model]]
-  people, roles, agent-assisted development.
-- [[Lexery - Andrii Serediuk]]
-  founder, architecture authority, Brain domain owner.
-- [[Lexery - Yehor Puhach]]
-  backend engineer, NestJS/monorepo/auth.
-- [[Lexery - Olexandr]]
-  frontend engineer, portal/workspace UI.
-- [[Lexery - PR Chronology]]
-  pull request ledger and merge patterns.
-- [[Lexery - Linear Roadmap]]
-  projects, issues, milestones, architecture-to-execution translation.
-- [[Lexery - GitHub History]]
-  PR ledger, branch families, current remote state, contributors.
+| Page | Summary | Layer |
+|------|---------|-------|
+| [[Lexery - Deployment and Infra]] | Хостинг, керовані сервіси, топологія деплою | data |
+| [[Lexery - Provider Topology]] | OpenRouter, Azure, Supabase, Redis, Qdrant, R2, Rada | data |
+| [[Lexery - Storage Topology]] | Сховища, ролі та патерни доступу | data |
 
 ## Product
 
-- [[Lexery - Product Surface]]
-  high-level product shell around Brain.
-- [[Lexery - Portal Surface Map]]
-  concrete inventory of current `apps/portal`.
-- [[Lexery - API and Control Plane]]
-  NestJS, Prisma, auth, tenant/workspace/subscription layer.
-- [[Lexery - Contracts and Run Schema]]
-  shared boundary objects for runs, attachments, auth context, snapshots.
-- [[Lexery - Business Model]]
-  plans, feature gating, monetization signals, pricing drift.
-- [[Lexery - Current State]]
-  current observed repo/GitHub truth as of 2026-04-09.
-- [[Lexery - Branch Divergence]]
-  split between `origin/dev` and `legal-agent-brain-dev`.
+| Page | Summary | Layer |
+|------|---------|-------|
+| [[Lexery - Product Surface]] | Високорівнева оболонка продукту навколо Brain | product |
+| [[Lexery - Portal Surface Map]] | Інвентаризація поточного `apps/portal` | product |
+| [[Lexery - API and Control Plane]] | NestJS, Prisma, auth, tenant/workspace/subscription | product |
+| [[Lexery - Contracts and Run Schema]] | Спільні boundary-об’єкти run, вкладень, auth snapshot | product |
+| [[Lexery - Business Model]] | Плани, feature gating, монетизація, pricing drift | product |
+| [[Lexery - Current State]] | Спостережуваний стан репо та GitHub на дату зрізу | product |
+| [[Lexery - Branch Divergence]] | Розходження `origin/dev` і `legal-agent-brain-dev` | product |
+| [[Lexery - Frontend Refactor Context]] | Linear-документ про логіку refactor vs feature | product |
 
-## Brain
+## History
 
-- [[Lexery - Brain Architecture]]
-  top-level architecture of `apps/brain`.
-- [[Lexery - Public Trace]]
-  execution trace and events API.
-- [[Lexery - Run Lifecycle]]
-  run states, transitions, snapshot schema.
-- [[Lexery - Coverage Gap Honesty]]
-  how the system handles missing evidence honestly.
-- [[Lexery - Retry and Recovery]]
-  retry contracts, bounded recovery mechanisms.
-- [[Lexery - ORCH and Clarification]]
-  bounded orchestration, pause/resume, runtime control.
-- [[Lexery - U1-U12 Runtime]]
-  stage system as a whole.
+| Page | Summary | Layer |
+|------|---------|-------|
+| [[Lexery - Timeline]] | Хронологія від beta app до поточного monorepo | history |
+| [[Lexery - Idea Evolution]] | Концептуальна трансформація продукту | history |
+| [[Lexery - Repo Constellation]] | Усі релевантні репо та їхні ролі в екосистемі | meta |
+| [[Lexery - Legacy Beta App]] | Найраніший consumer-facing ідентитет продукту | history |
+| [[Lexery - Legacy Architecture Bridge]] | Критичний міст, де сформувалась архітектура Brain | history |
+| [[Lexery - Legacy Branch Families]] | Історичні лінії гілок (v3, case-law RAG, legal-rag-foundation) | history |
+| [[Lexery - Branch before-LawDatabase]] | Checkpoint перед прискоренням law-database | history |
+| [[Lexery - Branch new-design-v3-final]] | Design v3 і зближення з law-database | history |
+| [[Lexery - Branch Supreme Court Case Law RAG]] | Case-law і corpus-engineering mega-branch | history |
+| [[Lexery - Branch Lexery Legal Agent Architecture]] | Найчіткіший прямий предок поточного Brain | history |
+| [[Lexery - Branch codex legal-rag-foundation]] | Пізній попередник retrieval-hardening | history |
+| [[Lexery - Corpus Evolution]] | Еволюція legislation / DocList / LLDBI як підсистеми | history |
+| [[Lexery - Frontend and Brand Evolution]] | UI, workspace і бренд від beta до Lexery | history |
+| [[Lexery - Naming Evolution]] | Mike Ross → Ukrainian Lawyer → Lexora → Lexery AI | history |
+| [[Lexery - GitHub History]] | PR-реєстр, сім’ї гілок, remote, контриб’ютори | history |
 
-### Runtime stages
+## Team & People
 
-- [[Lexery - U1 Gateway]]
-- [[Lexery - U2 Query Profiling]]
-- [[Lexery - U3 Planning]]
-- [[Lexery - U4 Retrieval]]
-- [[Lexery - U5 Gate]]
-- [[Lexery - U6 Recovery]]
-- [[Lexery - U7 Evidence Assembly]]
-- [[Lexery - U8 Legal Reasoning]]
-- [[Lexery - U9 Assemble]]
-- [[Lexery - U10 Writer]]
-- [[Lexery - U11 Verify]]
-- [[Lexery - U12 Deliver]]
+| Page | Summary | Layer |
+|------|---------|-------|
+| [[Lexery - Team and Operating Model]] | Люди, ролі, agent-assisted розробка | team |
+| [[Lexery - Andrii Serediuk]] | Засновник, архітектурна влада, власник Brain-домену | team |
+| [[Lexery - Yehor Puhach]] | Backend engineer: NestJS, monorepo, auth | team |
+| [[Lexery - Olexandr]] | Frontend engineer: portal / workspace UI | team |
+| [[Lexery - Linear Roadmap]] | Проєкти, issues, віхи: від архітектури до виконання | team |
+| [[Lexery - PR Chronology]] | Журнал pull request і патерни merge | team |
 
-## Data / Memory / Infra
+## Governance & Meta
 
-- [[Lexery - Retrieval, LLDBI, DocList]]
-  current retrieval and corpus planes.
-- [[Lexery - Memory and Documents]]
-  memory manager and document surfaces.
-- [[Lexery - Deployment and Infra]]
-  hosting, managed services, deploy topology.
-- [[Lexery - LLDBI Surface]]
-  Qdrant-backed legislation index, admin CLI, signal extraction.
-- [[Lexery - DocList Surface]]
-  Rada catalog resolver, disambiguation reason codes.
-- [[Lexery - Import Proposal Loop]]
-  Brain → LLDBI import proposal pipeline.
-- [[Lexery - Provider Topology]]
-  OpenRouter, Azure, Supabase, Redis, Qdrant, R2, Rada.
-- [[Lexery - Storage Topology]]
-  data stores, their roles, access patterns.
+| Page | Summary | Layer |
+|------|---------|-------|
+| [[Lexery - Index]] | Майстер-навігація: каталог усіх сторінок wiki | meta |
+| [[Lexery - Project Brain]] | Центральний hub і головна навігація compiled wiki | meta |
+| [[Lexery - Source Map]] | Ієрархія джерел, trust model, кластери документів | meta |
+| [[Lexery - Log]] | Хронологічний журнал ingest і обслуговування wiki | meta |
+| [[Lexery - Open Questions and Drift]] | Відомі суперечності, неповні істини, невирішені інтеграції | governance |
+| [[Lexery - Decision Registry]] | Журнал архітектурних і продуктових рішень | governance |
+| [[Lexery - Glossary]] | Словник термінів і лексики Lexery | meta |
+| [[Lexery - Drift Radar]] | Активні суперечності та розходження джерел | governance |
+| [[Lexery - Unknowns Queue]] | Відомі невідомі, що потребують розслідування | governance |
+| [[Lexery - Source Registry]] | Реєстр усіх ingested джерел | meta |
+| [[Lexery - Cost Ledger]] | Облік витрат AI на підтримку wiki | meta |
+| [[Lexery - Maintenance Runbook]] | Як підтримувати second brain | meta |
+| [[Lexery - Automation Architecture]] | Дизайн самопідтримуваного ingest-pipeline | meta |
 
-## Governance
+## Data & Retrieval
 
-- [[Lexery - Decision Registry]]
-  architectural and product decision log.
-- [[Lexery - Glossary]]
-  Lexery-specific vocabulary and terms.
-- [[Lexery - Drift Radar]]
-  active contradictions and divergences.
-- [[Lexery - Unknowns Queue]]
-  known unknowns needing investigation.
-- [[Lexery - Source Registry]]
-  registry of all ingested sources.
-- [[Lexery - Cost Ledger]]
-  AI cost tracking for wiki maintenance.
-- [[Lexery - Maintenance Runbook]]
-  how to maintain the second brain.
-- [[Lexery - Automation Architecture]]
-  self-maintaining pipeline design.
+| Page | Summary | Layer |
+|------|---------|-------|
+| [[Lexery - Retrieval, LLDBI, DocList]] | Поточні площини retrieval і корпусу | data |
+| [[Lexery - Memory and Documents]] | Memory manager і документні поверхні | data |
+| [[Lexery - LLDBI Surface]] | Qdrant legislation index, admin CLI, витягування сигналів | data |
+| [[Lexery - DocList Surface]] | Каталог Rada, reason codes дизамбігуації | data |
+| [[Lexery - Import Proposal Loop]] | Pipeline Brain → LLDBI import proposals | data |
 
 ## Canvases
 
-- [[Lexery - Master Map.canvas|Master map]]
-- [[Lexery - History Graph.canvas|History graph]]
-- [[Lexery - Runtime Graph.canvas|Runtime graph]]
-- [[Lexery - Product Graph.canvas|Product graph]]
-- [[Lexery - Infrastructure Graph.canvas|Infrastructure graph]]
-- [[Lexery - Team Graph.canvas|Team graph]]
-- [[Lexery - Branch Lineage.canvas|Branch lineage]]
+| Canvas | Description |
+|--------|-------------|
+| [[Lexery - Master Map.canvas|🗺️ Master Map]] | Повна топологія wiki — 6 зон |
+| [[Lexery - Runtime Graph.canvas|⚙️ Runtime Graph]] | U1-U12 pipeline flow |
+| [[Lexery - Product Graph.canvas|📦 Product Graph]] | Product surfaces and state |
+| [[Lexery - History Graph.canvas|📜 History Graph]] | Historical evolution |
+| [[Lexery - Infrastructure Graph.canvas|🏗️ Infrastructure Graph]] | Storage, cloud, retrieval topology |
+| [[Lexery - Team Graph.canvas|👥 Team Graph]] | Team structure and ownership |
+| [[Lexery - Branch Lineage.canvas|🌿 Branch Lineage]] | Git branch family tree |
 
-## See Also
+## Raw Sources
 
-- [[Lexery - Project Brain]]
-- [[Lexery - Log]]
+Raw immutable sources live in `raw/`:
+- `github-prs/` — 10 PRs (JSON + markdown)
+- `github-commits/` — 66 commits (2026)
+- `architecture-docs/` — 4 canonical architecture docs
+- `codebase-snapshots/` — DB schema, monorepo packages
+
+## Statistics
+
+- **Pages:** 69
+- **Canvases:** 7
+- **Raw sources:** 29
+- **Frontmatter coverage:** 100%
