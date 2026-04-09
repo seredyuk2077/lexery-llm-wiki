@@ -3,14 +3,13 @@
 - **Author:** puhachyeser
 - **Branch:** feat/adapt-new-auth-methods → dev
 - **Created:** 2026-04-02
-- **Closed:** 2026-04-02
 - **State:** MERGED
 
 ## Description
 
-(no description)
+(none)
 
-## Files Changed (6)
+## Files (6)
 
 - `apps/api/.env.example` (+2 -0)
 - `apps/api/prisma/migrations/20260402142422_change_user_to_fit_fe_auth/migration.sql` (+13 -0)

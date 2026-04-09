@@ -10,6 +10,63 @@ status: observed
 layer: meta
 ---
 
+## [2026-04-09] V8 — Autonomous System + Deep Fill
+
+### Що зроблено
+- **Видалено GitHub deployment**: repo `seredyuk2077/lexery-wiki` видалено, Quartz site прибрано, GitHub Actions більше не потрібні
+- **Побудовано автономний codebase scanner** (`scan-codebase.mjs`): сканує repo, збирає 67 commits, 10 PRs, 94 test files, config, workflows, architecture docs
+- **Побудовано Supabase poller** (`scan-supabase.mjs`): генерує refresh requests для інтерактивних MCP сесій
+- **Побудовано auto-fill engine** (`auto-fill.mjs`): оновлює wiki pages з raw data (PRs → chronology, commits → velocity, Linear refs)
+- **Повний maintenance pipeline**: 11 scripts, виконується за ~15 секунд, 0 errors / 0 warnings
+- **Масове поглиблення сторінок**: Pipeline Health Dashboard (live Supabase data), Technology Stack (635-line config breakdown), Contracts and Run Schema (22-column schema), Who Built What (commit velocity), PR Chronology (file changes), Run Lifecycle (live status distribution), Source Registry (MCP sources + automation scripts)
+- **Свіжі Supabase дані**: 26,704 runs, 17,183 completed, 23.6s avg latency, 370 MB runs table, 374 legislation docs (100% indexed)
+
+### Метрики
+- **73 pages**, **10,728 lines** (було 9,977)
+- **1,411 wikilinks** у content pages
+- **40 raw source files**
+- **0 lint errors**, 0 warnings
+- **launchd** працює: daily at 08:00
+
+---
+
+## [2026-04-09] ingest | 33 raw sources processed
+
+- **architecture-docs/CURRENT_PIPELINE_STATE.md** — Lexery Legal Agent — Current Pipeline State
+- **architecture-docs/LEXERY_LEGAL_AI_AGENT_ARCHITECTURE.md** — Lexery Legal AI Agent — Повна архітектура
+- **architecture-docs/MEGA_DIAGRAM_FULL.md** — Lexery Legal AI Agent — Current Full Architecture
+- **architecture-docs/README.md** — Lexery Legal Agent — Implementation Architecture
+- **codebase-snapshots/monorepo-packages-2026-04-09.md** — Monorepo Packages — 2026-04-09
+- **codebase-snapshots/root-package.json** — JSON object with 6 top-level keys
+- **codebase-snapshots/supabase-live-stats-2026-04-09.md** — Supabase Live Stats — 2026-04-09
+- **codebase-snapshots/supabase-refresh-request-2026-04-09.md** — Supabase Stats Request — 2026-04-09
+- **codebase-snapshots/test-inventory.txt** — 94 lines, 8337 chars
+- **github-commits/branches.txt** — 15 lines, 1786 chars
+- **github-commits/commits-recent.txt** — 67 lines, 8830 chars
+- **github-commits/uncommitted-diff.txt** — 43 lines, 2733 chars
+- **github-prs/all-prs.json** — JSON array with 10 items
+- **github-prs/pr-1.json** — JSON object with 12 top-level keys
+- **github-prs/pr-1.md** — PR #1: chore: migrate frontend and configurate it to use monorepo infra
+- **github-prs/pr-10.json** — JSON object with 12 top-level keys
+- **github-prs/pr-10.md** — PR #10: [Frontend] feat: subscription plans
+- **github-prs/pr-2.json** — JSON object with 12 top-level keys
+- **github-prs/pr-2.md** — PR #2: [Backend] feat: add storage controller/service with uploading functionality
+- **github-prs/pr-3.json** — JSON object with 12 top-level keys
+- **github-prs/pr-3.md** — PR #3: [Backend] feat: tweak user schema and auth service to match new auth data
+- **github-prs/pr-4.json** — JSON object with 12 top-level keys
+- **github-prs/pr-4.md** — PR #4: Redesign system prompt editor
+- **github-prs/pr-5.json** — JSON object with 12 top-level keys
+- **github-prs/pr-5.md** — PR #5: [Backend / Agent] feat: add shared contracts(zod/types) for backend and agent
+- **github-prs/pr-6.json** — JSON object with 12 top-level keys
+- **github-prs/pr-6.md** — PR #6: [Agent] chore: change doclist script names to prevent errors
+- **github-prs/pr-7.json** — JSON object with 12 top-level keys
+- **github-prs/pr-7.md** — PR #7: [Frontend] feat: auth pages
+- **github-prs/pr-8.json** — JSON object with 12 top-level keys
+- **github-prs/pr-8.md** — PR #8: [Frontend] chore: refactor auth
+- **github-prs/pr-9.json** — JSON object with 12 top-level keys
+- **github-prs/pr-9.md** — PR #9: [Frontend] feat: add infra for email/sms/oauth registration
+
+
 ## [2026-04-09] ingest | 29 raw sources processed
 
 - **architecture-docs/CURRENT_PIPELINE_STATE.md** — Lexery Legal Agent — Current Pipeline State
@@ -44,6 +101,36 @@ layer: meta
 
 
 # Lexery - Log
+
+## 2026-04-09 — Automated Sync
+
+# Git Digest — 2026-04-09
+
+## Lexery — `legal-agent-brain-dev`
+
+```
+7457d99 brain: archive exploratory retrieval audit datasets
+214e1a1 brain: harden U2 U4 retrieval runtime and docs
+ffdcae9 brain: compact singular legal-basis locator bundles
+287549a brain: preserve multi-goal owner candidates
+301f639 brain: preserve explicit natural procedure bundles
+f0ea35c brain: trim derivative order tails without weak anchors
+84a4fd7 brain: split goal category envelope from hard constraints
+bc7b131 brain: anchor natural follow-up goals
+3738b04 brain: harden compact multigoal retrieval boundaries
+f688557 brain: harden weak-evidence semantics and leading-act rescue
+50dacfe brain: harden missing-act honesty for cache misses
+```
+
+
+
+# GitHub PR Digest — 2026-04-09
+
+No new PRs since last sync.
+
+> Auto-generated by [[Lexery - Automation Architecture|maintenance automation]]. See [[Lexery - Brain Architecture]] for system shape.
+
+---
 
 ## [2026-04-09] V5 Karpathy alignment | 3-layer architecture + operations + raw sources
 

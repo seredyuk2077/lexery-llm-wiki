@@ -3,14 +3,13 @@
 - **Author:** puhachyeser
 - **Branch:** feat/shared-contracts → dev
 - **Created:** 2026-04-03
-- **Closed:** 2026-04-04
 - **State:** MERGED
 
 ## Description
 
 https://linear.app/lexery/issue/LEX-198/shared-contracts-unifikaciya-zod-shem-ta-tipiv
 
-## Files Changed (10)
+## Files (10)
 
 - `apps/api/package.json` (+1 -0)
 - `apps/brain/eslint.config.js` (+9 -0)

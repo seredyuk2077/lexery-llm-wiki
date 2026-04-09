@@ -1,66 +1,109 @@
-# Supabase Live Production Stats — 2026-04-09
+# Supabase Live Stats — 2026-04-09
 
-## Run Status Distribution (26,680 total)
+## Legal Agent DB
 
-| Status | Count | % |
-|--------|-------|---|
-| completed | 17,169 | 64.4% |
-| Planning (stuck) | 7,449 | 27.9% |
-| Profiling (stuck) | 895 | 3.4% |
-| Intake (stuck) | 695 | 2.6% |
-| failed | 277 | 1.0% |
-| U10_RUNNING | 100 | 0.4% |
-| U11_DONE | 60 | 0.2% |
-| U12_RUNNING | 20 | 0.1% |
-| U10_DONE | 12 | 0.0% |
-| U11_RUNNING | 3 | 0.0% |
+### Run Status Distribution
+| Status | Count |
+|--------|-------|
+| completed | 17,183 |
+| Planning | 7,449 |
+| Profiling | 895 |
+| Intake | 705 |
+| failed | 277 |
+| U10_RUNNING | 100 |
+| U11_DONE | 60 |
+| U12_RUNNING | 20 |
+| U10_DONE | 12 |
+| U11_RUNNING | 3 |
 
-**Key insight:** ~9,039 runs (34%) stuck in early stages (Intake/Profiling/Planning). These likely represent runs that entered the pipeline but didn't progress — either due to timeouts, queue issues, or cancellations before the new ORCH was added.
+**Total runs: ~26,704**
 
-## Daily Run Volume (14-day window)
-
+### Daily Volume (30 days)
 | Date | Runs |
 |------|------|
-| Apr 9 | 316 |
-| Apr 8 | 174 |
-| Apr 7 | 132 |
-| Apr 6 | 115 |
-| Apr 5 | 178 |
-| Apr 4 | 516 |
-| Apr 3 | 781 |
-| Apr 2 | 180 |
-| Apr 1 | 315 |
-| Mar 31 | 82 |
-| Mar 30 | 404 |
-| Mar 29 | 664 |
-| Mar 28 | 978 |
-| Mar 27 | 1,122 |
-| Mar 26 | 199 |
+| 2026-04-09 | 340 |
+| 2026-04-08 | 174 |
+| 2026-04-07 | 132 |
+| 2026-04-06 | 115 |
+| 2026-04-05 | 178 |
+| 2026-04-04 | 516 |
+| 2026-04-03 | 781 |
+| 2026-04-02 | 180 |
+| 2026-04-01 | 315 |
+| 2026-03-31 | 82 |
+| 2026-03-30 | 404 |
+| 2026-03-29 | 664 |
+| 2026-03-28 | 978 |
+| 2026-03-27 | 1,122 |
+| 2026-03-26 | 316 |
+| 2026-03-25 | 627 |
+| 2026-03-24 | 2,786 |
+| 2026-03-23 | 477 |
+| 2026-03-22 | 1,509 |
+| 2026-03-20 | 1,787 |
+| 2026-03-19 | 334 |
+| 2026-03-18 | 343 |
+| 2026-03-17 | 28 |
+| 2026-03-16 | 396 |
+| 2026-03-15 | 1,197 |
+| 2026-03-14 | 532 |
+| 2026-03-13 | 168 |
+| 2026-03-12 | 511 |
+| 2026-03-11 | 646 |
+| 2026-03-10 | 195 |
 
-**14-day total:** ~6,156 runs
-**Peak:** 1,122 (Mar 27) — likely a load test / stress test day
-**Recent trend:** decreasing from ~780/day early Apr to ~200-300/day
+**30-day peak: 2,786 (2026-03-24)**
 
-## Memory Manager Outbox
+### Entity Counts
+| Entity | Count |
+|--------|-------|
+| Tenants | 242 |
+| Chat Sessions | 935 |
+| Messages | 7,239 |
+| MM Memory Items | 3,565 |
+| MM Outbox | 3,596 |
+| MM Doc Records | 679 |
 
-| Event Type | Status | Count |
-|------------|--------|-------|
-| index_memory | done | 3,548 |
-| index_memory | pending | 35 |
-
-No `summarize_case` events exist — this event type is defined in schema but not yet emitted in production.
-
-## Table Sizes
-
-| Table | Rows |
+### Table Sizes
+| Table | Size |
 |-------|------|
-| runs | 26,661 |
-| messages | 7,224 |
-| mm_memory_items | 3,553 |
-| mm_outbox | 3,564 |
-| chat_sessions | 928 |
-| mm_doc_records | 679 |
-| mm_doc_ingest_log | 1,363 |
-| mm_summaries | 321 |
-| tenants | 242 |
-| projects | 0 |
+| runs | 370 MB |
+| mm_outbox | 5,336 kB |
+| messages | 5,200 kB |
+| mm_memory_items | 2,304 kB |
+| mm_doc_ingest_log | 1,656 kB |
+| mm_doc_records | 928 kB |
+| mm_summaries | 328 kB |
+| chat_sessions | 272 kB |
+| tenants | 80 kB |
+| projects | 16 kB |
+
+### Performance
+- Average completed run time (7d): **23.6 seconds**
+
+### Runs Schema
+id (uuid), run_id (text), tenant_id (uuid), user_id (uuid), conversation_id (uuid), status (text), query (text), query_profile (jsonb), search_plan (jsonb), created_at (timestamptz), updated_at (timestamptz), completed_at (timestamptz), snapshot (jsonb), degraded_flags (jsonb), error_code (text), attachments_manifest (jsonb), idempotency_key (text), retrieval_trace (jsonb), gate_decision (jsonb), llm_result (jsonb), verify_result (jsonb), assembled_prompt (jsonb)
+
+### Chat Sessions Schema
+id (uuid), tenant_id (uuid), user_id (uuid), created_at (timestamptz), updated_at (timestamptz), project_id (uuid), chat_system_prompt (text), user_system_prompt (text)
+
+### MM Memory Items Schema
+id (uuid), user_id (uuid), tenant_id (uuid), conversation_id (uuid), scope_type (text), scope_id (text), content (text), metadata (jsonb), content_hash (text), created_at (timestamptz), r2_key (text), content_size (integer)
+
+## Legislation RAG DB
+
+### Document Stats
+| Metric | Value |
+|--------|-------|
+| Total documents | 374 |
+| All indexed in Qdrant | 374 (100%) |
+
+### By Validity Status
+| Status | Count |
+|--------|-------|
+| in_force | 360 |
+| expired | 13 |
+| not_in_force | 1 |
+
+### Legislation Documents Schema (42 columns)
+rada_nreg, rada_dokid, title, document_type, category, law_number, rada_datred, content_hash, previous_hash, imported_at, updated_at, r2_key, source_url, articles_count, is_active, sync_status, keywords, topics, chunks_count, indexed_content_hash, qdrant_status, qdrant_indexed_at, expected_chunks, indexed_chunks, last_checked_at, auto_update, last_sync_error, summary, aliases, act_group_key, act_is_part, act_part_label, act_group_title, storage_category, document_type_slug, document_number, sync_health, sync_issue, validity_status, status_note, source_status_text, source_status_location

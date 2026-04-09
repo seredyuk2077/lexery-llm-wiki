@@ -33,12 +33,15 @@ const logPath = join(LOGS_DIR, `maintenance-${todayCompact()}.md`);
 const node = process.execPath;
 
 const steps = [
+  ['scan-codebase.mjs', true],
   ['sync-git.mjs', true],
   ['sync-github.mjs', true],
   ['sync-linear.mjs', false],
+  ['scan-supabase.mjs', false],
   ['generate-delta.mjs', false],
   ['update-log.mjs', false],
   ['ingest.mjs', false],
+  ['auto-fill.mjs', false],
   ['suggest-links.mjs', false],
   ['lint.mjs', false],
 ];

@@ -3,14 +3,13 @@
 - **Author:** alexbach093
 - **Branch:** {Frontend}-system-prompt-redesign → dev
 - **Created:** 2026-04-02
-- **Closed:** 2026-04-03
 - **State:** MERGED
 
 ## Description
 
-(no description)
+(none)
 
-## Files Changed (3)
+## Files (3)
 
 - `.gitignore` (+2 -1)
 - `apps/portal/src/app/globals.css` (+28 -0)

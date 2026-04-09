@@ -3,14 +3,13 @@
 - **Author:** puhachyeser
 - **Branch:** feat/file-upload-presigned-urls → dev
 - **Created:** 2026-03-30
-- **Closed:** 2026-03-31
 - **State:** MERGED
 
 ## Description
 
 https://linear.app/lexery/issue/LEX-201/storage-generaciya-agent-compatible-presigned-urls-u-nestjs
 
-## Files Changed (10)
+## Files (10)
 
 - `apps/api/.env.example` (+18 -0)
 - `apps/api/package.json` (+4 -0)

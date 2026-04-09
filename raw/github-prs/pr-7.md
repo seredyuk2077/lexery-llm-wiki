@@ -3,14 +3,13 @@
 - **Author:** alexbach093
 - **Branch:** {Frontend}-chore/auth → dev
 - **Created:** 2026-04-04
-- **Closed:** 2026-04-05
 - **State:** MERGED
 
 ## Description
 
-(no description)
+(none)
 
-## Files Changed (71)
+## Files (71)
 
 - `apps/portal/app/(dev)/boot-error/page.tsx` (+0 -0)
 - `apps/portal/app/(workspace)/layout.tsx` (+25 -20)
@@ -42,6 +41,16 @@
 - `apps/portal/auth/components/auth/AuthScaffold.tsx` (+15 -0)
 - `apps/portal/auth/components/auth/AuthScrollLock.tsx` (+73 -0)
 - `apps/portal/auth/components/auth/AuthSecondaryButton.tsx` (+16 -0)
+- `apps/portal/auth/components/auth/screens/AuthChoiceScreen.tsx` (+83 -0)
+- `apps/portal/auth/components/auth/screens/EmailCodeScreen.tsx` (+119 -0)
+- `apps/portal/auth/components/auth/screens/PhoneCodeScreen.tsx` (+126 -0)
+- `apps/portal/auth/components/auth/screens/PhoneNumberScreen.tsx` (+64 -0)
+- `apps/portal/auth/components/icons/google-icon.tsx` (+16 -0)
+- `apps/portal/auth/components/icons/microsoft-icon.tsx` (+42 -0)
+- `apps/portal/auth/docs/CODEX_LEXERY_GUARDRAIL_PROMPT.md` (+40 -0)
+- `apps/portal/auth/docs/FIGMA_SOURCE.md` (+22 -0)
+- `apps/portal/auth/docs/REVIEW_WORKFLOW.md` (+17 -0)
+- `apps/portal/auth/docs/ROUTE_MAP.md` (+14 -0)
 
 ## Commits (6)
 

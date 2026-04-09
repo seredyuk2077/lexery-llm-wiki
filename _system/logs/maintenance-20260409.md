@@ -1,11 +1,24 @@
 # Maintenance run — 2026-04-09
 
-Started: 2026-04-09T14:02:35.145Z
+Started: 2026-04-09T17:20:35.043Z
+
+## scan-codebase.mjs
+
+```
+[scan-codebase] 2026-04-09
+  Commits (30d): 67
+  PRs: 10
+  Architecture docs: 4
+  Test files: 94
+[scan-codebase] done
+```
+
+Exit code: **0**
 
 ## sync-git.mjs
 
 ```
-Digest written to /Users/andriyseredyuk/Documents/Obsidian Vault/Lexery/_system/logs/git-digest-20260409.md
+Digest written to __PATH_LEXERY_MONOREPO__/LLM Wiki/_system/logs/git-digest-20260409.md
 ```
 
 Exit code: **0**
@@ -13,7 +26,7 @@ Exit code: **0**
 ## sync-github.mjs
 
 ```
-Digest written to /Users/andriyseredyuk/Documents/Obsidian Vault/Lexery/_system/logs/github-digest-20260409.md
+Digest written to __PATH_LEXERY_MONOREPO__/LLM Wiki/_system/logs/github-digest-20260409.md
 ```
 
 Exit code: **0**
@@ -28,11 +41,21 @@ LINEAR_API_KEY not set — skipping Linear sync.
 
 Exit code: **0**
 
+## scan-supabase.mjs
+
+```
+[scan-supabase] 2026-04-09
+  Stats refresh request written
+[scan-supabase] done
+```
+
+Exit code: **0**
+
 ## generate-delta.mjs
 
 ```
-Calling OpenRouter for summary...
-Delta written to /Users/andriyseredyuk/Documents/Obsidian Vault/Lexery/_system/logs/delta-summary-20260409.md
+OPENROUTER_API_KEY not set — skipping LLM summary. Raw delta preserved.
+Delta written to __PATH_LEXERY_MONOREPO__/LLM Wiki/_system/logs/delta-summary-20260409.md
 ```
 
 Exit code: **0**
@@ -40,7 +63,33 @@ Exit code: **0**
 ## update-log.mjs
 
 ```
-Log updated: /Users/andriyseredyuk/Documents/Obsidian Vault/Lexery/Lexery - Log.md
+Log updated: __PATH_LEXERY_MONOREPO__/LLM Wiki/Lexery - Log.md
+```
+
+Exit code: **0**
+
+## ingest.mjs
+
+```
+Found 33 new/modified raw sources.
+Ingested 33 sources. Log updated.
+```
+
+Exit code: **0**
+
+## auto-fill.mjs
+
+```
+[auto-fill] 2026-04-09
+  PR Chronology: 10 PRs
+  Commits: 67 total, 4 authors
+    Andriy: 37
+    puhachyeser: 17
+    Олександр Бачинський: 10
+    alexbach093: 3
+  Linear refs found: LEX-201, linear.app/lexery/issue/LEX-201/storage-generaciya-agent-compatible-presigned-urls-u-nestjs, LEX-198, linear.app/lexery/issue/LEX-198/shared-contracts-unifikaciya-zod-shem-ta-tipiv
+  Branches tracked
+[auto-fill] done
 ```
 
 Exit code: **0**
@@ -48,11 +97,20 @@ Exit code: **0**
 ## suggest-links.mjs
 
 ```
-Link suggestions written to /Users/andriyseredyuk/Documents/Obsidian Vault/Lexery/_system/logs/link-suggestions-20260409.md
+Link suggestions written to __PATH_LEXERY_MONOREPO__/LLM Wiki/_system/logs/link-suggestions-20260409.md
+```
+
+Exit code: **0**
+
+## lint.mjs
+
+```
+Lint report: __PATH_LEXERY_MONOREPO__/LLM Wiki/_system/logs/lint-report-20260409.md
+  0 errors, 0 warnings, 0 info
 ```
 
 Exit code: **0**
 
 ---
 
-Finished: 2026-04-09T14:02:43.074Z
+Finished: 2026-04-09T17:20:49.520Z

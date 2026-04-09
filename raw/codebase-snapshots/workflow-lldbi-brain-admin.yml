@@ -1,0 +1,102 @@
+name: LLDBI Brain Admin
+
+on:
+  schedule:
+    - cron: '15 4 * * 1'
+  workflow_dispatch:
+    inputs:
+      scope:
+        description: 'Batch scope'
+        required: false
+        default: 'hybrid'
+      sinceDays:
+        description: 'Lookback window for live documents'
+        required: false
+        default: '7'
+      brainLookbackHours:
+        description: 'Lookback window for Brain runs/hints'
+        required: false
+        default: '192'
+      brainLimit:
+        description: 'Maximum Brain runs to scan'
+        required: false
+        default: '500'
+      limit:
+        description: 'Maximum live documents to fetch'
+        required: false
+        default: '100'
+      approvedProposalLimit:
+        description: 'Maximum approved proposals to process after the batch step'
+        required: false
+        default: '10'
+
+permissions:
+  contents: read
+
+jobs:
+  brain-admin:
+    runs-on: ubuntu-latest
+    concurrency:
+      group: lldbi-brain-admin
+      cancel-in-progress: false
+    env:
+      SUPABASE_LEGISLATION_URL: ${{ secrets.SUPABASE_LEGISLATION_URL }}
+      SUPABASE_LEGISLATION_SERVICE_ROLE_KEY: ${{ secrets.SUPABASE_LEGISLATION_SERVICE_ROLE_KEY }}
+      SUPABASE_LEXERY_LEGAL_AGENT_DB_URL: ${{ secrets.SUPABASE_LEXERY_LEGAL_AGENT_DB_URL }}
+      SUPABASE_LEXERY_LEGAL_AGENT_DB_SERVICE_ROLE_KEY: ${{ secrets.SUPABASE_LEXERY_LEGAL_AGENT_DB_SERVICE_ROLE_KEY }}
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Setup pnpm
+        uses: pnpm/action-setup@v4
+        with:
+          version: 10.33.0
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: 22
+          cache: pnpm
+          cache-dependency-path: pnpm-lock.yaml
+
+      - name: Install dependencies
+        run: pnpm install --frozen-lockfile
+
+      - name: Prepare report directory
+        run: mkdir -p apps/lldbi/runs/brain-admin
+
+      - name: Run brain-admin batch
+        env:
+          BRAIN_ADMIN_SCOPE: ${{ github.event_name == 'workflow_dispatch' && inputs.scope || 'hybrid' }}
+          BRAIN_ADMIN_SINCE_DAYS: ${{ github.event_name == 'workflow_dispatch' && inputs.sinceDays || '7' }}
+          BRAIN_ADMIN_BRAIN_LOOKBACK_HOURS: ${{ github.event_name == 'workflow_dispatch' && inputs.brainLookbackHours || '192' }}
+          BRAIN_ADMIN_BRAIN_LIMIT: ${{ github.event_name == 'workflow_dispatch' && inputs.brainLimit || '500' }}
+          BRAIN_ADMIN_LIMIT: ${{ github.event_name == 'workflow_dispatch' && inputs.limit || '100' }}
+        run: >
+          pnpm --filter @lexery/lldbi run brain-admin -- --scope "$BRAIN_ADMIN_SCOPE"
+          --since-days "$BRAIN_ADMIN_SINCE_DAYS"
+          --brain-lookback-hours "$BRAIN_ADMIN_BRAIN_LOOKBACK_HOURS"
+          --brain-limit "$BRAIN_ADMIN_BRAIN_LIMIT"
+          --limit "$BRAIN_ADMIN_LIMIT"
+          --brain-runs
+          --apply-import-proposals
+          --output apps/lldbi/runs/brain-admin/report.json
+
+      - name: Process approved import proposals
+        env:
+          APPROVED_PROPOSAL_LIMIT: ${{ github.event_name == 'workflow_dispatch' && inputs.approvedProposalLimit || '10' }}
+        run: >
+          pnpm --filter @lexery/lldbi exec tsx admin-cli.ts process-approved-proposals
+          --limit "$APPROVED_PROPOSAL_LIMIT"
+          --json
+          > apps/lldbi/runs/brain-admin/approved-proposals-report.json
+
+      - name: Upload report artifact
+        uses: actions/upload-artifact@v4
+        with:
+          name: lldbi-brain-admin-report
+          path: |
+            apps/lldbi/runs/brain-admin/report.json
+            apps/lldbi/runs/brain-admin/approved-proposals-report.json
+          if-no-files-found: warn

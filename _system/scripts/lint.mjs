@@ -79,7 +79,7 @@ for (const file of allFiles) {
   let match;
   while ((match = linkPattern.exec(content)) !== null) {
     let target = match[1].trim().replace(/\\$/, '');
-    if (target.startsWith('_') || target.includes('/') || target.endsWith('.png') || target.endsWith('.canvas')) continue;
+    if (target.startsWith('_') || target.startsWith('#') || target.includes('/') || target.endsWith('.png') || target.endsWith('.canvas')) continue;
     if (/^[a-z]+$/.test(target) && target.length < 15) continue;
     outgoing.add(target);
   }

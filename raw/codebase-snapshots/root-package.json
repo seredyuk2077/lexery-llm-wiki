@@ -1,0 +1,21 @@
+{
+  "name": "lexery-monorepo",
+  "version": "1.0.0",
+  "private": true,
+  "packageManager": "pnpm@10.33.0", 
+  "scripts": {
+    "build": "turbo run build",
+    "dev": "turbo run dev",
+    "lint": "turbo run lint",
+    "brain:build": "pnpm --filter @lexery/brain run build",
+    "brain:lint": "pnpm --filter @lexery/brain run lint",
+    "brain:verify:fast": "pnpm --filter @lexery/brain run brain:verify:retrieval-real-dev:fast",
+    "lldbi:build": "pnpm --filter @lexery/lldbi run build",
+    "lldbi:lint": "pnpm --filter @lexery/lldbi run lint",
+    "lldbi:status": "pnpm --filter @lexery/lldbi run status",
+    "verify:cutover": "pnpm lint && pnpm build && pnpm --filter @lexery/lldbi run status && pnpm --filter @lexery/brain run brain:db:capabilities && pnpm --filter @lexery/brain run brain:r2:capabilities && pnpm --filter @lexery/brain run brain:verify:u5 && pnpm --filter @lexery/brain run brain:verify:retrieval-quality:smoke"
+  },
+  "devDependencies": {
+    "turbo": "latest"
+  }
+}

@@ -19,10 +19,13 @@ layer: team
 > - `raw/github-prs/pr-4.md`
 > - `raw/github-prs/pr-7.md`
 > - `raw/github-prs/pr-10.md`
+> - Team context: `@lexery/portal`, coordination with [[Lexery - Yehor Puhach|Yehor]] on auth
 
 # Olexandr (Sasha / Sanya)
 
-**Olexandr** — у команді його часто називають **Сашею** або **Санею** (українські зменшувальні). У Telegram зазвичай видно ім’я «Sanya»; публічний контакт у чатах: `@dilove_yapko`. На GitHub — **`alexbach093`**.
+**Olexandr** — у команді його часто називають **Сашею** або **Санею** (українські зменшувальні). У Telegram зазвичай видно ім’я «Sanya»; публічний контакт у чатах: `@dilove_yapko`. На GitHub — **[alexbach093](https://github.com/alexbach093)** (`@alexbach093`).
+
+Основний робочий фронт — пакет **`@lexery/portal`** у monorepo Lexery: **Next.js 14**, **React 19**, **shadcn/ui**, **Tailwind CSS**. Деталі стеку див. [[Lexery - Technology Stack]]; карта екранів порталу — [[Lexery - Portal Surface Map]].
 
 ## Роль
 
@@ -31,27 +34,57 @@ layer: team
 - **Власник/адміністратор групи Lexery.ai в Telegram** — структурував групу: канали на кшталт «Ideas and contributions», «Useful content», «Work links» (спостережувано з березня); у work-каналі публікує корисні посилання (Figma, GitHub тощо).
 - **Linear** — lead на проєкті **Frontend**, стиль координації близький до PM: пріоритезація, зв’язок з дизайном і з backend щодо контрактів.
 
+## Повний таймлайн PR у репозиторії
+
+Нижче — усі спостережувані змерджені PR Olexandr у `lexeryAI/Lexery` на відрізку квітня 2026 (дати за GitHub: відкриття → merge). Вони показують фокус на **користувацькому UI** та **операторських інструментах**.
+
+| PR | Назва | Відкрито | Змерджено | Короткий опис |
+| --- | --- | --- | --- | --- |
+| [#4](https://github.com/lexeryAI/Lexery/pull/4) | Redesign system prompt editor | 2026-04-02 | 2026-04-03 | Переробка UX редактора системного промпта для операторів: зручніша робота з конфігурацією промптів, узгоджено з продуктовою поверхнею чату та brain-конфігом ([[Lexery - Product Surface]], [[Lexery - Brain Architecture]]). |
+| [#7](https://github.com/lexeryAI/Lexery/pull/7) | `[Frontend] feat: auth pages` | 2026-04-04 | 2026-04-05 | Сторінки автентифікації у порталі: login, recovery та пов’язані flows на стороні UI; потребує узгодження з backend auth ([[Lexery - API and Control Plane]], [[Lexery - Yehor Puhach]]). |
+| [#10](https://github.com/lexeryAI/Lexery/pull/10) | `[Frontend] feat: subscription plans` | 2026-04-08 | 2026-04-08 | Плани підписки для користувачів у UI; у тілі PR (українською): *«Додано плани для користувачів і тимчасова їх видача»* — тобто відображення/видача планів як тимчасовий продуктовий крок, пов’язаний із [[Lexery - Business Model]]. |
+
+**Підсумок каденції:** три значущі PR за **шість календарних днів** (2 квітня → 8 квітня) — висока швидкість постачання user-facing та operator-facing змін без розмивання теми.
+
+## Доменна експертиза (frontend)
+
+Olexandr послідовно закриває три стовпи портального досвіду:
+
+1. **System prompt UX** — редактор системного промпта: це не лише «форма», а інструмент, який впливає на те, як оператори керують поведінкою агента; перетинається з ідеями з [[Lexery - Brain Architecture]] та картами продукту.
+2. **Auth pages** — повноцінні auth-екрани в Next.js: маршрути, стани помилок, узгодження з API-контрактами; логічний партнер для узгодження — Yehor як власник auth stack на API.
+3. **Subscription / plans UI** — тарифні плани, відображення та (за PR #10) тимчасова логіка видачі планів користувачам; бізнес-контекст — [[Lexery - Business Model]].
+
+Це узгоджується з [[Lexery - Who Built What]] та [[Lexery - PR Chronology]] як приклад чіткого frontend-треку в історії репозиторію.
+
+## Робочий патерн
+
+- **UI-first, user-facing:** пріоритет — те, що бачить кінцевий користувач або оператор у порталі; не backend-сервіси як первинна зона відповідальності.
+- **Швидка доставка:** на спостережуваному відрізку — **3 PR за 6 днів**, з тим що #10 відкритий і змерджений **в один день** (8 квітня), що вказує на готовність швидко доводити фічу до `main`.
+- **Незалежна frontend-робота:** гілки та PR сформульовані як чисто frontend-зміни (`feat: auth pages`, `subscription plans`); глибокий NestJS/Prisma не виставляти як його основну зону без окремого підтвердження.
+- **Координація там, де є контракт:** auth і підписки вимагають узгодження з API та схемою даних — типово через Yehor і спільні контракти ([[Lexery - Contracts and Run Schema]]).
+- **Review workflow:** на спостережуваних PR — без зовнішніх reviews перед merge; модель довіри та швидкої ітерації (self-merge / мінімальний gate). Не припускати formal gate на кожен PR без перевірки актуальної політики репо.
+
+## Технології, продемонстровані в роботі
+
+| Навичка / інструмент | Як проявляється |
+| --- | --- |
+| **React 19** | Сучасний runtime порталу разом із Next.js App Router у `@lexery/portal`. |
+| **Next.js 14** | Маршрутизація, SSR/CSR патерни для auth та маркетингово-продуктових сторінок. |
+| **shadcn/ui** | Консистентні компоненти форм, layout, діалогів узгоджено з дизайн-системою. |
+| **Tailwind CSS** | Utility-first стилізація, швидкі ітерації по UI без відходу від монорепо-стандарту. |
+| **Auth flows (UI)** | Сторінки входу, відновлення доступу, стани завантаження/помилок, зв’язок з backend session/token контрактами. |
+| **Subscription UI** | Екрани планів, відображення тарифів, тимчасова видача планів (за описом PR #10). |
+| **Operator tooling** | Редактор системного промпта як приклад internal/operator UX, не лише B2C. |
+
+Для агентів і людей, що підключаються до репо: шукати зміни переважно в `apps/portal` / пакеті `@lexery/portal` (уточнювати структуру каталогу в поточному дереві — [[Lexery - Source Map]]).
+
 ## Стиль комунікації
 
 - **Тон:** неформальний, короткі повідомлення, швидко відповідає; без зайвої церемонії.
 - **Підхід до проблем:** орієнтація на рішення — типово формулює можливість зміни («Можна змінити»), а не лише констатацію перешкоди.
 - **Технічні пояснення:** ставить уточнюючі питання українською (наприклад, що далі робиться з інформацією після кроку в процесі); після відповіді швидко фіксує розуміння («оке, зрозумів»).
 - **Підтвердження:** часто 👍 та emoji-реакції як сигнал «зрозмів / згоден».
-
-## Технічний домен (що будує)
-
-- **Portal UI** — layout, navigation, shell узгоджено з картами продукту ([[Lexery - Portal Surface Map]]).
-- **Auth pages** — login, recovery та пов’язані flows; залежить від backend auth ([[Lexery - API and Control Plane]]).
-- **Plans / subscriptions** — pricing UI, відображення планів (зв’язок з [[Lexery - Business Model]]).
-- **System prompt editor** — інструмент для операторів, впливає на конфігурацію runs; перетинається з ідеями з [[Lexery - Brain Architecture]] / [[Lexery - Product Surface]].
-- **Figma** — узгодження з дизайном; еволюція бренду в контексті [[Lexery - Frontend and Brand Evolution]], [[Lexery - Naming Evolution]].
-
-## Робочі патерни
-
-- **GitHub:** спостережувані змерджені PR (приклади тем): system prompt editor redesign (#4), auth pages (#7), subscription plans (#10; опис українською в тілі PR, на кшталт тимчасової видачі планів користувачам).
-- **Каденція:** приблизно один значущий PR кожні 2–3 дні (орієнтир, не жорстке правило).
-- **Review workflow:** на спостережуваних PR — без зовнішніх reviews перед merge; модель довіри та швидкої ітерації (self-merge / мінімальний gate).
-- **Фокус:** переважно frontend; глибокий backend не виставляти як його основну зону без підтвердження.
+- **Мова в артефактах:** заголовки та описи PR — **англійською** (з префіксом `[Frontend]` де доречно); пояснення в чаті та іноді body PR можуть бути **українською**.
 
 ## Взаємодія з Andriy
 
@@ -62,8 +95,9 @@ layer: team
 
 ## Взаємодія з Yehor
 
-- **Frontend ↔ backend:** auth PRs та суміжні зміни вимагають узгодження з [[Lexery - Yehor Puhach|Yehor]] (backend, API).
-- **Контракти:** форми, поля та стани в UI повинні відповідати [[Lexery - Contracts and Run Schema]]; питання по змінах API — через Yehor / спільні PR та Linear.
+- **Frontend ↔ backend:** PR #7 (auth pages) та суміжні зміни вимагають узгодження з [[Lexery - Yehor Puhach|Yehor]] — він тримає auth stack, Prisma-моделі користувачів і HTTP surface на API.
+- **Незалежність з границею:** Olexandr може швидко рухати UI в monorepo; контракти (поля форм, коди помилок, redirect після login) мають збігатися з тим, що реалізує Yehor.
+- **Спільні артефакти:** питання по змінах API — через спільні PR, Linear та [[Lexery - Contracts and Run Schema]].
 
 ## Що варто враховувати агенту (Codex / Cursor)
 
@@ -79,14 +113,17 @@ layer: team
 - [[Lexery - Yehor Puhach]]
 - [[Lexery - Portal Surface Map]]
 - [[Lexery - Frontend and Brand Evolution]]
+- [[Lexery - Frontend Refactor Context]]
 - [[Lexery - GitHub History]]
 - [[Lexery - PR Chronology]]
+- [[Lexery - Who Built What]]
 - [[Lexery - Contracts and Run Schema]]
 - [[Lexery - Business Model]]
+- [[Lexery - API and Control Plane]]
+- [[Lexery - Technology Stack]]
+- [[Lexery - Product Surface]]
+- [[Lexery - Brain Architecture]]
 - [[Lexery - Current State]]
-
-## See Also
-
-- [[Lexery - Who Built What]]
 - [[Lexery - Drift Radar]]
 - [[Lexery - Decision Registry]]
+- [[Lexery - Source Map]]

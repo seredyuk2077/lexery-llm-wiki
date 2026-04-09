@@ -391,20 +391,20 @@ stateDiagram-v2
   Degraded --> Deliver: continue
 ```
 
-| Стан          | Опис                                         | RunRecord.status  |
-| ------------- | -------------------------------------------- | ----------------- |
-| **Intake**    | Прийом запиту, перевірка прав/лімітів        | Intake            |
-| **Profiling** | [U2] Classify, QueryProfile                  | (in-memory)       |
-| **Planning**  | [U3] Plan, SearchPlan                        | (in-memory)       |
-| **Retrieval** | [U4] CacheRAG, опц. [U6][U7][U8]             | (in-memory)       |
-| **Assemble**  | [U9] ContextPack + EvidencePack              | (in-memory)       |
-| **Writing**   | [U10] Write, stream                          | drafting          |
-| **Verifying** | [U11] Verify, CoverageCritic                 | (in-memory)       |
-| **Deliver**   | [U12] SSE final, messages, outbox            | (finalizing)      |
-| **Completed** | Успішне завершення                           | completed         |
-| **Failed**    | Помилка (timeout, 5xx, policy)               | failed            |
-| **Cancelled** | Користувач скасував (DELETE /runs)           | cancelled         |
-| **Degraded**  | Часткова деградація (Qdrant down, no critic) | completed з flags |
+| Стан | Опис | RunRecord.status |
+|------|------|------------------|
+| **Intake** | Прийом запиту, перевірка прав/лімітів | Intake |
+| **Profiling** | [U2] Classify, QueryProfile | (in-memory) |
+| **Planning** | [U3] Plan, SearchPlan | (in-memory) |
+| **Retrieval** | [U4] CacheRAG, опц. [U6][U7][U8] | (in-memory) |
+| **Assemble** | [U9] ContextPack + EvidencePack | (in-memory) |
+| **Writing** | [U10] Write, stream | drafting |
+| **Verifying** | [U11] Verify, CoverageCritic | (in-memory) |
+| **Deliver** | [U12] SSE final, messages, outbox | (finalizing) |
+| **Completed** | Успішне завершення | completed |
+| **Failed** | Помилка (timeout, 5xx, policy) | failed |
+| **Cancelled** | Користувач скасував (DELETE /runs) | cancelled |
+| **Degraded** | Часткова деградація (Qdrant down, no critic) | completed з flags |
 
 ---
 

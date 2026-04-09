@@ -3,14 +3,13 @@
 - **Author:** puhachyeser
 - **Branch:** chore/refactor-auth → dev
 - **Created:** 2026-04-06
-- **Closed:** 2026-04-06
 - **State:** MERGED
 
 ## Description
 
-(no description)
+(none)
 
-## Files Changed (31)
+## Files (31)
 
 - `apps/portal/auth/README.md` (+0 -40)
 - `apps/portal/auth/routes/AuthHomePage.tsx` (+1 -1)
@@ -42,6 +41,7 @@
 - `apps/portal/src/components/auth/screens/PhoneNumberScreen.tsx` (+0 -0)
 - `apps/portal/src/components/icons/auth/google-icon.tsx` (+1 -1)
 - `apps/portal/src/components/icons/auth/microsoft-icon.tsx` (+1 -1)
+- `apps/portal/tsconfig.json` (+3 -1)
 
 ## Commits (1)
 

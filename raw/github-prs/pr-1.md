@@ -3,14 +3,13 @@
 - **Author:** puhachyeser
 - **Branch:** chore/migrate-frontend → dev
 - **Created:** 2026-03-29
-- **Closed:** 2026-03-29
 - **State:** MERGED
 
 ## Description
 
-(no description)
+(none)
 
-## Files Changed (100)
+## Files (100)
 
 - `apps/api/src/main.ts` (+7 -1)
 - `apps/portal/.dockerignore` (+53 -0)
@@ -42,6 +41,16 @@
 - `apps/portal/docs/FIGMA_TO_REACT_SUMMARY.md` (+451 -0)
 - `apps/portal/docs/LAYOUT_AND_PAGES.md` (+34 -0)
 - `apps/portal/docs/PR_DESCRIPTION.md` (+151 -0)
+- `apps/portal/docs/QUICK_REFERENCE.md` (+173 -0)
+- `apps/portal/docs/ROUTE_URL_TRACE_MAP.md` (+80 -0)
+- `apps/portal/docs/START_HERE.md` (+285 -0)
+- `apps/portal/docs/artifacts/cube-structure.json` (+313 -0)
+- `apps/portal/docs/artifacts/figma-extraction-report.json` (+1045 -0)
+- `apps/portal/docs/artifacts/logo-structure.json` (+37 -0)
+- `apps/portal/docs/boot-screen-implementation.md` (+467 -0)
+- `apps/portal/docs/context-info.md` (+190 -0)
+- `apps/portal/docs/guidelines/README_ENG.md` (+47 -0)
+- `apps/portal/docs/guidelines/README_UA.md` (+47 -0)
 
 ## Commits (1)
 

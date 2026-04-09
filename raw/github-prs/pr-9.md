@@ -3,14 +3,13 @@
 - **Author:** puhachyeser
 - **Branch:** feat/auth-infrastructure → dev
 - **Created:** 2026-04-07
-- **Closed:** open
 - **State:** OPEN
 
 ## Description
 
-(no description)
+(none)
 
-## Files Changed (15)
+## Files (15)
 
 - `apps/portal/app/auth/callback/route.ts` (+41 -0)
 - `apps/portal/package.json` (+3 -1)

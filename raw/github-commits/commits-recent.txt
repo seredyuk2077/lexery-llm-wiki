@@ -1,0 +1,67 @@
+57677e2abca025b4c9015449b119763748465be3|2026-04-09 19:29:19 +0300|Andriy|Tighten memory recall quality and settle broad-law retries
+bf244f64b60821bc5a4f05c6625afef692199ef4|2026-04-09 16:55:10 +0300|Andriy|Tighten corpus-gap completion and DocList probe policy
+8e78f2222b8be210ca321c5061d50e57c642667d|2026-04-09 15:13:59 +0300|Andriy|Tighten multi-section legal answer verification
+40bc0a5a368dbdc91684490a43a34e2076cf795e|2026-04-09 14:59:35 +0300|Andriy|Harden legal agent runtime and recovery flow
+dba1e6d7b69f3c9e2dcf1bb74d2852f25fed1d44|2026-04-09 10:48:11 +0300|Andriy|Fix corpus-gap completion and real write retries
+906d2cf0602c5af89036870dd25b2ddcc4e9a3f7|2026-04-09 02:01:00 +0300|Andriy|Cut deterministic ORCH cost and narrow clarification resume
+ecb199bbec541b676326516f2d086758d5c6e16d|2026-04-09 01:17:37 +0300|Andriy|Harden clarification resume and ORCH decision telemetry
+df7fb4bba24cfeea2613ebba09bad3652cf91c4d|2026-04-09 00:51:09 +0300|Andriy|Harden bounded recovery reruns and trim U9 tail latency
+f2b4fcbf5b5687e8551bb5ea4538a20a34536ac0|2026-04-09 00:48:56 +0300|Andriy|Close bounded recovery rerun gap
+2261da5fefba531664eed57288f93baa39802e3f|2026-04-09 00:29:14 +0300|Andriy|Tune bounded recovery and cut false clarification loops
+7c739f6935b085e39c2d29901cf3e672302deee1|2026-04-09 00:11:55 +0300|Andriy|Add live agentivity audit harness
+09ce003a31247d2578aac6b2f2549fd690f793bc|2026-04-08 23:44:01 +0300|Andriy|Wire brain-admin to proposal queue and track ORCH telemetry
+2841bf3b405a27322032f220d89b354a5c05076e|2026-04-08 21:02:50 +0300|alexbach093|Merge pull request #10 from lexeryAI/{Frontend}-feat-plans
+8d2a8f6b76cdaaf2cb99612d63e32917022a9c10|2026-04-08 18:41:37 +0300|Andriy|Add bounded legal orchestrator and DocList recovery
+1b81c00536adb815369a8ef755fae935902f0f68|2026-04-08 12:40:25 +0300|puhachyeser|feat: add real name/avatar data requests from supabase instead of mocks
+ed123b70cee6d845d42cfedc8152534bc2df9bd6|2026-04-07 18:02:07 +0300|Andriy|brain: fix 353 TypeScript errors across apps/brain (debug version)
+7457d997eac352f7d7329ba14910482ba8403a8c|2026-04-07 17:23:38 +0300|Andriy|brain: archive exploratory retrieval audit datasets
+214e1a1e35779f1f992b7c169346416f61401745|2026-04-07 17:23:21 +0300|Andriy|brain: harden U2 U4 retrieval runtime and docs
+d00db820014aabf16bd75d9923e35ae4dc6c45d3|2026-04-07 15:35:01 +0300|puhachyeser|feat: add infra for email/sms/oauth registration
+8baebd4cc417b5e1704ba506f9024291147e8c20|2026-04-07 13:08:25 +0300|Олександр Бачинський|feat: refine sidebar plan profile interactions
+8192a2b1d14685f087d6bdd32b1c46cc695b2456|2026-04-06 16:17:47 +0300|Олександр Бачинський|feat: add frontend plan badges
+cfa00815dba1f09df90e3313a1c579b37159885f|2026-04-06 15:56:02 +0300|puhachyeser|Merge pull request #8 from lexeryAI/chore/refactor-auth
+21d00d5e6ce43dafededa0d1b825d528f3ad75b5|2026-04-06 15:55:02 +0300|puhachyeser|chore: refactor auth
+62b19c4e2390103e3a0ded7c8bacd260144b1eba|2026-04-05 20:02:25 +0300|alexbach093|Merge pull request #7 from lexeryAI/{Frontend}-chore/auth
+7da26114395d9d0ec769c068aee74a79a846aa50|2026-04-05 15:49:43 +0300|Олександр Бачинський|refactor(portal): move auth into portal module
+6d2c1f15cf9302db0dfe8c54ff12294afe1e7c9b|2026-04-05 14:29:44 +0300|Олександр Бачинський|Merge origin/dev into {Frontend}-chore/auth
+1e88f0bb54a5f67733a13dd02b5502b01bd78c7f|2026-04-04 23:31:59 +0300|Олександр Бачинський|Refine auth onboarding and system instructions flow
+ffdcae969f72aa32dc035e04e058aaa53032818d|2026-04-04 17:42:44 +0300|Andriy|brain: compact singular legal-basis locator bundles
+287549af8e3d9afc76b34ce0230710dac22bdbfe|2026-04-04 15:23:36 +0300|Andriy|brain: preserve multi-goal owner candidates
+d29a9c3788e3ce6c056cceca8feb38daab6204c2|2026-04-04 12:27:30 +0300|puhachyeser|Merge pull request #6 from lexeryAI/chore/change-doclist-script-names
+f79645ea346f0b87ef25062b8661f98601b82452|2026-04-04 12:26:35 +0300|Олександр Бачинський|Add seamless display-name onboarding transition
+4b9181462842a1a998be5cb02f8012b09c19c7da|2026-04-04 12:26:18 +0300|puhachyeser|chore: change doclist script names to prevent errors
+6185cbf0c1eb0cb378e0032ef63837ad604ae644|2026-04-04 12:07:54 +0300|puhachyeser|Merge pull request #5 from lexeryAI/feat/shared-contracts
+301f639785a21d23565289b660444057732d5c2e|2026-04-04 10:19:10 +0300|Andriy|brain: preserve explicit natural procedure bundles
+f0ea35ced89dbec42ded14d63d99c4617f394e3e|2026-04-04 06:33:00 +0300|Andriy|brain: trim derivative order tails without weak anchors
+84a4fd75f51ab0f7c65353e1f7da6e518e5fc1bb|2026-04-03 19:25:37 +0300|Andriy|brain: split goal category envelope from hard constraints
+bc7b1310ab2a3e0cefa53659a09f83908a4483e3|2026-04-03 15:05:16 +0300|Andriy|brain: anchor natural follow-up goals
+2003dfea0334f6d050b60e3bd92c4648929cf4cf|2026-04-03 14:40:00 +0300|alexbach093|Merge pull request #4 from lexeryAI/{Frontend}-system-prompt-redesign
+ab6a933947910a5e373f86ad470a16175713863e|2026-04-03 14:36:15 +0300|Олександр Бачинський|Refine system prompt editor behavior
+3738b04b9d5d6d3c19bfb8f7c032c6a4224f0d40|2026-04-03 14:13:21 +0300|Andriy|brain: harden compact multigoal retrieval boundaries
+f688557123001cf41ad2d38df379b7594eb03c26|2026-04-03 12:43:52 +0300|Andriy|brain: harden weak-evidence semantics and leading-act rescue
+5f105f780aedfd61886757e4ea8fa218a116a834|2026-04-03 11:40:42 +0300|puhachyeser|feat: add shared contracts(zod/types) for backend and agent
+50dacfe4c783b3417fae9dd10033a750ba09f46f|2026-04-03 11:32:11 +0300|Andriy|brain: harden missing-act honesty for cache misses
+c5b43e41a75b81477503631896561050fb5922ba|2026-04-02 19:54:24 +0300|Олександр Бачинський|Redesign system prompt editor
+fac2944be7e295dbf96d6b266ffd82d3f26d0200|2026-04-02 17:38:15 +0300|puhachyeser|Merge pull request #3 from lexeryAI/feat/adapt-new-auth-methods
+13a7e52bbc246d93b55e1a7eca8e5f99fd648725|2026-04-02 17:37:09 +0300|puhachyeser|feat: tweak user schema and auth service to match new auth data
+c185c65eee50a3a50a1a8642f0ae35f99bd376a4|2026-04-02 13:25:24 +0300|Andriy|brain: harden act-scope honesty and u2 fast paths
+f604436693b1197156b26e68f96bc05f44e034cf|2026-04-02 02:52:27 +0300|Andriy|brain: harden goal-act assignment coverage semantics
+ddad1f06481983fbe532c50b8a24ff92d706a9bf|2026-04-02 01:53:59 +0300|Andriy|brain: unify compact bundle policy
+018037a5685da2ae21c7da55f973f2807d926bf9|2026-04-02 00:10:03 +0300|Andriy|brain: recover compact cross-family bundles
+684853b922ffc29552557444767046a0fed01202|2026-04-02 00:09:22 +0300|Andriy|brain: improve multi-goal act recovery
+bdcbfeca77bc671d32dd7b85e58d6fede4bf59ff|2026-03-31 22:34:52 +0300|Andriy|On codex/legal-agent-brain-dev: codex-api-cutover-local-2026-03-31
+20e2eb51e300c146f09ae03d6962450f6e3649d7|2026-03-31 22:34:52 +0300|Andriy|index on codex/legal-agent-brain-dev: b08a093 Merge pull request #2 from lexeryAI/feat/file-upload-presigned-urls
+b08a0939109f19e2dc850aa7dbeeb6ccc52aff7e|2026-03-31 14:55:15 +0300|puhachyeser|Merge pull request #2 from lexeryAI/feat/file-upload-presigned-urls
+f67e740b40e377795d4bb70f4627a7a6aeb7fe3f|2026-03-30 16:08:53 +0300|puhachyeser|feat: add storage controller/service with uploading functionality
+aa4d39b9b9ccb0a567fcff470c86c69dff2ceef7|2026-03-30 23:52:03 +0300|Олександр Бачинський|Merge branch '{Frontend}-chore/auth' of https://github.com/lexeryAI/Lexery into {Frontend}-chore/auth
+666219aa3d25d2d57a94dbd46fabf78d4b7a8cb6|2026-03-30 23:47:39 +0300|Олександр Бачинський|chore(auth): build auth design flow scaffold
+490fc098ad05d6579d29c5fb889bcba743f695dd|2026-03-30 15:47:16 +0300|Andriy|Merge branch 'chore/migrate-legalAgent' into dev
+f87134cdef183ccf39ca676c01e9a0a98afb89dc|2026-03-30 15:15:39 +0300|Andriy|fix(brain): validate u10 docs-absence guard and cutover docs
+9636ee4eaf5a2d3765d3e53cff6f1e7d2a25f7e9|2026-03-30 00:08:21 +0300|Andriy|chore: finish legal agent monorepo migration
+6d96013f615674ee1b35ecdc2b394ccaac535cb5|2026-03-29 22:50:23 +0300|Andriy|Fix api bootstrap lint warning
+0f1412f04413315a1c95687a141c7fe58815d64b|2026-03-29 22:41:06 +0300|Andriy|Migrate legal-agent scripts and docs into apps/brain
+50cfd042d23f6213c373c52c245fbc90d6331a90|2026-03-29 13:46:27 +0300|puhachyeser|Merge pull request #1 from lexeryAI/chore/migrate-frontend
+a361f761349315fce247a9501cc3b17af8944a17|2026-03-29 13:44:55 +0300|puhachyeser|chore: migrate frontend and configurate it to use monorepo infrastructure
+3144abff290ee484150b6e8d529f35d771dd8fc7|2026-03-29 13:05:01 +0300|puhachyeser|feat: implement database schema, native auth guard and JIT user provisioning
+0646086d8e8e75172d59e06a589dc2c553b03fd4|2026-03-27 15:11:13 +0200|puhachyeser|feat: add basic monorepo structure and backend foundation
+3c584d9224f354ec7d24b80f6f9b19622d5836ab|2026-03-26 17:16:17 +0200|puhachyeser|chore: create basic application skeleton and add docs files
