@@ -2,15 +2,18 @@
 
 Повний **Lexery Second Brain** для Obsidian: нотатки `Lexery - *.md`, `raw/`, automation у `_system/`.
 
-## Безпека та доступ
+## Прямий лінк (працює в браузері без логіну)
 
-- Репозиторій має бути **приватним**; колаборатор з правами **read** отримує лише markdown і скрипти — **без** твоїх API-ключів і локальних шляхів (див. [SECURITY.md](./SECURITY.md)).
-- Ключі OpenRouter / Linear тощо — тільки в **`~/.lexery-wiki-env`** на твоєму Mac (не в git).
-- Після старого витоку **обов’язково ротуй `OPENROUTER` key** у кабінеті OpenRouter.
+**Репозиторій (перегляд + клон):** [github.com/seredyuk2077/lexery-llm-wiki](https://github.com/seredyuk2077/lexery-llm-wiki)
+
+## Безпека
+
+- У git **немає** API-ключів; LLM-виклики (OpenRouter) — лише локально через `OPENROUTER_API_KEY` у **`~/.lexery-wiki-env`** (див. [SECURITY.md](./SECURITY.md)).
+- Публічний репо = **read-only копія знань**; продакшн БД / Supabase сюди не підключені.
 
 ## Доступ (клон для Obsidian)
 
-Потрібен доступ до GitHub (invite). Далі:
+Будь-хто може клонувати (public repo):
 
 ```bash
 git clone https://github.com/seredyuk2077/lexery-llm-wiki.git
