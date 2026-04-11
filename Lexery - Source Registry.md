@@ -22,23 +22,23 @@ This page is the **authoritative list of upstreams**: Git remotes, local clones,
 
 ## Registry table
 
-| Source | Type | Path / URL | Last Ingested | Status |
-|--------|------|------------|---------------|--------|
-| Lexery monorepo | Git repo | `__PATH_LEXERY_MONOREPO__` | 2026-04-09 | Active |
-| Public beta repo | Git repo | `__PATH_UA_LLM_BETA__` | 2026-04-09 | Historical |
-| Bridge repo | Git repo | `__PATH_UA_LLM_BETA_BRIDGE__` | 2026-04-09 | Historical |
-| GitHub `lexeryAI/Lexery` | Remote | `https://github.com/lexeryAI/Lexery` | 2026-04-09 | Active |
-| GitHub `seredyuk2077/Ukrainan-Lawyer-LLM-BETA` | Remote | `https://github.com/seredyuk2077/Ukrainan-Lawyer-LLM-BETA` | 2026-04-09 | Historical |
-| GitHub `seredyuk2077/Ukrainan-Lawyer-LLM` | Remote | `https://github.com/seredyuk2077/Ukrainan-Lawyer-LLM` | 2026-04-09 | Dormant |
-| Linear workspace | API | Linear MCP | 2026-04-09 | Active |
-| Codex session checkpoint | Local file | `codex/SESSION_*_CHECKPOINT.md` (monorepo) | 2026-04-09 | Session-scoped |
-| Brain docs (~257 files) | Repo docs | `apps/brain/docs/**` | 2026-04-09 | Active |
-| Root docs | Repo docs | `docs/**` | 2026-04-09 | Active |
-| Supabase Legal Agent DB | MCP | Cursor MCP `user-supabase-lexery-legal-agent-db`; `execute_sql` queries | 2026-04-09 | Active |
-| Supabase Legislation RAG DB | MCP | Cursor MCP `user-supabase-legislation RAG`; `execute_sql` queries | 2026-04-09 | Active |
-| Cloudflare R2 legislation bucket | MCP | Cursor MCP `user-cloudflare-r2-legislation`; **374 acts** as canonical JSON objects | 2026-04-09 | Active |
-| Cloudflare R2 lexery-legal-agent bucket | MCP | Cursor MCP `user-cloudflare-r2`; retrieval traces, MM docs | 2026-04-09 | Active |
-| GitHub Actions CI/CD | Workflow files | `.github/workflows/`; e.g. `lldbi-brain-admin.yml` (brain-admin automation) | 2026-04-09 | Active |
+| Source                                         | Type           | Path / URL                                                                          | Last Ingested | Status         |
+| ---------------------------------------------- | -------------- | ----------------------------------------------------------------------------------- | ------------- | -------------- |
+| Lexery monorepo                                | Git repo       | `__PATH_LEXERY_MONOREPO__`                                            | 2026-04-09    | Active         |
+| Public beta repo                               | Git repo       | `__PATH_UA_LLM_BETA__`                          | 2026-04-09    | Historical     |
+| Bridge repo                                    | Git repo       | `__PATH_UA_LLM_BETA_BRIDGE__`              | 2026-04-09    | Historical     |
+| GitHub `lexeryAI/Lexery`                       | Remote         | `https://github.com/lexeryAI/Lexery`                                                | 2026-04-09    | Active         |
+| GitHub `seredyuk2077/Ukrainan-Lawyer-LLM-BETA` | Remote         | `https://github.com/seredyuk2077/Ukrainan-Lawyer-LLM-BETA`                          | 2026-04-09    | Historical     |
+| GitHub `seredyuk2077/Ukrainan-Lawyer-LLM`      | Remote         | `https://github.com/seredyuk2077/Ukrainan-Lawyer-LLM`                               | 2026-04-09    | Dormant        |
+| Linear workspace                               | API            | Linear MCP                                                                          | 2026-04-09    | Active         |
+| Codex session checkpoint                       | Local file     | `codex/SESSION_*_CHECKPOINT.md` (monorepo)                                          | 2026-04-09    | Session-scoped |
+| Brain docs (~257 files)                        | Repo docs      | `apps/brain/docs/**`                                                                | 2026-04-09    | Active         |
+| Root docs                                      | Repo docs      | `docs/**`                                                                           | 2026-04-09    | Active         |
+| Supabase Legal Agent DB                        | MCP            | Cursor MCP `user-supabase-lexery-legal-agent-db`; `execute_sql` queries             | 2026-04-09    | Active         |
+| Supabase Legislation RAG DB                    | MCP            | Cursor MCP `user-supabase-legislation RAG`; `execute_sql` queries                   | 2026-04-09    | Active         |
+| Cloudflare R2 legislation bucket               | MCP            | Cursor MCP `user-cloudflare-r2-legislation`; **374 acts** as canonical JSON objects | 2026-04-09    | Active         |
+| Cloudflare R2 lexery-legal-agent bucket        | MCP            | Cursor MCP `user-cloudflare-r2`; retrieval traces, MM docs                          | 2026-04-09    | Active         |
+| GitHub Actions CI/CD                           | Workflow files | `.github/workflows/`; e.g. `lldbi-brain-admin.yml` (brain-admin automation)         | 2026-04-09    | Active         |
 
 **MCP usage note**: Before calling any MCP tool, read the tool descriptor JSON under the Cursor `mcps/` folder for that server. SQL and object-store tools are **live**; treat query results as point-in-time unless also captured under `raw/codebase-snapshots/` or `raw/architecture-docs/`.
 

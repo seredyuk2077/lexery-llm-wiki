@@ -127,6 +127,9 @@ U10 — головний cost driver pipeline: premium model (`gpt-5.2`) з ве
 
 ## See Also
 
+- [[Lexery - U1-U12 Runtime]]
+- [[Lexery - Brain Test and Verify Map]]
+
 - [[Lexery - U9 Assemble]]
 - [[Lexery - U11 Verify]]
 - [[Lexery - Current State]]

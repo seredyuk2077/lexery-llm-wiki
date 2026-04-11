@@ -17,6 +17,96 @@ function today() { return new Date().toISOString().slice(0, 10); }
 
 console.log(`[auto-fill] ${today()}`);
 
+function writeAutoSnapshot() {
+  const out = join(VAULT, 'Lexery - Auto Snapshot.md');
+  const commitsFile = join(RAW, 'github-commits', 'commits-recent.txt');
+  const prsFile = join(RAW, 'github-prs', 'all-prs.json');
+  let commitLines = 0;
+  const byAuthor = {};
+  if (existsSync(commitsFile)) {
+    const commits = readFileSync(commitsFile, 'utf8').trim().split('\n').filter(Boolean);
+    commitLines = commits.length;
+    for (const line of commits) {
+      const parts = line.split('|');
+      const author = parts[2]?.trim();
+      if (author) byAuthor[author] = (byAuthor[author] || 0) + 1;
+    }
+  }
+  let prCount = 0;
+  if (existsSync(prsFile)) {
+    try {
+      prCount = JSON.parse(readFileSync(prsFile, 'utf8')).length;
+    } catch {
+      prCount = 0;
+    }
+  }
+  const topAuthors = Object.entries(byAuthor)
+    .sort((a, b) => b[1] - a[1])
+    .slice(0, 8)
+    .map(([a, c]) => `- ${a}: ${c}`)
+    .join('\n');
+
+  const body = `---
+aliases:
+  - Auto Snapshot
+tags:
+  - lexery
+  - meta
+  - metrics
+created: ${today()}
+updated: ${today()}
+status: observed
+layer: meta
+---
+
+> [!warning] Автогенерація
+> Ця нотатка **перезаписується** кожним успішним \`auto-fill.mjs\`. Для оповіді та контексту див. [[Lexery - Current State]], [[Lexery - PR Chronology]], [[Lexery - Neural Link Hub]].
+
+# Lexery - Auto Snapshot
+
+Зріз **${today()}** з \`raw/\` (джерело правди для цифр тут — файли на диску після \`scan-codebase\` / \`sync-github\`).
+
+## Git (30d window у commits-recent)
+
+- Рядків у \`commits-recent.txt\`: **${commitLines}**
+${topAuthors ? '\n### Top authors (count in window)\n\n' + topAuthors : ''}
+
+## GitHub PRs
+
+- Записів у \`all-prs.json\`: **${prCount}**
+- Деталі: [[Lexery - PR Chronology]]
+
+## Де дивитись граф знань
+
+- [[Lexery - Neural Link Hub]] — MOC + пропозиції зв’язків
+- \`_system/state/link-graph.json\` — машинний експорт ребер
+
+## Raw
+
+- \`raw/github-commits/\` — останні коміти (вікно з \`scan-codebase\`)
+- \`raw/github-prs/\` — PR JSON + markdown витяги
+- \`raw/codebase-snapshots/\` — package.json, config snippets, test inventory
+- \`raw/architecture-docs/\` — копії ключових arch markdown з monorepo
+
+## Як оновлюється
+
+1. Локальний \`run-maintenance.mjs\` (або LaunchAgent на macOS).
+2. \`scan-codebase\` / \`sync-git\` / \`sync-github\` наповнюють \`raw/\`.
+3. \`ingest\` позначає нові raw-файли.
+4. \`auto-fill\` оновлює таблиці та **цю сторінку**.
+5. \`suggest-links\` + \`apply-pipeline-backbone\` зміцнюють граф знань.
+
+## Як не плутати з «людськими» сторінками
+
+- Тут лише **автоматичні агрегати** з файлів на диску.
+- Інтерпретація продукту, ризики й narrative — у [[Lexery - Current State]] та [[Lexery - Open Questions and Drift]].
+`;
+  writeFileSync(out, body);
+  console.log('  Auto Snapshot: Lexery - Auto Snapshot.md');
+}
+
+writeAutoSnapshot();
+
 // 1. Extract PR data and update PR Chronology
 const prsFile = join(RAW, 'github-prs', 'all-prs.json');
 if (existsSync(prsFile)) {

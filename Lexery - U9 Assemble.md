@@ -107,6 +107,9 @@ U9 отримує `evidence_assembly` від [[Lexery - U7 Evidence Assembly|U7]
 
 ## See Also
 
+- [[Lexery - U1-U12 Runtime]]
+- [[Lexery - Brain Test and Verify Map]]
+
 - [[Lexery - U8 Legal Reasoning]]
 - [[Lexery - U10 Writer]]
 - [[Lexery - Memory and Documents]]

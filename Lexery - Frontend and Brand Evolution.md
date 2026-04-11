@@ -83,6 +83,14 @@ Frontend evolution in Lexery is not just polish. It records a real conceptual sh
 - includes workspace layout, chat, attachments, settings, sidebar, overlays, server chat routes.
 - `origin/dev` adds auth flows, profile info, plan badges, plan-aware UI.
 
+### Canonical brand assets (current)
+
+- **Wordmark:** `apps/portal/public/lexery-logo.svg`
+- **App / favicon-style mark:** `apps/portal/public/lexery-icon.svg`
+- **Obsidian wiki mirror (embeds):** `_assets/brand/lexery-logo.svg`, `_assets/brand/lexery-icon.svg`
+
+Historical raster exports (`logo-brand.png`, `logo-white.png`, etc.) are **not** the live identity and have been removed from `_assets/brand/`; keep only the SVG pair above and re-copy from `apps/portal/public/` when the product team updates the mark.
+
 ## Frontend Refactor vs Feature Track
 
 ### Observed in Linear context packet

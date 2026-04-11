@@ -35,8 +35,10 @@ function hasGh() {
 }
 
 if (!hasGh()) {
-  console.error('ERROR: gh is required but not installed.');
-  process.exit(1);
+  console.log(
+    'SKIP: GitHub CLI (gh) not found — PR sync skipped. Install: brew install gh && gh auth login',
+  );
+  process.exit(0);
 }
 
 if (!existsSync(PRS_FILE)) {

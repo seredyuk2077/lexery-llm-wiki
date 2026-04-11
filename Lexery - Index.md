@@ -113,6 +113,8 @@ layer: meta
 | [[Lexery - Drift Radar]] | Активні суперечності та розходження джерел | governance |
 | [[Lexery - Unknowns Queue]] | Відомі невідомі, що потребують розслідування | governance |
 | [[Lexery - Source Registry]] | Реєстр усіх ingested джерел | meta |
+| [[Lexery - Neural Link Hub]] | Авто-MOC, scored link ideas, orphans, експорт `link-graph.json` | meta |
+| [[Lexery - Auto Snapshot]] | Автозріз метрик з `raw/` (перезаписується auto-fill) | meta |
 | [[Lexery - Cost Ledger]] | Облік витрат AI на підтримку wiki | meta |
 | [[Lexery - Maintenance Runbook]] | Як підтримувати second brain | meta |
 | [[Lexery - Automation Architecture]] | Дизайн самопідтримуваного ingest-pipeline | meta |
@@ -149,7 +151,8 @@ Raw immutable sources live in `raw/`:
 
 ## Statistics
 
-- **Pages:** 75+ (каталог вище + canvas-и; точне число — `wc -l Lexery\ -\ *.md`)
+- **Pages:** 78 markdown hub pages (`Lexery - *.md`; canvas-и окремо)
+- **Lines (content pages):** ~11.5k+ (aggregate `wc -l`; зростає з кожним deep pass)
 - **Canvases:** 7
 - **Raw sources:** `raw/` (оновлюється `scan-codebase.mjs`)
 - **Frontmatter coverage:** 100%

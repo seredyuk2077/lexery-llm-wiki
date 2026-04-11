@@ -142,6 +142,8 @@ U12 can append conservative, additive **`snapshot.lldbi_admin_hints`** so downst
 
 ## See Also
 
+- [[Lexery - Brain Test and Verify Map]]
+
 - [[Lexery - U11 Verify]]
 - [[Lexery - U1-U12 Runtime]]
 - [[Lexery - Memory and Documents]]

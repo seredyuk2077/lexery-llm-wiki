@@ -95,6 +95,9 @@ U3 відповідає на питання **«де шукати?»** до то
 
 ## See Also
 
+- [[Lexery - U1-U12 Runtime]]
+- [[Lexery - Brain Test and Verify Map]]
+
 - [[Lexery - Pipeline Health Dashboard]]
 - [[Lexery - U2 Query Profiling]]
 - [[Lexery - U4 Retrieval]]

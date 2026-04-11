@@ -48,6 +48,7 @@ __PATH_LEXERY_MONOREPO__/apps/brain/tools/u2/test_entity_alignment_units.ts
 __PATH_LEXERY_MONOREPO__/apps/brain/tools/u2/test_query_scope_hints_units.ts
 __PATH_LEXERY_MONOREPO__/apps/brain/tools/u2/test_context_mode_hints_units.ts
 __PATH_LEXERY_MONOREPO__/apps/brain/tools/u2/verify_u2_domain_cues.ts
+__PATH_LEXERY_MONOREPO__/apps/brain/tools/u2/test_memory_recall_fast_path_units.ts
 __PATH_LEXERY_MONOREPO__/apps/brain/tools/u2/verify_u2_routing_audit.ts
 __PATH_LEXERY_MONOREPO__/apps/brain/tools/u2/test_consumer_retry_units.ts
 __PATH_LEXERY_MONOREPO__/apps/brain/tools/u2/test_ai_domain_policy_units.ts
@@ -81,10 +82,14 @@ __PATH_LEXERY_MONOREPO__/apps/brain/tools/orchestrator/test_orchestrator_units.t
 __PATH_LEXERY_MONOREPO__/apps/brain/tools/orchestrator/verify_agentivity_live.ts
 __PATH_LEXERY_MONOREPO__/apps/brain/tools/orchestrator/test_clarification_resume_units.ts
 __PATH_LEXERY_MONOREPO__/apps/brain/tools/gateway/test_queue_units.ts
+__PATH_LEXERY_MONOREPO__/apps/brain/tools/gateway/test_runtime_hardening_units.ts
 __PATH_LEXERY_MONOREPO__/apps/brain/tools/gateway/test_storage_history_units.ts
+__PATH_LEXERY_MONOREPO__/apps/brain/tools/gateway/test_run_context_hydration_units.ts
 __PATH_LEXERY_MONOREPO__/apps/brain/tools/gateway/test_redis_queue_units.ts
 __PATH_LEXERY_MONOREPO__/apps/brain/tools/gateway/test_attachment_units.ts
+__PATH_LEXERY_MONOREPO__/apps/brain/tools/gateway/test_redis_capacity_signal_units.ts
 __PATH_LEXERY_MONOREPO__/apps/brain/tools/gateway/test_run_view_units.ts
+__PATH_LEXERY_MONOREPO__/apps/brain/tools/gateway/test_redis_verifier_cleanup_units.ts
 __PATH_LEXERY_MONOREPO__/apps/brain/tools/u10/test_memory_search_units.ts
 __PATH_LEXERY_MONOREPO__/apps/brain/tools/u10/test_evidence_triage_units.ts
 __PATH_LEXERY_MONOREPO__/apps/brain/tools/u10/test_legal_agent_units.ts

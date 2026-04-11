@@ -116,6 +116,8 @@ Legacy bridge repo мав окремий `U1 Gateway/Intake + R2 bucket migratio
 
 ## See Also
 
+- [[Lexery - U1-U12 Runtime]]
+
 - [[Lexery - API and Control Plane]]
 - [[Lexery - U2 Query Profiling]]
 - [[Lexery - Brain Architecture]]

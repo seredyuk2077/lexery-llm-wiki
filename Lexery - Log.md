@@ -10,12 +10,54 @@ status: observed
 layer: meta
 ---
 
+## [2026-04-10] ingest | 37 raw sources processed
+
+- **architecture-docs/CURRENT_PIPELINE_STATE.md** — Lexery Legal Agent — Current Pipeline State
+- **architecture-docs/LEXERY_LEGAL_AI_AGENT_ARCHITECTURE.md** — Lexery Legal AI Agent — Повна архітектура
+- **architecture-docs/MEGA_DIAGRAM_FULL.md** — Lexery Legal AI Agent — Current Full Architecture
+- **architecture-docs/README.md** — Lexery Legal Agent — Implementation Architecture
+- **architecture-docs/app-README.md** — Lexery Legal Agent — Implementation Architecture
+- **codebase-snapshots/monorepo-packages-2026-04-09.md** — Monorepo Packages — 2026-04-09
+- **codebase-snapshots/monorepo-packages-2026-04-10.md** — Monorepo Packages — 2026-04-10
+- **codebase-snapshots/root-package.json** — JSON object with 6 top-level keys
+- **codebase-snapshots/supabase-live-stats-2026-04-09.md** — Supabase Live Stats — 2026-04-09
+- **codebase-snapshots/supabase-refresh-request-2026-04-10.md** — Supabase Stats Request — 2026-04-10
+- **codebase-snapshots/supabase-schema-2026-04-09.md** — Supabase Database Schema Snapshot — 2026-04-09
+- **codebase-snapshots/test-inventory.txt** — 99 lines, 8831 chars
+- **github-commits/branches.txt** — 15 lines, 1783 chars
+- **github-commits/commits-recent.txt** — 67 lines, 8830 chars
+- **github-commits/uncommitted-diff.txt** — 90 lines, 5720 chars
+- **github-prs/all-prs.json** — JSON array with 10 items
+- **github-prs/pr-1.json** — JSON object with 12 top-level keys
+- **github-prs/pr-1.md** — PR #1: chore: migrate frontend and configurate it to use monorepo infra
+- **github-prs/pr-10.json** — JSON object with 12 top-level keys
+- **github-prs/pr-10.md** — PR #10: [Frontend] feat: subscription plans
+- **github-prs/pr-2.json** — JSON object with 12 top-level keys
+- **github-prs/pr-2.md** — PR #2: [Backend] feat: add storage controller/service with uploading functionality
+- **github-prs/pr-3.json** — JSON object with 12 top-level keys
+- **github-prs/pr-3.md** — PR #3: [Backend] feat: tweak user schema and auth service to match new auth data
+- **github-prs/pr-4.json** — JSON object with 12 top-level keys
+- **github-prs/pr-4.md** — PR #4: Redesign system prompt editor
+- **github-prs/pr-5.json** — JSON object with 12 top-level keys
+- **github-prs/pr-5.md** — PR #5: [Backend / Agent] feat: add shared contracts(zod/types) for backend and agent
+- **github-prs/pr-6.json** — JSON object with 12 top-level keys
+- **github-prs/pr-6.md** — PR #6: [Agent] chore: change doclist script names to prevent errors
+- **github-prs/pr-7.json** — JSON object with 12 top-level keys
+- **github-prs/pr-7.md** — PR #7: [Frontend] feat: auth pages
+- **github-prs/pr-8.json** — JSON object with 12 top-level keys
+- **github-prs/pr-8.md** — PR #8: [Frontend] chore: refactor auth
+- **github-prs/pr-9.json** — JSON object with 12 top-level keys
+- **github-prs/pr-9.md** — PR #9: [Frontend] feat: add infra for email/sms/oauth registration
+- **linear/refs-from-prs.txt** — 4 lines, 186 chars
+
+
 ## [2026-04-09] V9 — Encyclopedia scale-up
 
 - **Нові сторінки:** [[Lexery - Brain Test and Verify Map]], [[Lexery - Brain Environment Reference]], [[Lexery - Legal Agent Quality Priorities]] (кодекс якості з `codex/LEGAL_AGENT_CONTEXT.md`)
 - **Розширено:** [[Lexery - U1 Gateway]] (HTTP surface, виправлено UUID `runs.id`), [[Lexery - U2 Query Profiling]] (env + verify), [[Lexery - LLDBI Surface]] (R2, Supabase metadata, ops cycle), [[Lexery - U8 Legal Reasoning]] (ORCH, пріоритет soft queries, таблиця actions), [[Lexery - U11 Verify]] (retry cap, corpus-gap complete)
 - **Index / Automation:** посилання на нові довідники
 - **Мета:** зробити wiki **більшою і самодостатньою** без зовнішнього «здогадування» по скриптах і env
+- **Бренд:** embeds `logo-brand.png` замінено на `lexery-logo.svg`; `_assets/brand/` синхронізовано з `apps/portal/public/`; застарілі PNG видалено
 
 ---
 
@@ -110,6 +152,46 @@ layer: meta
 
 
 # Lexery - Log
+
+## 2026-04-10 — Automated Sync
+
+# Git Digest — 2026-04-10
+
+## Lexery — `legal-agent-brain-dev`
+
+```
+57677e2 Tighten memory recall quality and settle broad-law retries
+bf244f6 Tighten corpus-gap completion and DocList probe policy
+8e78f22 Tighten multi-section legal answer verification
+40bc0a5 Harden legal agent runtime and recovery flow
+dba1e6d Fix corpus-gap completion and real write retries
+906d2cf Cut deterministic ORCH cost and narrow clarification resume
+ecb199b Harden clarification resume and ORCH decision telemetry
+df7fb4b Harden bounded recovery reruns and trim U9 tail latency
+f2b4fcb Close bounded recovery rerun gap
+2261da5 Tune bounded recovery and cut false clarification loops
+7c739f6 Add live agentivity audit harness
+09ce003 Wire brain-admin to proposal queue and track ORCH telemetry
+8d2a8f6 Add bounded legal orchestrator and DocList recovery
+ed123b7 brain: fix 353 TypeScript errors across apps/brain (debug version)
+7457d99 brain: archive exploratory retrieval audit datasets
+214e1a1 brain: harden U2 U4 retrieval runtime and docs
+ffdcae9 brain: compact singular legal-basis locator bundles
+287549a brain: preserve multi-goal owner candidates
+301f639 brain: preserve explicit natural procedure bundles
+f0ea35c brain: trim derivative order tails without weak anchors
+84a4fd7 brain: split goal category envelope from hard constraints
+```
+
+
+
+# GitHub PR Digest — 2026-04-10
+
+No new PRs since last sync.
+
+> Auto-generated by [[Lexery - Automation Architecture|maintenance automation]]. See [[Lexery - Brain Architecture]] for system shape.
+
+---
 
 ## 2026-04-09 — Automated Sync
 

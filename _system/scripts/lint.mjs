@@ -79,7 +79,17 @@ for (const file of allFiles) {
   let match;
   while ((match = linkPattern.exec(content)) !== null) {
     let target = match[1].trim().replace(/\\$/, '');
-    if (target.startsWith('_') || target.startsWith('#') || target.includes('/') || target.endsWith('.png') || target.endsWith('.canvas')) continue;
+    if (
+      target.startsWith('_') ||
+      target.startsWith('#') ||
+      target.includes('/') ||
+      target.endsWith('.png') ||
+      target.endsWith('.svg') ||
+      target.endsWith('.webp') ||
+      target.endsWith('.canvas')
+    ) {
+      continue;
+    }
     if (/^[a-z]+$/.test(target) && target.length < 15) continue;
     outgoing.add(target);
   }
@@ -105,7 +115,14 @@ for (const p of pageData) {
   }
 }
 for (const [title, count] of inboundCount) {
-  if (count === 0 && title !== 'Lexery - Index' && title !== 'Lexery - Project Brain' && title !== 'Lexery - Log') {
+  if (
+    count === 0 &&
+    title !== 'Lexery - Index' &&
+    title !== 'Lexery - Project Brain' &&
+    title !== 'Lexery - Log' &&
+    title !== 'Lexery - Neural Link Hub' &&
+    title !== 'Lexery - Auto Snapshot'
+  ) {
     issues.push({ file: title + '.md', severity: 'warn', issue: `Orphan page: 0 inbound wikilinks` });
   }
 }

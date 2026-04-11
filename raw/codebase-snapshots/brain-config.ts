@@ -92,6 +92,11 @@ export const config = {
   redisUrl: process.env.REDIS_URL || '',
   runContextDriver: (process.env.RUN_CONTEXT_DRIVER || 'inmemory').toLowerCase() as 'inmemory' | 'redis',
   queueDriver: (process.env.QUEUE_DRIVER || 'inmemory').toLowerCase() as 'inmemory' | 'redis',
+  runContextTtlSec: Math.max(300, Math.min(7200, parseInt(process.env.RUN_CONTEXT_TTL_SEC || '1800', 10))),
+  runContextMaxRetrievalHits: Math.max(
+    8,
+    Math.min(80, parseInt(process.env.RUN_CONTEXT_MAX_RETRIEVAL_HITS || '24', 10))
+  ),
   redisRunContextCompressionThresholdBytes: Math.max(
     1024,
     Math.min(262144, parseInt(process.env.REDIS_RUN_CONTEXT_COMPRESSION_THRESHOLD_BYTES || '8192', 10))
@@ -161,6 +166,18 @@ export const config = {
     process.env.LEGAL_AGENT_MODEL_ID || process.env.U10_MODEL_ID || 'openai/gpt-5.2',
   legalAgentTimeoutSec: Math.max(30, Math.min(120, parseInt(process.env.LEGAL_AGENT_TIMEOUT_SEC || '55', 10))),
   legalAgentMaxTokens: Math.max(512, Math.min(16384, parseInt(process.env.LEGAL_AGENT_MAX_TOKENS || '4096', 10))),
+  legalAgentMaxTokensBriefLaw: Math.max(
+    512,
+    Math.min(8192, parseInt(process.env.LEGAL_AGENT_MAX_TOKENS_BRIEF_LAW || '2048', 10))
+  ),
+  legalAgentMaxTokensCoverageGap: Math.max(
+    512,
+    Math.min(4096, parseInt(process.env.LEGAL_AGENT_MAX_TOKENS_COVERAGE_GAP || '1536', 10))
+  ),
+  legalAgentMaxTokensMemoryRecall: Math.max(
+    512,
+    Math.min(4096, parseInt(process.env.LEGAL_AGENT_MAX_TOKENS_MEMORY_RECALL || '1024', 10))
+  ),
   u10RepairModelId:
     process.env.U10_REPAIR_MODEL_ID || process.env.LEGAL_AGENT_REPAIR_MODEL_ID || 'openai/gpt-4o-mini',
   u10RepairStrictModelId:
@@ -251,11 +268,12 @@ export const config = {
   // U4 Always-on Query Rewriter (Phase 7): budgeted, every run; enriches short/raw queries for retrieval
   u4QueryRewriteEnabled: process.env.U4_QUERY_REWRITE_ENABLED !== 'false',
   // gpt-4o-mini надійніше дотримується "return ONLY JSON" ніж haiku; 720 токенів достатньо для
-  // rewritten_query + 3 variants + negative_terms у Ukrainian без truncation, а 15s знімає
-  // частину живих TIMEOUT на складних lawyer-style rewrite calls без різкого росту вартості.
+  // rewritten_query + 3 variants + negative_terms у Ukrainian без truncation. Після live runs
+  // 2026-04-10 default timeout зменшено до 8s: 15s часто завершувався TIMEOUT без покращення
+  // retrieval, але додавав зайвий tail/cost у U4.
   u4QueryRewriteModel: process.env.U4_QUERY_REWRITE_MODEL || 'openai/gpt-4o-mini',
   u4QueryRewriteMaxTokens: Math.max(300, Math.min(1024, parseInt(process.env.U4_QUERY_REWRITE_MAX_TOKENS || '720', 10))),
-  u4QueryRewriteTimeoutSec: Math.max(3, Math.min(15, parseInt(process.env.U4_QUERY_REWRITE_TIMEOUT_SEC || '15', 10))),
+  u4QueryRewriteTimeoutSec: Math.max(3, Math.min(15, parseInt(process.env.U4_QUERY_REWRITE_TIMEOUT_SEC || '8', 10))),
   u4QueryRewriteMaxCallsPerRun: Math.max(1, Math.min(2, parseInt(process.env.U4_QUERY_REWRITE_MAX_CALLS_PER_RUN || '1', 10))),
   /** Min overall_confidence to use rewritten_query; below this keep original (trace not_used_reason_codes: LOW_CONFIDENCE). */
   u4QueryRewriteMinConfidence: Math.min(1, Math.max(0, parseFloat(process.env.U4_QUERY_REWRITE_MIN_CONFIDENCE || '0.5'))),

@@ -94,6 +94,8 @@ U2 — перша глибока «розуміюча» стадія після 
 
 ## See Also
 
+- [[Lexery - U1-U12 Runtime]]
+
 - [[Lexery - U1 Gateway]]
 - [[Lexery - U3 Planning]]
 - [[Lexery - U4 Retrieval]]

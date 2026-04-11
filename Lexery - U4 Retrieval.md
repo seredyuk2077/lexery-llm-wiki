@@ -111,6 +111,9 @@ U4 — **головний retrieval engine** [[Lexery - Brain Architecture|Brain
 
 ## See Also
 
+- [[Lexery - U1-U12 Runtime]]
+- [[Lexery - Brain Test and Verify Map]]
+
 - [[Lexery - Retrieval, LLDBI, DocList]]
 - [[Lexery - U5 Gate]]
 - [[Lexery - Corpus Evolution]]

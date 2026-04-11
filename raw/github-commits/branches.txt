@@ -1,5 +1,5 @@
 dev                                              b08a093 [origin/dev: behind 21] Merge pull request #2 from lexeryAI/feat/file-upload-presigned-urls
-* legal-agent-brain-dev                            57677e2 [origin/legal-agent-brain-dev: ahead 14] Tighten memory recall quality and settle broad-law retries
+* legal-agent-brain-dev                            57677e2 [origin/legal-agent-brain-dev] Tighten memory recall quality and settle broad-law retries
   remotes/origin/HEAD                              -> origin/dev
   remotes/origin/architecture/backend-foundation   3144abf feat: implement database schema, native auth guard and JIT user provisioning
   remotes/origin/chore/change-doclist-script-names 4b91814 chore: change doclist script names to prevent errors
@@ -11,5 +11,5 @@ dev                                              b08a093 [origin/dev: behind 21]
   remotes/origin/feat/auth-infrastructure          1b81c00 feat: add real name/avatar data requests from supabase instead of mocks
   remotes/origin/feat/file-upload-presigned-urls   f67e740 feat: add storage controller/service with uploading functionality
   remotes/origin/feat/shared-contracts             5f105f7 feat: add shared contracts(zod/types) for backend and agent
-  remotes/origin/legal-agent-brain-dev             7457d99 brain: archive exploratory retrieval audit datasets
+  remotes/origin/legal-agent-brain-dev             57677e2 Tighten memory recall quality and settle broad-law retries
   remotes/origin/{Frontend}-chore/auth             7da2611 refactor(portal): move auth into portal module

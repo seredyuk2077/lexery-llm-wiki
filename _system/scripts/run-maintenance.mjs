@@ -35,7 +35,8 @@ const node = process.execPath;
 const steps = [
   ['scan-codebase.mjs', true],
   ['sync-git.mjs', true],
-  ['sync-github.mjs', true],
+  // Non-fatal: gh may be missing, logged out, or rate-limited — rest of pipeline should still run.
+  ['sync-github.mjs', false],
   ['sync-linear.mjs', false],
   ['scan-supabase.mjs', false],
   ['generate-delta.mjs', false],
@@ -43,6 +44,7 @@ const steps = [
   ['ingest.mjs', false],
   ['auto-fill.mjs', false],
   ['suggest-links.mjs', false],
+  ['apply-pipeline-backbone.mjs', false],
   ['lint.mjs', false],
 ];
 

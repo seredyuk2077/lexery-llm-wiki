@@ -19,7 +19,7 @@ layer: meta
 > - `raw/architecture-docs/LEXERY_LEGAL_AI_AGENT_ARCHITECTURE.md`
 > - Codebase analysis and session synthesis
 
-![[logo-brand.png|300]]
+![[lexery-logo.svg|300]]
 
 # Lexery — Project Brain
 

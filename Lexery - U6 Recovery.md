@@ -93,6 +93,9 @@ U5 (expand=true) → U6 → DocList resolve → ORCH → RUN_U4 (rerun) → U5 �
 
 ## See Also
 
+- [[Lexery - U1-U12 Runtime]]
+- [[Lexery - Brain Test and Verify Map]]
+
 - [[Lexery - U5 Gate]]
 - [[Lexery - U7 Evidence Assembly]]
 - [[Lexery - ORCH and Clarification]]

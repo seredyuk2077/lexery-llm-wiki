@@ -7,7 +7,7 @@ status: observed
 layer: team
 ---
 
-![[logo-brand.png|100]]
+![[lexery-logo.svg|100]]
 
 # Andrii Serediuk — Founder Profile
 
@@ -114,7 +114,7 @@ layer: team
 - Obsidian має відчуватись як **neural network / memory cortex**, не як folder dump.
 - **Canvases:** кольорові зони, **group nodes**, text legends, осмислена топологія (runtime / product / history / infra окремо).
 - **Сторінки:** стабільний frontmatter, callouts (`[!quote]`, `[!info]`), чисті heading-и, щільний текст з skimmability.
-- **Бренд:** logo у landing і на ключових canvas; assets з portal / bridge (`lexery-logo.svg`, `logo-brand.png` тощо) — узгоджено з [[Lexery - Frontend and Brand Evolution]].
+- **Бренд:** logo у landing і на ключових canvas; канонічні файли — `apps/portal/public/lexery-logo.svg` та `lexery-icon.svg` (дзеркало в vault: `_assets/brand/`) — узгоджено з [[Lexery - Frontend and Brand Evolution]].
 - **Graph view:** фільтри / кольори за `layer`, `status`, tags — щоб граф мав **ідентичність Lexery**.
 - **CSS snippets** — лише якщо дають premium readability; **не** кислотний «flashy» стиль.
 - Зневага до випадкового нагромадження вузлів «як вийшло»; кожен візуальний шар має пояснювати структуру системи.
