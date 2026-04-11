@@ -162,7 +162,7 @@ graph TD
 
 > [!info]
 > Стан знято **9 квітня 2026** з:
-> - локального репо `__PATH_LEXERY_MONOREPO__`
+> - локального репо `your local Lexery monorepo root`
 > - GitHub repo `https://github.com/lexeryAI/Lexery`
 > - поточної локальної гілки `legal-agent-brain-dev`
 > - remote default branch `dev`

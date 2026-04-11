@@ -10,3 +10,12 @@
 
 # Generated ChatGPT bundle (large; regenerate locally)
 _export/
+
+# Local LaunchAgent plist (generated from *.example)
+_system/com.lexery.wiki-maintenance.plist
+
+# Runtime logs (may capture sensitive stderr)
+_system/logs/
+
+# Local clone paths (machine-specific)
+_system/state/repos.json

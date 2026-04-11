@@ -2,16 +2,28 @@
 
 Повний **Lexery Second Brain** для Obsidian: нотатки `Lexery - *.md`, `raw/`, automation у `_system/`.
 
-## Доступ для Саші (один лінк на код)
+## Безпека та доступ
 
-**Клонувати vault:**
+- Репозиторій має бути **приватним**; колаборатор з правами **read** отримує лише markdown і скрипти — **без** твоїх API-ключів і локальних шляхів (див. [SECURITY.md](./SECURITY.md)).
+- Ключі OpenRouter / Linear тощо — тільки в **`~/.lexery-wiki-env`** на твоєму Mac (не в git).
+- Після старого витоку **обов’язково ротуй `OPENROUTER` key** у кабінеті OpenRouter.
+
+## Доступ (клон для Obsidian)
+
+Потрібен доступ до GitHub (invite). Далі:
 
 ```bash
 git clone https://github.com/seredyuk2077/lexery-llm-wiki.git
 cd lexery-llm-wiki
 ```
 
-Далі в Obsidian: **Open folder as vault** → вибрати цю папку `lexery-llm-wiki`.
+У Obsidian: **Open folder as vault** → папка `lexery-llm-wiki`.
+
+### Локальна автоматизація (опційно)
+
+1. Скопіюй `_system/state/repos.json.example` → `_system/state/repos.json` і пропиши **`path`** до свого клону monorepo `Lexery` (або задай `LEXERY_MONOREPO_ROOT`). Перший запуск `sync-git.mjs` сам створить `repos.json` з example, якщо файлу ще немає.
+2. macOS LaunchAgent: `_system/scripts/install-schedule.sh` згенерує plist з `*.plist.example`.
+3. LLM-резюме дельт (`generate-delta.mjs`) працює лише якщо задано `OPENROUTER_API_KEY` у `~/.lexery-wiki-env`.
 
 ## Швидке відкриття нотатки (після додавання vault)
 

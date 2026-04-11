@@ -22,7 +22,7 @@ layer: history
 ## Location
 
 - Local path:
-  `__PATH_UA_LLM_BETA_BRIDGE__`
+  `your local bridge clone (historical)`
 - Main branch observed:
   `feature/lexery-legal-agent-architecture`
 

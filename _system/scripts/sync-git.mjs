@@ -34,9 +34,16 @@ function utcIsoTs() {
   return new Date().toISOString().replace(/\.\d{3}Z$/, 'Z');
 }
 
+const REPOS_EXAMPLE = join(STATE_DIR, 'repos.json.example');
+
 if (!existsSync(REPOS_FILE)) {
-  console.error(`ERROR: repos.json not found at ${REPOS_FILE}`);
-  process.exit(1);
+  if (existsSync(REPOS_EXAMPLE)) {
+    writeFileSync(REPOS_FILE, readFileSync(REPOS_EXAMPLE, 'utf8'));
+    console.log(`Created ${REPOS_FILE} from repos.json.example — set "path" to your local clones.`);
+  } else {
+    console.error(`ERROR: repos.json not found at ${REPOS_FILE}`);
+    process.exit(1);
+  }
 }
 
 if (!existsSync(LOGS_DIR)) mkdirSync(LOGS_DIR, { recursive: true });
@@ -53,8 +60,13 @@ for (let i = 0; i < state.repos.length; i++) {
   const repo = state.repos[i];
   const lastSha = repo.last_processed_sha ?? '';
 
-  if (!existsSync(join(repo.path, '.git'))) {
-    console.warn(`WARNING: ${repo.name} — repo not found at ${repo.path}, skipping.`);
+  const p = (repo.path || '').trim();
+  if (!p) {
+    console.warn(`WARNING: ${repo.name} — empty path in repos.json, skipping.`);
+    continue;
+  }
+  if (!existsSync(join(p, '.git'))) {
+    console.warn(`WARNING: ${repo.name} — repo not found at ${p}, skipping.`);
     continue;
   }
 
@@ -62,16 +74,16 @@ for (let i = 0; i < state.repos.length; i++) {
 
   for (const branch of repo.tracked_branches || []) {
     try {
-      sh(`git -C "${repo.path}" fetch origin "${branch}" --quiet 2>/dev/null || true`, {
+      sh(`git -C "${p}" fetch origin "${branch}" --quiet 2>/dev/null || true`, {
         shell: '/bin/bash',
       });
 
       let latestSha = '';
       try {
-        latestSha = sh(`git -C "${repo.path}" rev-parse "origin/${branch}" 2>/dev/null`);
+        latestSha = sh(`git -C "${p}" rev-parse "origin/${branch}" 2>/dev/null`);
       } catch {
         try {
-          latestSha = sh(`git -C "${repo.path}" rev-parse "${branch}" 2>/dev/null`);
+          latestSha = sh(`git -C "${p}" rev-parse "${branch}" 2>/dev/null`);
         } catch {
           latestSha = '';
         }
@@ -82,13 +94,13 @@ for (let i = 0; i < state.repos.length; i++) {
       let logOutput = '';
       try {
         logOutput = sh(
-          `git -C "${repo.path}" log --oneline --since="7 days ago" "origin/${branch}" 2>/dev/null`,
+          `git -C "${p}" log --oneline --since="7 days ago" "origin/${branch}" 2>/dev/null`,
           { shell: '/bin/bash' },
         );
       } catch {
         try {
           logOutput = sh(
-            `git -C "${repo.path}" log --oneline --since="7 days ago" "${branch}" 2>/dev/null`,
+            `git -C "${p}" log --oneline --since="7 days ago" "${branch}" 2>/dev/null`,
             { shell: '/bin/bash' },
           );
         } catch {

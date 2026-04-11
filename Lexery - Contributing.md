@@ -21,7 +21,7 @@ sources: 1
 
 ```bash
 # Vault знаходиться всередині монорепо
-open "__PATH_LEXERY_MONOREPO__/LLM Wiki"
+open "this vault folder (inside your Lexery monorepo clone)"
 ```
 
 В Obsidian: `Open folder as vault` → вибрати `LLM Wiki`.
@@ -60,7 +60,7 @@ updated: YYYY-MM-DD
 ### 4. Commit
 
 ```bash
-cd "__PATH_LEXERY_MONOREPO__/LLM Wiki"
+cd "this vault folder (inside your Lexery monorepo clone)"
 git add -A
 git commit -m "add: <що додав>"
 ```
@@ -140,7 +140,7 @@ git commit -m "add: <що додав>"
 
 Ручний запуск maintenance:
 ```bash
-node "__PATH_LEXERY_MONOREPO__/LLM Wiki/_system/scripts/run-maintenance.mjs"
+node "this vault folder (inside your Lexery monorepo clone)/_system/scripts/run-maintenance.mjs"
 ```
 
 ## Web доступ

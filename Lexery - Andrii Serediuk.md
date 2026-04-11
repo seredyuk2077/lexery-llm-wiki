@@ -21,7 +21,7 @@ layer: team
 - **Founder / technical lead** — задає напрямок продукту й інженерної когерентності: monorepo, API, portal, **Brain / legal agent** як єдиний організм.
 - **Architecture authority** — межі control plane vs runtime, retrieval vs reasoning, contracts і state surfaces; рішення фіксуються в ADR / architecture docs і в [[Lexery - Decision Registry]], коли це формалізовано.
 - **Brain domain owner** — end-to-end: pipeline U1–U12, ORCH / clarification, публічний trace, LLDBI / DocList / corpus gap, якість відповіді під українське право.
-- **Історична безперервність** — старт з [[Lexery - Legacy Beta App|Mike Ross / beta]], перехід через [[Lexery - Legacy Architecture Bridge|bridge repo]], поточний **Lexery Brain** у `__PATH_LEXERY_MONOREPO__` (`apps/brain`, `apps/lldbi`, тощо).
+- **Історична безперервність** — старт з [[Lexery - Legacy Beta App|Mike Ross / beta]], перехід через [[Lexery - Legacy Architecture Bridge|bridge repo]], поточний **Lexery Brain** у `your local Lexery monorepo root` (`apps/brain`, `apps/lldbi`, тощо).
 - **GitHub:** `seredyuk2077`. Значна частина еволюції Brain іде гілками на кшталт `legal-agent-brain-dev` і може **розходитися** з основним PR-каденсом `lexeryAI/Lexery` — див. [[Lexery - Branch Divergence]], [[Lexery - GitHub History]], [[Lexery - PR Chronology]].
 - **Linear:** лідерство на треках Legal Agent / backend / agent architecture — [[Lexery - Linear Roadmap]].
 

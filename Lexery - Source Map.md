@@ -26,7 +26,7 @@ layer: meta
 ## Source Hierarchy
 
 - `Tier 1: live code and runtime-facing artifacts`
-  `__PATH_LEXERY_MONOREPO__/apps/*`, `package.json`, `prisma/schema.prisma`, `wrangler.toml`, `Dockerfile`, workflow files, tests, current git status.
+  `your local Lexery monorepo root/apps/*`, `package.json`, `prisma/schema.prisma`, `wrangler.toml`, `Dockerfile`, workflow files, tests, current git status.
 - `Tier 2: repo-local docs close to code`
   `apps/brain/docs/**`, `docs/**`, `apps/portal/README.md`, `apps/lldbi/README.md`, `docs/adr/**`, rollout/runtime/testing docs.
 - `Tier 3: git and branch evidence`
@@ -36,13 +36,13 @@ layer: meta
 - `Tier 5: Linear planning layer`
   `LEX-*` issues, projects `Agent Architecture`, `Lexery Legal Agent Dev`, `Backend`, `Frontend`.
 - `Tier 6: local checkpoint / prior synthesis`
-  `__PATH_LEXERY_MONOREPO__/codex/SESSION_019d457b-3011-7a53-95ac-f6cb2afd3eb3_CHECKPOINT.md`
+  `your local Lexery monorepo root/codex/SESSION_019d457b-3011-7a53-95ac-f6cb2afd3eb3_CHECKPOINT.md`
 
 ## Repositories Included
 
 ### Current private monorepo
 
-- Path: `__PATH_LEXERY_MONOREPO__`
+- Path: `your local Lexery monorepo root`
 - GitHub: `lexeryAI/Lexery`
 - Observed role:
   current product monorepo with `apps/brain`, `apps/api`, `apps/portal`, `apps/lldbi`, DocList services.
@@ -51,7 +51,7 @@ layer: meta
 
 ### Legacy public beta repo
 
-- Path: `__PATH_UA_LLM_BETA__`
+- Path: `your local Ukrainan-Lawyer-LLM-BETA clone (historical)`
 - GitHub: `seredyuk2077/Ukrainan-Lawyer-LLM-BETA`
 - Observed role:
   earliest public product incarnation, centered on chat UX, Supabase, GPT-4, Mike Ross persona.
@@ -60,7 +60,7 @@ layer: meta
 
 ### Legacy bridge repo
 
-- Path: `__PATH_UA_LLM_BETA_BRIDGE__`
+- Path: `your local bridge clone (historical)`
 - Git branch:
   `feature/lexery-legal-agent-architecture`
 - Observed role:

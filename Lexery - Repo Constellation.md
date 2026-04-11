@@ -21,7 +21,7 @@ Lexery не живе в одному репозиторії. Щоб зрозум
 ### 1. `lexeryAI/Lexery`
 
 - Local path:
-  `__PATH_LEXERY_MONOREPO__`
+  `your local Lexery monorepo root`
 - Visibility:
   private
 - GitHub created:
@@ -36,7 +36,7 @@ Lexery не живе в одному репозиторії. Щоб зрозум
 ### 2. `seredyuk2077/Ukrainan-Lawyer-LLM-BETA`
 
 - Local path:
-  `__PATH_UA_LLM_BETA__`
+  `your local Ukrainan-Lawyer-LLM-BETA clone (historical)`
 - Visibility:
   public
 - GitHub created:
@@ -53,7 +53,7 @@ Lexery не живе в одному репозиторії. Щоб зрозум
 ### 3. `New project/Ukrainan-Lawyer-LLM-BETA`
 
 - Local path:
-  `__PATH_UA_LLM_BETA_BRIDGE__`
+  `your local bridge clone (historical)`
 - Branch:
   `feature/lexery-legal-agent-architecture`
 - Local status:

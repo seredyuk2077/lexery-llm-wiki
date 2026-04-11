@@ -17,7 +17,7 @@ layer: history
 This is the earliest clear product identity found on the machine:
 
 - Repo:
-  `__PATH_UA_LLM_BETA__`
+  `your local Ukrainan-Lawyer-LLM-BETA clone (historical)`
 - Public GitHub repo:
   `seredyuk2077/Ukrainan-Lawyer-LLM-BETA`
 - Product name:

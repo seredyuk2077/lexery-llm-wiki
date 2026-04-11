@@ -130,7 +130,7 @@ Scheduling: `launchd` runs `run-maintenance.mjs` daily at 08:00 via `com.lexery.
 
 | Repo | Path | What |
 |------|------|------|
-| Lexery monorepo | `__PATH_LEXERY_MONOREPO__` | Main codebase |
+| Lexery monorepo | your local clone path (never commit) | Main codebase |
 
 ## Databases
 

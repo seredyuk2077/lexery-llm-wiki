@@ -11,7 +11,24 @@ import { fileURLToPath } from 'url';
 const __dirname = dirname(fileURLToPath(import.meta.url));
 const VAULT = join(__dirname, '..', '..');
 const RAW = join(VAULT, 'raw');
-const REPO = '__PATH_LEXERY_MONOREPO__';
+const STATE_DIR = join(__dirname, '..', 'state');
+const REPOS_FILE = join(STATE_DIR, 'repos.json');
+
+function resolveMonorepoRoot() {
+  if (process.env.LEXERY_MONOREPO_ROOT?.trim()) {
+    return process.env.LEXERY_MONOREPO_ROOT.trim();
+  }
+  try {
+    if (!existsSync(REPOS_FILE)) return '';
+    const j = JSON.parse(readFileSync(REPOS_FILE, 'utf8'));
+    const row = (j.repos || []).find((r) => r.name === 'Lexery' && (r.path || '').trim());
+    return row ? String(row.path).trim() : '';
+  } catch {
+    return '';
+  }
+}
+
+const REPO = resolveMonorepoRoot();
 
 function sh(cmd, opts = {}) {
   try {
@@ -23,6 +40,14 @@ function today() { return new Date().toISOString().slice(0, 10); }
 function ensureDir(d) { if (!existsSync(d)) mkdirSync(d, { recursive: true }); }
 
 const date = today();
+
+if (!REPO || !existsSync(REPO) || !existsSync(join(REPO, '.git'))) {
+  console.log(
+    `[scan-codebase] SKIP: Lexery monorepo not configured. Set LEXERY_MONOREPO_ROOT or edit state/repos.json (path for "Lexery").`,
+  );
+  process.exit(0);
+}
+
 console.log(`[scan-codebase] ${date}`);
 
 // 1. Git commits (last 30 days)

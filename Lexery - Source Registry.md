@@ -24,9 +24,9 @@ This page is the **authoritative list of upstreams**: Git remotes, local clones,
 
 | Source                                         | Type           | Path / URL                                                                          | Last Ingested | Status         |
 | ---------------------------------------------- | -------------- | ----------------------------------------------------------------------------------- | ------------- | -------------- |
-| Lexery monorepo                                | Git repo       | `__PATH_LEXERY_MONOREPO__`                                            | 2026-04-09    | Active         |
-| Public beta repo                               | Git repo       | `__PATH_UA_LLM_BETA__`                          | 2026-04-09    | Historical     |
-| Bridge repo                                    | Git repo       | `__PATH_UA_LLM_BETA_BRIDGE__`              | 2026-04-09    | Historical     |
+| Lexery monorepo                                | Git repo       | `your local Lexery monorepo root`                                            | 2026-04-09    | Active         |
+| Public beta repo                               | Git repo       | `your local Ukrainan-Lawyer-LLM-BETA clone (historical)`                          | 2026-04-09    | Historical     |
+| Bridge repo                                    | Git repo       | `your local bridge clone (historical)`              | 2026-04-09    | Historical     |
 | GitHub `lexeryAI/Lexery`                       | Remote         | `https://github.com/lexeryAI/Lexery`                                                | 2026-04-09    | Active         |
 | GitHub `seredyuk2077/Ukrainan-Lawyer-LLM-BETA` | Remote         | `https://github.com/seredyuk2077/Ukrainan-Lawyer-LLM-BETA`                          | 2026-04-09    | Historical     |
 | GitHub `seredyuk2077/Ukrainan-Lawyer-LLM`      | Remote         | `https://github.com/seredyuk2077/Ukrainan-Lawyer-LLM`                               | 2026-04-09    | Dormant        |
