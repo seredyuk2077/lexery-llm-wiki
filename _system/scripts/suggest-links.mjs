@@ -509,7 +509,7 @@ for (const layer of [...byLayerHub.keys()].sort()) {
   hubMd += '\n';
 }
 
-hubMd += `## Див. також\n\n- [[Lexery - Index]]\n- [[Lexery - Project Brain]]\n- [[Lexery - Glossary]]\n- [[Lexery - Log]]\n\n## Graph hygiene\n\n- Ця сторінка навмисно містить **мінімум wikilinks**.\n- Для масових link-ідей використовуй лог-файл \`link-suggestions-*.md\`, а не wikilinks у hub.\n`;
+hubMd += `## Див. також\n\n- [[Lexery - Index]]\n- [[Lexery - Project Brain]]\n- [[Lexery - Graph Hygiene]]\n- [[Lexery - Glossary]]\n- [[Lexery - Log]]\n\n## Graph hygiene\n\n- Ця сторінка навмисно містить **мінімум wikilinks**.\n- Для масових link-ідей використовуй лог-файл \`link-suggestions-*.md\`, а не wikilinks у hub.\n`;
 
 const hubPath = join(VAULT_DIR, 'Lexery - Neural Link Hub.md');
 writeFileSync(hubPath, hubMd);

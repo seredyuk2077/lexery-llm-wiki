@@ -31,18 +31,22 @@ Ledger of **pull requests** on the main Lexery application monorepo as of the ob
 
 ## Full PR table
 
+<!-- AUTO_PR_TABLE_BEGIN -->
+
 | # | Title | State | Author | Branch → base | Created | Merged |
 | --- | --- | --- | --- | --- | --- | --- |
-| 10 | [Frontend] feat: subscription plans | Merged | alexbach093 | `Frontend-feat-plans` → `dev` | Apr 8 | Apr 8 |
-| 9 | [Frontend] feat: auth infra | Open | puhachyeser | `feat/auth-infrastructure` → `dev` | Apr 7 | — |
-| 8 | [Frontend] chore: refactor auth | Merged | puhachyeser | `chore/refactor-auth` → `dev` | Apr 6 | Apr 6 |
-| 7 | [Frontend] feat: auth pages | Merged | alexbach093 | `Frontend-chore-auth` → `dev` | Apr 4 | Apr 5 |
-| 6 | [Agent] chore: doclist script names | Merged | puhachyeser | `chore/change-doclist-script-names` → `dev` | Apr 4 | Apr 4 |
-| 5 | [Backend] feat: shared contracts | Merged | puhachyeser | `feat/shared-contracts` → `dev` | Apr 3 | Apr 4 |
-| 4 | Redesign system prompt editor | Merged | alexbach093 | `Frontend-system-prompt-redesign` → `dev` | Apr 2 | Apr 3 |
-| 3 | [Backend] feat: auth tweaks | Merged | puhachyeser | `feat/adapt-new-auth-methods` → `dev` | Apr 2 | Apr 2 |
-| 2 | [Backend] feat: storage/upload | Merged | puhachyeser | `feat/file-upload-presigned-urls` → `dev` | Mar 30 | Mar 31 |
-| 1 | chore: migrate frontend | Merged | puhachyeser | `chore/migrate-frontend` → `dev` | Mar 29 | Mar 29 |
+| 10 | [Frontend] feat: subscription plans | Merged | alexbach093 | `Frontend-feat-plans → dev` | 2026-04-08 | 2026-04-08 |
+| 9 | [Frontend] feat: add infra for email/sms/oauth registration | Open | puhachyeser | `feat/auth-infrastructure → dev` | 2026-04-07 | — |
+| 8 | [Frontend] chore: refactor auth | Merged | puhachyeser | `chore/refactor-auth → dev` | 2026-04-06 | 2026-04-06 |
+| 7 | [Frontend] feat: auth pages | Merged | alexbach093 | `Frontend-chore/auth → dev` | 2026-04-04 | 2026-04-05 |
+| 6 | [Agent] chore: change doclist script names to prevent errors | Merged | puhachyeser | `chore/change-doclist-script-names → dev` | 2026-04-04 | 2026-04-04 |
+| 5 | [Backend / Agent] feat: add shared contracts(zod/types) for backend and agent | Merged | puhachyeser | `feat/shared-contracts → dev` | 2026-04-03 | 2026-04-04 |
+| 4 | Redesign system prompt editor | Merged | alexbach093 | `Frontend-system-prompt-redesign → dev` | 2026-04-02 | 2026-04-03 |
+| 3 | [Backend] feat: tweak user schema and auth service to match new auth data | Merged | puhachyeser | `feat/adapt-new-auth-methods → dev` | 2026-04-02 | 2026-04-02 |
+| 2 | [Backend] feat: add storage controller/service with uploading functionality | Merged | puhachyeser | `feat/file-upload-presigned-urls → dev` | 2026-03-30 | 2026-03-31 |
+| 1 | chore: migrate frontend and configurate it to use monorepo infra | Merged | puhachyeser | `chore/migrate-frontend → dev` | 2026-03-29 | 2026-03-29 |
+
+<!-- AUTO_PR_TABLE_END -->
 
 > Branch names marked `Frontend-*` are normalized from frontend-prefixed topic branches; verify on GitHub if exact spelling matters for automation.
 

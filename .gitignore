@@ -3,6 +3,8 @@
 # Obsidian internal
 .obsidian/workspace.json
 .obsidian/workspace-mobile.json
+.obsidian/app.json
+.obsidian/core-plugins.json
 .trash/
 
 # OS

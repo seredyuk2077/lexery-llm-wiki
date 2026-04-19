@@ -75,7 +75,9 @@ for (const file of allFiles) {
       title === 'Lexery - Auto Snapshot' ||
       title === 'Lexery - Neural Link Hub' ||
       title === 'Lexery - Executive Ops Dashboard' ||
-      title === 'Lexery - Ops Rollup';
+      title === 'Lexery - Ops Rollup' ||
+      title === 'Lexery - Stale Pages Queue' ||
+      title === 'Lexery - Graph Hygiene';
     if (!thinExempt) {
       issues.push({ file, severity: 'warn', issue: `Thin page: only ${contentLines} content lines` });
     }

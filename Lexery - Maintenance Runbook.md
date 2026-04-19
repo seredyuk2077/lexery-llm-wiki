@@ -7,7 +7,7 @@ tags:
   - lexery
   - meta
 created: 2026-04-09
-updated: 2026-04-09
+updated: 2026-04-19
 status: planned
 layer: meta
 ---
@@ -49,6 +49,20 @@ Operational guide for keeping the **Lexery second brain** aligned with repos, Li
 
 - **Fetch blocked**: log "offline pass" and use local-only `git log`.
 - **Dirty worktree**: note in Log — may explain skew in [[Lexery - Branch Divergence]].
+
+---
+
+## macOS LaunchAgent (щодня, поки Mac увімкнений)
+
+1. З кореня vault: `bash _system/scripts/install-schedule.sh` — згенерує `com.lexery.wiki-maintenance.plist` і завантажить **LaunchAgent** у `~/Library/LaunchAgents/`.
+2. **Розклад**: після логіну (`RunAtLoad`) + **щодня о ~09:10** (`StartCalendarInterval` у `com.lexery.wiki-maintenance.plist.example`). Для іншого часу — зміни plist і перезапусти `install-schedule.sh`.
+3. **Секрети** тільки в `~/.lexery-wiki-env` (wrapper уже робить `source`).
+4. **Логи агента**: `_system/logs/launchd-stdout.log`, `launchd-stderr.log`.
+5. Пайплайн: `run-maintenance-launchd.sh` → `run-maintenance.mjs` (scan → sync → delta → truth → **prune-logs** → lint тощо).
+
+### Граф Obsidian
+
+- Налаштування для читабельного графа: [[Lexery - Graph Hygiene]] та `.obsidian/graph.json` у репозиторії.
 
 ---
 

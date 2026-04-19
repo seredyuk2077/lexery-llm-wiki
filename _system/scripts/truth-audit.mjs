@@ -110,6 +110,8 @@ for (const p of pages) {
   for (let i = 0; i < lines.length && n < 6; i++) {
     const t = lines[i].trim();
     if (!t || t.startsWith('#') || t.startsWith('>')) continue;
+    if (t.startsWith('|')) continue;
+    if (/^[-*]\s+\[\[/.test(t)) continue;
     if (strong.test(t) && p.status === 'observed') {
       claimIssues.push({ page: p.title, line: i + 1, text: t.slice(0, 160) });
       n++;
@@ -210,12 +212,61 @@ layer: meta
 
 - Full audit log: \`_system/logs/truth-audit-${compact}.md\`
 - Machine state: \`_system/state/truth-audit.json\`
+- Черга застарілих сторінок: [[Lexery - Stale Pages Queue]]
 - Related: [[Lexery - Current State]], [[Lexery - Auto Snapshot]], [[Lexery - PR Chronology]], [[Lexery - Log]]
 `;
+
+const stalePath = join(VAULT_DIR, 'Lexery - Stale Pages Queue.md');
+let staleMd = `---
+aliases:
+  - Stale Pages Queue
+tags:
+  - lexery
+  - meta
+  - maintenance
+created: ${todayIso()}
+updated: ${todayIso()}
+status: observed
+layer: meta
+---
+
+> [!info] Auto-generated
+> Оновлюється \`truth-audit.mjs\`. Сторінки тут — кандидати на **оновлення \`updated:\` або змісту**, не автоматичне видалення.
+
+# Lexery - Stale Pages Queue
+
+Сторінки, у яких \`updated:\` у frontmatter старіший за поріг **freshness** (див. \`truth-audit.json\`).
+
+`;
+
+if (!freshnessIssues.length) {
+  staleMd += '_Наразі порушень freshness немає — черга порожня._\n\n';
+} else {
+  staleMd += '| Page | Days over | Limit (days) | Last updated |\n|------|-----------|----------------|---------------|\n';
+  for (const x of [...freshnessIssues].sort((a, b) => b.days - a.days)) {
+    staleMd += `| [[${x.page}]] | ${x.days} | ${x.limit} | ${x.updated || '—'} |\n`;
+  }
+  staleMd += '\n';
+}
+
+staleMd += `## Що робити
+
+1. Онови зміст або хоча б поле \`updated:\` після перевірки проти репо / prod.
+2. Якщо сторінка **більше не актуальна** — перенеси факти в [[Lexery - Log]] або архівний розділ, потім зменш scope або познач \`status: deprecated\` (узгодь у runbook).
+3. Після правок — дочекайся наступного \`truth-audit\` (щоденний maintenance).
+
+## Див. також
+
+- [[Lexery - Data Integrity Dashboard]]
+- [[Lexery - Maintenance Runbook]]
+`;
+
+writeFileSync(stalePath, staleMd);
 
 writeFileSync(logPath, logMd);
 writeFileSync(dashboardPath, dashboard);
 
+console.log(`Stale queue written to ${stalePath}`);
 console.log(`Truth audit written to ${logPath}`);
 console.log(`Truth state written to ${statePath}`);
 console.log(`Data dashboard written to ${dashboardPath}`);

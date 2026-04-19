@@ -5,17 +5,28 @@ tags:
   - lexery
   - meta
 created: 2026-04-09
-updated: 2026-04-09
+updated: 2026-04-19
 status: observed
 layer: meta
 ---
+
+> [!lexery-hero] Lexery Wiki
+> ![[_assets/brand/lexery-wordmark-dark-bg.svg|280]]
+>
+> Каталог `Lexery - *.md` + automation у `_system/`. **Hub:** [[Lexery - Project Brain]] · **Ops:** [[Lexery - Executive Ops Dashboard]] · **Integrity:** [[Lexery - Data Integrity Dashboard]] · **Graph:** [[Lexery - Graph Hygiene]]
+
+> [!lexery-strip] Швидкий старт
+> - [[Lexery - Project Brain]] — зони змісту та навігація
+> - [[Lexery - Stale Pages Queue]] — що оновити за датою `updated:`
+> - [[Lexery - Neural Link Hub]] — MOC + пропозиції лінків (мінімум wikilinkів у тілі)
+> - У Obsidian увімкни CSS snippet **lexery-wiki** (*Appearance → CSS snippets*)
 
 > [!info] Compiled from
 > - Codebase analysis and session synthesis
 
 # Lexery — Index
 
-> Каталог усіх сторінок wiki. Оновлюється при кожному ingest.
+> Каталог усіх сторінок wiki. Оновлюється при **ingest** і **maintenance** (див. [[Lexery - Maintenance Runbook]]).
 
 ## Brain (Pipeline)
 
@@ -115,6 +126,11 @@ layer: meta
 | [[Lexery - Source Registry]] | Реєстр усіх ingested джерел | meta |
 | [[Lexery - Neural Link Hub]] | Авто-MOC, scored link ideas, orphans, експорт `link-graph.json` | meta |
 | [[Lexery - Auto Snapshot]] | Автозріз метрик з `raw/` (перезаписується auto-fill) | meta |
+| [[Lexery - Data Integrity Dashboard]] | Trust, consistency, freshness (truth-audit) | meta |
+| [[Lexery - Executive Ops Dashboard]] | Щоденний операційний зріз | meta |
+| [[Lexery - Ops Rollup]] | Історія maintenance-прогонів (deep) | meta |
+| [[Lexery - Stale Pages Queue]] | Сторінки з простроченим `updated:` | meta |
+| [[Lexery - Graph Hygiene]] | Як прибрати хаос у Obsidian Graph | meta |
 | [[Lexery - Cost Ledger]] | Облік витрат AI на підтримку wiki | meta |
 | [[Lexery - Maintenance Runbook]] | Як підтримувати second brain | meta |
 | [[Lexery - Automation Architecture]] | Дизайн самопідтримуваного ingest-pipeline | meta |
@@ -151,7 +167,7 @@ Raw immutable sources live in `raw/`:
 
 ## Statistics
 
-- **Pages:** 78 markdown hub pages (`Lexery - *.md`; canvas-и окремо)
+- **Pages:** 82+ markdown hub pages (`Lexery - *.md`; canvas-и окремо)
 - **Lines (content pages):** ~11.5k+ (aggregate `wc -l`; зростає з кожним deep pass)
 - **Canvases:** 7
 - **Raw sources:** `raw/` (оновлюється `scan-codebase.mjs`)

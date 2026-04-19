@@ -41,6 +41,7 @@ layer: meta
 
 ## Де дивитись граф знань
 
+- [[Lexery - Graph Hygiene]] — як прибрати «купу куль» у Graph view
 - [[Lexery - Neural Link Hub]] — MOC + пропозиції зв’язків
 - `_system/state/link-graph.json` — машинний експорт ребер
 

@@ -1,0 +1,31 @@
+{
+  "collapse-filter": true,
+  "search": "",
+  "showTags": true,
+  "showAttachments": false,
+  "hideUnresolved": true,
+  "showOrphans": false,
+  "collapse-color-groups": false,
+  "colorGroups": [
+    { "query": "path:Lexery - U", "color": "#2563eb" },
+    { "query": "path:Lexery - Branch", "color": "#c2410c" },
+    { "query": "path:Lexery - Legacy", "color": "#a16207" },
+    { "query": "tag:#brain", "color": "#1d4ed8" },
+    { "query": "tag:#product", "color": "#047857" },
+    { "query": "tag:#meta", "color": "#475569" },
+    { "query": "tag:#data", "color": "#0f766e" },
+    { "query": "tag:#team", "color": "#7c3aed" }
+  ],
+  "collapse-display": false,
+  "showArrow": true,
+  "textFadeMultiplier": 0.35,
+  "nodeSizeMultiplier": 1.05,
+  "lineSizeMultiplier": 1.15,
+  "collapse-forces": false,
+  "centerStrength": 0.28,
+  "repelStrength": 16,
+  "linkStrength": 1.35,
+  "linkDistance": 200,
+  "scale": 0.42,
+  "close": false
+}

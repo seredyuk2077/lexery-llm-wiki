@@ -90,6 +90,7 @@ const baseSteps = [
   ['build-executive-dashboard.mjs', false],
   ...(mode === 'deep' ? [['suggest-links.mjs', false]] : []),
   ['apply-pipeline-backbone.mjs', false],
+  ['prune-logs.mjs', false],
   ['lint.mjs', false],
 ];
 

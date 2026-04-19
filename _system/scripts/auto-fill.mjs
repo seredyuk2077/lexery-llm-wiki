@@ -5,7 +5,7 @@
  * Focuses on: PR data → team pages, commit data → history pages, 
  * architecture docs → brain pages, stats → current state.
  */
-import { readFileSync, writeFileSync, existsSync, readdirSync } from 'fs';
+import { readFileSync, writeFileSync, existsSync, readdirSync, mkdirSync } from 'fs';
 import { join, dirname } from 'path';
 import { fileURLToPath } from 'url';
 
@@ -83,6 +83,7 @@ ${topAuthors ? '\n### Top authors (count in window)\n\n' + topAuthors : ''}
 
 ## Де дивитись граф знань
 
+- [[Lexery - Graph Hygiene]] — як прибрати «купу куль» у Graph view
 - [[Lexery - Neural Link Hub]] — MOC + пропозиції зв’язків
 - \`_system/state/link-graph.json\` — машинний експорт ребер
 
@@ -112,7 +113,43 @@ ${topAuthors ? '\n### Top authors (count in window)\n\n' + topAuthors : ''}
 
 writeAutoSnapshot();
 
-// 1. Extract PR data and update PR Chronology
+const PR_BEGIN = '<!-- AUTO_PR_TABLE_BEGIN -->';
+const PR_END = '<!-- AUTO_PR_TABLE_END -->';
+
+function escCell(s) {
+  return String(s ?? '')
+    .replace(/\|/g, '\\|')
+    .replace(/\r?\n/g, ' ')
+    .trim();
+}
+
+function formatPrState(state) {
+  const u = String(state || '').toUpperCase();
+  if (u === 'MERGED') return 'Merged';
+  if (u === 'OPEN') return 'Open';
+  if (u === 'CLOSED') return 'Closed';
+  return state || '?';
+}
+
+function buildPrTableBlock(prs) {
+  const header =
+    '| # | Title | State | Author | Branch → base | Created | Merged |\n' +
+    '| --- | --- | --- | --- | --- | --- | --- |\n';
+  const rows = [];
+  for (const pr of [...prs].sort((a, b) => b.number - a.number)) {
+    const author = pr.author?.login || '?';
+    const branch = String(pr.headRefName || '').replace(/^\{Frontend\}-/i, 'Frontend-');
+    const base = pr.baseRefName || 'dev';
+    const created = (pr.createdAt || '').slice(0, 10);
+    const merged = pr.closedAt ? pr.closedAt.slice(0, 10) : '—';
+    rows.push(
+      `| ${pr.number} | ${escCell(pr.title)} | ${formatPrState(pr.state)} | ${escCell(author)} | \`${escCell(branch)} → ${escCell(base)}\` | ${created} | ${merged} |`,
+    );
+  }
+  return `${PR_BEGIN}\n\n${header}${rows.join('\n')}\n\n${PR_END}`;
+}
+
+// 1. Extract PR data and update PR Chronology (marker-safe)
 const prsFile = join(RAW, 'github-prs', 'all-prs.json');
 if (existsSync(prsFile)) {
   try {
@@ -120,29 +157,19 @@ if (existsSync(prsFile)) {
     const chronFile = join(VAULT, 'Lexery - PR Chronology.md');
     if (existsSync(chronFile)) {
       let content = readFileSync(chronFile, 'utf8');
-      
-      // Build PR table from data
-      let table = '\n| # | Title | Author | Date | State |\n|---|-------|--------|------|-------|\n';
-      for (const pr of prs.sort((a, b) => b.number - a.number)) {
-        const author = pr.author?.login || '?';
-        const date = (pr.createdAt || '').slice(0, 10);
-        table += `| ${pr.number} | ${pr.title} | @${author} | ${date} | ${pr.state} |\n`;
+      const block = buildPrTableBlock(prs);
+      if (content.includes(PR_BEGIN) && content.includes(PR_END)) {
+        content = content.replace(new RegExp(`${PR_BEGIN}[\\s\\S]*?${PR_END}`, 'm'), block);
+      } else if (/## Full PR table/i.test(content)) {
+        content = content.replace(/(## Full PR table\s*\n\n)([\s\S]*?)(\n\n> Branch names)/i, `$1${block}\n$3`);
       }
-      
-      // Update if there's a PR table marker or add after first heading
-      if (content.includes('| # | Title |') || content.includes('| # |')) {
-        const tablePattern = /\| #[^\n]*\n\|[-|]+\n((\|[^\n]+\n)*)/;
-        if (tablePattern.test(content)) {
-          content = content.replace(tablePattern, table.trim() + '\n');
-        }
-      }
-      
-      // Update frontmatter date
       content = content.replace(/updated: \d{4}-\d{2}-\d{2}/, `updated: ${today()}`);
       writeFileSync(chronFile, content);
       console.log(`  PR Chronology: ${prs.length} PRs`);
     }
-  } catch (e) { console.log(`  PR Chronology: error — ${e.message}`); }
+  } catch (e) {
+    console.log(`  PR Chronology: error — ${e.message}`);
+  }
 }
 
 // 2. Extract commit velocity and update GitHub History
@@ -187,7 +214,7 @@ if (existsSync(prDir)) {
     
     // Save Linear references
     const linearDir = join(RAW, 'linear');
-    if (!existsSync(linearDir)) { import('fs').then(fs => fs.mkdirSync(linearDir, { recursive: true })); }
+    if (!existsSync(linearDir)) mkdirSync(linearDir, { recursive: true });
     writeFileSync(join(RAW, 'linear', 'refs-from-prs.txt'), [...linearRefs].join('\n'));
   }
 }

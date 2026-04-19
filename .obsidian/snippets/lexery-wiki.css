@@ -32,6 +32,35 @@
   filter: drop-shadow(0 2px 12px rgba(0, 0, 0, 0.35));
 }
 
+.callout[data-callout='lexery-strip'] {
+  --callout-color: 148, 163, 184;
+  --callout-icon: lucide-compass;
+  border-radius: 12px;
+  border: 1px solid rgba(148, 163, 184, 0.35);
+  background: rgba(248, 250, 252, 0.72);
+  margin-top: -0.25rem;
+  margin-bottom: 1.1rem;
+}
+
+.theme-dark .callout[data-callout='lexery-strip'] {
+  background: rgba(30, 41, 59, 0.55);
+}
+
+.callout[data-callout='lexery-strip'] .callout-content ul {
+  margin: 0.25em 0 0.1em;
+  padding-left: 1.2em;
+}
+
+.callout[data-callout='lexery-strip'] li {
+  margin: 0.2em 0;
+}
+
+.markdown-preview-view h1 {
+  margin-top: 0.35em;
+  padding-bottom: 0.2em;
+  border-bottom: 1px solid rgba(148, 163, 184, 0.35);
+}
+
 .markdown-preview-view table {
   border-collapse: separate;
   border-spacing: 0;

@@ -1,3 +1,5 @@
 {
-  "enabledCssSnippets": ["lexery-wiki"]
+  "enabledCssSnippets": [
+    "lexery-wiki"
+  ]
 }

@@ -8,18 +8,21 @@ tags:
   - compiled-wiki
   - obsidian
 created: 2026-04-09
-updated: 2026-04-09
+updated: 2026-04-19
 source_mode: compiled
 status: observed
 layer: meta
 ---
 
+> [!lexery-hero] Lexery — Project Brain
+> ![[_assets/brand/lexery-wordmark-dark-bg.svg|280]]
+>
+> Другий мозок стартапу в Obsidian. **[[Lexery - Index|Index]]** · **[[Lexery - Executive Ops Dashboard|Ops]]** · **[[Lexery - Graph Hygiene|Graph hygiene]]** · **[[Lexery - Master Map.canvas|Master Map]]**
+
 > [!info] Compiled from
 > - `raw/architecture-docs/app-README.md`
 > - `raw/architecture-docs/LEXERY_LEGAL_AI_AGENT_ARCHITECTURE.md`
 > - Codebase analysis and session synthesis
-
-![[lexery-logo.svg|300]]
 
 # Lexery — Project Brain
 
