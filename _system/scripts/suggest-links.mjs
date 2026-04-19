@@ -245,6 +245,7 @@ function scoreSuggestion(reasons) {
     else if (r.startsWith('via [[')) s += 2;
     else if (r.startsWith('title appears')) s += 4;
     else if (r.startsWith('hub')) s += 0.5;
+    else if (r.startsWith('shared substantive tags')) s += 2.4;
     else s += 1;
   }
   return s;
@@ -282,6 +283,27 @@ for (const p of pages) {
     const peers = byLayer.get(p.layer) || [];
     for (const peer of peers) {
       if (peer !== p.title) addSuggestion(p.title, peer, [`same layer: ${p.layer}`]);
+    }
+  }
+
+  if (!lite) {
+    const meaningful = p.tags.filter((t) => !TRIVIAL_TAGS.has(t));
+    if (meaningful.length >= 1) {
+      for (const other of titles) {
+        if (other === p.title) continue;
+        const po = pageByTitle.get(other);
+        if (!po) continue;
+        const ot = po.tags.filter((t) => !TRIVIAL_TAGS.has(t));
+        const shared = meaningful.filter((t) => ot.includes(t));
+        if (shared.length >= 2) {
+          addSuggestion(
+            p.title,
+            other,
+            [`shared substantive tags (${shared.length}): ${shared.slice(0, 4).join(', ')}`],
+            0.55,
+          );
+        }
+      }
     }
   }
 

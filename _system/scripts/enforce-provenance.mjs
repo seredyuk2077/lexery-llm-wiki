@@ -21,6 +21,10 @@ const SKIP = new Set([
   'Lexery - Ops Rollup',
   'Lexery - Source Registry',
   'Lexery - Cost Ledger',
+  'Lexery - Stale Pages Queue',
+  'Lexery - Graph Hygiene',
+  'Lexery - Graph Metrics',
+  'Lexery - Wiki Quality Contract',
 ]);
 
 const CONTENT_LAYERS = new Set(['brain', 'product', 'data', 'history', 'team', 'governance']);

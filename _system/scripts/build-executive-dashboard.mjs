@@ -1,6 +1,6 @@
 #!/usr/bin/env node
 /**
- * Executive ops dashboard from machine artifacts.
+ * Executive ops dashboard from machine artifacts + trust history trend.
  */
 import { readFileSync, writeFileSync, existsSync } from 'fs';
 import { join, dirname } from 'path';
@@ -9,6 +9,7 @@ import { fileURLToPath } from 'url';
 const __dirname = dirname(fileURLToPath(import.meta.url));
 const SYSTEM_DIR = join(__dirname, '..');
 const VAULT_DIR = join(SYSTEM_DIR, '..');
+const HISTORY_PATH = join(SYSTEM_DIR, 'state', 'truth-history.jsonl');
 
 function todayIso() {
   return new Date().toISOString().slice(0, 10);
@@ -32,6 +33,23 @@ function safeRead(path, fallback = '') {
   }
 }
 
+function trustTrendTable() {
+  if (!existsSync(HISTORY_PATH)) return '_Ще немає `truth-history.jsonl` — після кількох прогонів truth-audit з’явиться тренд._\n';
+  const lines = readFileSync(HISTORY_PATH, 'utf8').trim().split('\n').filter(Boolean).slice(-10);
+  if (!lines.length) return '_Порожня історія._\n';
+  let md =
+    '| Дата | Trust | Fresh | Cons | Prov | RawΔ | Claims |\n|------|------:|------:|-----:|-----:|-----:|-------:|\n';
+  for (const line of lines) {
+    try {
+      const o = JSON.parse(line);
+      md += `| ${o.date} | ${o.trustScore} | ${o.freshness} | ${o.consistency} | ${o.provenance} | ${o.rawVsWiki} | ${o.suspicious} |\n`;
+    } catch {
+      /* skip bad line */
+    }
+  }
+  return md + '\n';
+}
+
 const date = todayIso();
 const truth = safeJson(join(SYSTEM_DIR, 'state', 'truth-audit.json'), {});
 const contradiction = safeJson(join(SYSTEM_DIR, 'state', 'contradiction-audit.json'), {});
@@ -50,19 +68,23 @@ const trustScore = truth?.trustScore ?? 'n/a';
 const fresh = truth?.summary?.freshnessIssues ?? 'n/a';
 const consistency = truth?.summary?.consistencyIssues ?? 'n/a';
 const provenance = truth?.summary?.provenanceIssues ?? 'n/a';
+const rawDrift = truth?.summary?.rawVsWikiDrift ?? 'n/a';
 const suspicious = truth?.summary?.suspiciousClaims ?? 'n/a';
 const contradictions = contradiction?.findingsCount ?? 'n/a';
 const runMode = maintState?.last_mode || 'n/a';
 
 const isHealthy =
   typeof trustScore === 'number' &&
-  trustScore >= 90 &&
+  trustScore >= 88 &&
   Number(fresh) === 0 &&
-  Number(consistency) === 0;
+  Number(consistency) === 0 &&
+  Number(rawDrift) === 0;
 
 const healthLine = isHealthy
   ? '> [!success] System health — **GREEN**'
   : '> [!warning] System health — **ATTENTION REQUIRED**';
+
+const trendMd = trustTrendTable();
 
 const out = `---
 aliases:
@@ -80,7 +102,7 @@ layer: meta
 > [!lexery-hero] Executive pulse
 > ![[_assets/brand/lexery-wordmark-dark-bg.svg|240]]
 >
-> **Trust** ${trustScore}/100 · **Health** ${isHealthy ? 'GREEN' : 'ATTENTION'} · **Last run** ${runMode} · Автозбірка з truth / contradiction / maintenance state.
+> **Trust** ${trustScore}/100 · **Health** ${isHealthy ? 'GREEN' : 'ATTENTION'} · **Last run** ${runMode} · Деталі сигналів: [[Lexery - Wiki Quality Contract]] · [[Lexery - Data Integrity Dashboard]]
 
 ${healthLine}
 
@@ -88,7 +110,8 @@ ${healthLine}
 > - **Trust score:** ${trustScore}/100
 > - **Freshness issues:** ${fresh}
 > - **Consistency issues:** ${consistency}
-> - **Provenance issues:** ${provenance}
+> - **Provenance gaps:** ${provenance}
+> - **Raw↔wiki drift:** ${rawDrift}
 > - **Suspicious claims:** ${suspicious}
 > - **Contradiction candidates:** ${contradictions}
 > - **Last run mode:** ${runMode}
@@ -100,25 +123,31 @@ ${healthLine}
 > [!note] Runbook checks
 > - Maintenance log today: **${maint ? 'present' : 'missing'}**
 > - Truth audit state: **${truth && Object.keys(truth).length ? 'present' : 'missing'}**
-> - Детальніше: [[Lexery - Data Integrity Dashboard]]
+> - Machine history: \`_system/state/truth-history.jsonl\`
 
 # Lexery - Executive Ops Dashboard
 
+## Trust trend (останні записи)
+
+${trendMd}
+
 ## What to do next
 
-1. Якщо **consistency > 0** — вирівняй метрики (Auto Snapshot ↔ PR Chronology).
-2. Якщо **freshness > 0** — онови high-impact сторінки (Current State, Index, Project Brain).
-3. Якщо **suspicious** або **contradictions > 0** — truth-triage перед розширенням контенту.
+1. Якщо **raw↔wiki drift > 0** — спочатку онови [[Lexery - PR Chronology]] / [[Lexery - Current State]], потім перевір [[Lexery - Auto Snapshot]].
+2. Якщо **provenance > 0** — прогін \`enforce-provenance.mjs\` або ручне джерело для \`observed\` сторінок.
+3. Якщо **consistency > 0** — вирівняй метрики PR (маркери \`AUTO_PR_TABLE\`).
+4. Якщо trust **падає кілька днів** — розгорни [[Lexery - Wiki Quality Contract]] §9.
 
 ## Quick links
 
 | Зона | Посилання |
 |------|-----------|
+| Контракт якості | [[Lexery - Wiki Quality Contract]] |
 | Integrity | [[Lexery - Data Integrity Dashboard]] |
 | Snapshot | [[Lexery - Auto Snapshot]] |
 | Продукт | [[Lexery - Current State]] |
 | Журнал | [[Lexery - Log]] |
-| Граф | [[Lexery - Neural Link Hub]] |
+| Граф | [[Lexery - Neural Link Hub]] · [[Lexery - Graph Metrics]] |
 | Ops rollup | [[Lexery - Ops Rollup]] |
 | Сирі аудити | \`_system/logs/contradiction-audit-*.md\` |
 `;

@@ -131,6 +131,8 @@ layer: meta
 | [[Lexery - Ops Rollup]] | Історія maintenance-прогонів (deep) | meta |
 | [[Lexery - Stale Pages Queue]] | Сторінки з простроченим `updated:` | meta |
 | [[Lexery - Graph Hygiene]] | Як прибрати хаос у Obsidian Graph | meta |
+| [[Lexery - Graph Metrics]] | Ступінь зв’язності з link-graph (deep) | meta |
+| [[Lexery - Wiki Quality Contract]] | Контракт якості, raw↔wiki, trust | governance |
 | [[Lexery - Cost Ledger]] | Облік витрат AI на підтримку wiki | meta |
 | [[Lexery - Maintenance Runbook]] | Як підтримувати second brain | meta |
 | [[Lexery - Automation Architecture]] | Дизайн самопідтримуваного ingest-pipeline | meta |

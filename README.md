@@ -27,8 +27,9 @@ cd lexery-llm-wiki
 ### Локальна автоматизація (опційно)
 
 1. Скопіюй `_system/state/repos.json.example` → `_system/state/repos.json` і пропиши **`path`** до свого клону monorepo `Lexery` (або задай `LEXERY_MONOREPO_ROOT`). Перший запуск `sync-git.mjs` сам створить `repos.json` з example, якщо файлу ще немає.
-2. macOS LaunchAgent: `_system/scripts/install-schedule.sh` згенерує plist з `*.plist.example`.
+2. **macOS (щодня, Mac увімкнений):** `bash _system/scripts/install-schedule.sh` — LaunchAgent: логін + **~09:10** щодня (`StartCalendarInterval`), див. [[Lexery - Maintenance Runbook]].
 3. LLM-резюме дельт (`generate-delta.mjs`) працює лише якщо задано `OPENROUTER_API_KEY` у `~/.lexery-wiki-env`.
+4. **Graph Obsidian:** увімкни snippet **lexery-wiki** і переглянь [[Lexery - Graph Hygiene]] — у репо вже лежить підкручений `.obsidian/graph.json` (кольори за шаром, стрілки, orphans off).
 
 ## Швидке відкриття нотатки (після додавання vault)
 

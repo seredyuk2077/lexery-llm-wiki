@@ -1,20 +1,41 @@
 #!/usr/bin/env node
 /**
- * Truth audit: freshness, PR metric parity, simple claim heuristics.
- * Outputs log, state JSON, and Lexery - Data Integrity Dashboard.md
+ * Truth audit: freshness, PR parity, provenance gaps, raw↔wiki drift,
+ * claim heuristics, trust history (jsonl), stale queue, integrity dashboard.
  */
-import { readFileSync, writeFileSync, existsSync, mkdirSync, readdirSync } from 'fs';
+import { readFileSync, writeFileSync, existsSync, mkdirSync, readdirSync, appendFileSync, statSync } from 'fs';
 import { join, dirname } from 'path';
 import { fileURLToPath } from 'url';
 
 const __dirname = dirname(fileURLToPath(import.meta.url));
 const SYSTEM_DIR = join(__dirname, '..');
 const VAULT_DIR = join(SYSTEM_DIR, '..');
+const RAW_DIR = join(VAULT_DIR, 'raw');
 const LOGS_DIR = join(SYSTEM_DIR, 'logs');
 const STATE_DIR = join(SYSTEM_DIR, 'state');
+const HISTORY_PATH = join(STATE_DIR, 'truth-history.jsonl');
 
 const FRESHNESS_DAYS_DEFAULT = 21;
 const FRESHNESS_DAYS_META = 14;
+
+const PROVENANCE_SKIP = new Set([
+  'Lexery - Index',
+  'Lexery - Project Brain',
+  'Lexery - Neural Link Hub',
+  'Lexery - Log',
+  'Lexery - Auto Snapshot',
+  'Lexery - Data Integrity Dashboard',
+  'Lexery - Executive Ops Dashboard',
+  'Lexery - Ops Rollup',
+  'Lexery - Source Registry',
+  'Lexery - Cost Ledger',
+  'Lexery - Stale Pages Queue',
+  'Lexery - Graph Hygiene',
+  'Lexery - Graph Metrics',
+  'Lexery - Wiki Quality Contract',
+]);
+
+const CONTENT_LAYERS = new Set(['brain', 'product', 'data', 'history', 'team', 'governance']);
 
 function todayCompact() {
   const d = new Date();
@@ -61,6 +82,36 @@ function readOptional(path) {
   }
 }
 
+function pageUpdatedMs(title) {
+  const p = join(VAULT_DIR, `${title}.md`);
+  if (!existsSync(p)) return null;
+  const { updated } = parseFrontmatter(readFileSync(p, 'utf8'));
+  if (!updated) return null;
+  const t = Date.parse(updated);
+  return Number.isNaN(t) ? null : t;
+}
+
+function maxMtimeUnder(dir, exts) {
+  let max = 0;
+  function walk(d) {
+    if (!existsSync(d)) return;
+    for (const ent of readdirSync(d, { withFileTypes: true })) {
+      const full = join(d, ent.name);
+      if (ent.isDirectory()) walk(full);
+      else if (exts.some((e) => ent.name.endsWith(e))) {
+        try {
+          const t = statSync(full).mtimeMs;
+          if (t > max) max = t;
+        } catch {
+          /* ignore */
+        }
+      }
+    }
+  }
+  walk(dir);
+  return max;
+}
+
 const pages = [];
 const freshnessIssues = [];
 for (const f of readdirSync(VAULT_DIR)) {
@@ -99,6 +150,39 @@ if (prSnapshot != null && prChronologyCount != null && prSnapshot !== prChronolo
   });
 }
 
+/** Raw GitHub exports newer than key wiki pages → narrative drift risk */
+const rawVsWiki = [];
+const rawGithubMax = Math.max(
+  maxMtimeUnder(join(RAW_DIR, 'github-commits'), ['.txt']),
+  maxMtimeUnder(join(RAW_DIR, 'github-prs'), ['.json', '.md']),
+);
+const driftSlackMs = 36 * 3600000;
+if (rawGithubMax > 0) {
+  for (const title of ['Lexery - PR Chronology', 'Lexery - Current State', 'Lexery - GitHub History']) {
+    const pu = pageUpdatedMs(title);
+    if (pu != null && rawGithubMax > pu + driftSlackMs) {
+      rawVsWiki.push({
+        page: title,
+        pageUpdated: new Date(pu).toISOString().slice(0, 10),
+        rawLatest: new Date(rawGithubMax).toISOString(),
+      });
+    }
+  }
+}
+
+/** Observed content pages without explicit compiled-from callout */
+const provenanceIssues = [];
+for (const p of pages) {
+  if (PROVENANCE_SKIP.has(p.title)) continue;
+  if (p.status !== 'observed') continue;
+  if (!p.layer || !CONTENT_LAYERS.has(p.layer)) continue;
+  const body = readOptional(join(VAULT_DIR, `${p.title}.md`)) || '';
+  const b = parseFrontmatter(body).body;
+  if (!/> \[!info\] Compiled from/i.test(b) && !/> \[!note\] Compiled from/i.test(b)) {
+    provenanceIssues.push({ page: p.title, layer: p.layer });
+  }
+}
+
 const claimIssues = [];
 const strong = /\b(always|never|guaranteed|100%|impossible|cannot fail)\b/i;
 for (const p of pages) {
@@ -119,13 +203,12 @@ for (const p of pages) {
   }
 }
 
-const provenanceIssues = [];
-
 let trustScore = 100;
 trustScore -= Math.min(25, freshnessIssues.length * 3);
 trustScore -= consistency.length * 15;
 trustScore -= Math.min(20, claimIssues.length * 4);
-trustScore -= provenanceIssues.length * 5;
+trustScore -= Math.min(15, provenanceIssues.length * 2);
+trustScore -= Math.min(20, rawVsWiki.length * 7);
 trustScore = Math.max(0, Math.min(100, trustScore));
 
 const compact = todayCompact();
@@ -134,35 +217,71 @@ const statePath = join(STATE_DIR, 'truth-audit.json');
 const dashboardPath = join(VAULT_DIR, 'Lexery - Data Integrity Dashboard.md');
 
 let logMd = `# Truth audit — ${todayIso()}\n\n`;
-logMd += `- Pages: ${pages.length}\n- Freshness: ${freshnessIssues.length}\n- Consistency: ${consistency.length}\n`;
-logMd += `- Suspicious claims: ${claimIssues.length}\n- Trust: ${trustScore}/100\n`;
+logMd += `- Pages: ${pages.length}\n`;
+logMd += `- Freshness: ${freshnessIssues.length} | Consistency: ${consistency.length} | Raw↔wiki: ${rawVsWiki.length}\n`;
+logMd += `- Provenance gaps: ${provenanceIssues.length} | Suspicious claims: ${claimIssues.length}\n`;
+logMd += `- Trust: ${trustScore}/100\n\n`;
+if (provenanceIssues.length) {
+  logMd += `## Provenance gaps (sample)\n\n`;
+  for (const x of provenanceIssues.slice(0, 25)) {
+    logMd += `- **${x.page}** (${x.layer})\n`;
+  }
+  logMd += '\n';
+}
+if (rawVsWiki.length) {
+  logMd += `## Raw newer than wiki page\n\n`;
+  for (const x of rawVsWiki) {
+    logMd += `- **${x.page}** wiki \`updated\` ${x.pageUpdated} vs raw activity through **${x.rawLatest.slice(0, 10)}**\n`;
+  }
+  logMd += '\n';
+}
 
-writeFileSync(
-  statePath,
-  JSON.stringify(
-    {
-      generatedAt: new Date().toISOString(),
-      trustScore,
-      summary: {
-        pages: pages.length,
-        freshnessIssues: freshnessIssues.length,
-        consistencyIssues: consistency.length,
-        provenanceIssues: provenanceIssues.length,
-        suspiciousClaims: claimIssues.length,
-      },
-      freshnessIssues,
-      consistency,
-      provenanceIssues,
-      suspiciousClaims: claimIssues,
-      metrics: {
-        prSnapshot,
-        prChronologyCount,
-      },
-    },
-    null,
-    2,
-  ),
-);
+const stateObj = {
+  generatedAt: new Date().toISOString(),
+  trustScore,
+  summary: {
+    pages: pages.length,
+    freshnessIssues: freshnessIssues.length,
+    consistencyIssues: consistency.length,
+    provenanceIssues: provenanceIssues.length,
+    suspiciousClaims: claimIssues.length,
+    rawVsWikiDrift: rawVsWiki.length,
+  },
+  freshnessIssues,
+  consistency,
+  rawVsWiki,
+  provenanceIssues,
+  suspiciousClaims: claimIssues,
+  metrics: {
+    prSnapshot,
+    prChronologyCount,
+    rawGithubLatestIso: rawGithubMax ? new Date(rawGithubMax).toISOString() : null,
+  },
+};
+
+writeFileSync(statePath, JSON.stringify(stateObj, null, 2));
+
+const histLine = JSON.stringify({
+  date: todayIso(),
+  trustScore,
+  freshness: freshnessIssues.length,
+  consistency: consistency.length,
+  provenance: provenanceIssues.length,
+  suspicious: claimIssues.length,
+  rawVsWiki: rawVsWiki.length,
+});
+appendFileSync(HISTORY_PATH, `${histLine}\n`);
+try {
+  if (existsSync(HISTORY_PATH)) {
+    const lines = readFileSync(HISTORY_PATH, 'utf8').trimEnd().split('\n').filter(Boolean);
+    if (lines.length > 800) {
+      const tail = lines.slice(-800).join('\n') + '\n';
+      writeFileSync(HISTORY_PATH, tail);
+    }
+  }
+} catch {
+  /* ignore */
+}
 
 const dashboard = `---
 aliases:
@@ -180,7 +299,7 @@ layer: meta
 > [!lexery-hero] Data integrity
 > ![[_assets/brand/lexery-wordmark-dark-bg.svg|220]]
 >
-> Зведення **freshness**, **consistency** і евристики «сильних» тверджень. Генерує \`truth-audit.mjs\`.
+> Зведення **freshness**, **consistency**, **provenance**, **raw↔wiki drift** і евристики «сильних» тверджень. Детальна семантика: [[Lexery - Wiki Quality Contract]].
 
 > [!info] Auto-generated
 > Не редагуй числові блоки вручну — наступний прогін перезапише їх.
@@ -192,11 +311,12 @@ layer: meta
 > - **Pages audited:** ${pages.length}
 > - **Freshness issues:** ${freshnessIssues.length}
 > - **Consistency issues:** ${consistency.length}
-> - **Provenance issues:** ${provenanceIssues.length}
+> - **Provenance gaps:** ${provenanceIssues.length}
+> - **Raw↔wiki drift:** ${rawVsWiki.length}
 > - **Suspicious high-confidence claims:** ${claimIssues.length}
 
-> [!tip] Read this first
-> Trust score здебільшого падає через вимірювані речі: застарілі дати, розбіжність метрик, абсолютні формулювання без джерела.
+> [!tip] Як читати ці цифри
+> **Trust** падає не через «думку скрипта», а через вимірювані сигнали: прострочені дати, PR mismatch, сирі GitHub-експорти новіші за текст сторінки, відсутній \`Compiled from\` на \`observed\` сторінках, абсолютні формулювання без джерела. Повний контракт: [[Lexery - Wiki Quality Contract]].
 
 ## Critical checks
 
@@ -207,14 +327,25 @@ layer: meta
       : `MISMATCH (${prSnapshot} vs ${prChronologyCount})`
     : 'N/A'
 }
+- Raw GitHub bundle latest change: **${rawGithubMax ? new Date(rawGithubMax).toISOString().slice(0, 19) + 'Z' : 'n/a'}**
+
+## Drift & provenance
+
+| Signal | Count | Дія |
+|--------|------:|-----|
+| Raw newer than key wiki pages | ${rawVsWiki.length} | Онови [[Lexery - PR Chronology]], [[Lexery - Current State]] або підтяни narrative |
+| Provenance gaps (no \`Compiled from\`) | ${provenanceIssues.length} | Запусти \`enforce-provenance.mjs\` або додай джерела вручну |
+| Suspicious absolute claims | ${claimIssues.length} | Заміни на перевірювані формулювання + посилання |
 
 ## Actions
 
-- Full audit log: \`_system/logs/truth-audit-${compact}.md\`
-- Machine state: \`_system/state/truth-audit.json\`
+- Machine state: \`_system/state/truth-audit.json\` · history: \`_system/state/truth-history.jsonl\`
 - Черга застарілих сторінок: [[Lexery - Stale Pages Queue]]
-- Related: [[Lexery - Current State]], [[Lexery - Auto Snapshot]], [[Lexery - PR Chronology]], [[Lexery - Log]]
+- Граф і ступінь зв’язності: [[Lexery - Graph Metrics]] · [[Lexery - Graph Hygiene]]
+- Related: [[Lexery - Auto Snapshot]], [[Lexery - Log]], [[Lexery - Executive Ops Dashboard]]
 `;
+
+writeFileSync(dashboardPath, dashboard);
 
 const stalePath = join(VAULT_DIR, 'Lexery - Stale Pages Queue.md');
 let staleMd = `---
@@ -252,24 +383,24 @@ if (!freshnessIssues.length) {
 staleMd += `## Що робити
 
 1. Онови зміст або хоча б поле \`updated:\` після перевірки проти репо / prod.
-2. Якщо сторінка **більше не актуальна** — перенеси факти в [[Lexery - Log]] або архівний розділ, потім зменш scope або познач \`status: deprecated\` (узгодь у runbook).
-3. Після правок — дочекайся наступного \`truth-audit\` (щоденний maintenance).
+2. Якщо **raw новіший за сторінку** — див. [[Lexery - Data Integrity Dashboard]] (raw↔wiki) і [[Lexery - Wiki Quality Contract]].
+3. Після правок — дочекайся наступного \`truth-audit\`.
 
 ## Див. також
 
 - [[Lexery - Data Integrity Dashboard]]
+- [[Lexery - Wiki Quality Contract]]
 - [[Lexery - Maintenance Runbook]]
 `;
 
 writeFileSync(stalePath, staleMd);
 
 writeFileSync(logPath, logMd);
-writeFileSync(dashboardPath, dashboard);
 
 console.log(`Stale queue written to ${stalePath}`);
 console.log(`Truth audit written to ${logPath}`);
 console.log(`Truth state written to ${statePath}`);
 console.log(`Data dashboard written to ${dashboardPath}`);
 console.log(
-  `Summary: trust=${trustScore}/100, freshness=${freshnessIssues.length}, consistency=${consistency.length}, suspicious=${claimIssues.length}`,
+  `Summary: trust=${trustScore}/100, freshness=${freshnessIssues.length}, consistency=${consistency.length}, provenance=${provenanceIssues.length}, rawVsWiki=${rawVsWiki.length}, suspicious=${claimIssues.length}`,
 );

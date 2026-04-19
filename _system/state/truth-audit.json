@@ -1,15 +1,28 @@
 {
-  "generatedAt": "2026-04-19T15:39:47.706Z",
-  "trustScore": 96,
+  "generatedAt": "2026-04-19T15:55:39.666Z",
+  "trustScore": 82,
   "summary": {
-    "pages": 82,
+    "pages": 84,
     "freshnessIssues": 0,
     "consistencyIssues": 0,
     "provenanceIssues": 0,
-    "suspiciousClaims": 1
+    "suspiciousClaims": 1,
+    "rawVsWikiDrift": 2
   },
   "freshnessIssues": [],
   "consistency": [],
+  "rawVsWiki": [
+    {
+      "page": "Lexery - Current State",
+      "pageUpdated": "2026-04-09",
+      "rawLatest": "2026-04-19T15:17:27.217Z"
+    },
+    {
+      "page": "Lexery - GitHub History",
+      "pageUpdated": "2026-04-09",
+      "rawLatest": "2026-04-19T15:17:27.217Z"
+    }
+  ],
   "provenanceIssues": [],
   "suspiciousClaims": [
     {
@@ -20,6 +33,7 @@
   ],
   "metrics": {
     "prSnapshot": 10,
-    "prChronologyCount": 10
+    "prChronologyCount": 10,
+    "rawGithubLatestIso": "2026-04-19T15:17:27.217Z"
   }
 }

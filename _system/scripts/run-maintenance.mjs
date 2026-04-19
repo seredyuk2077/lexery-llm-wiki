@@ -88,7 +88,7 @@ const baseSteps = [
   ['truth-audit.mjs', false],
   ['contradiction-audit.mjs', false],
   ['build-executive-dashboard.mjs', false],
-  ...(mode === 'deep' ? [['suggest-links.mjs', false]] : []),
+  ...(mode === 'deep' ? [['suggest-links.mjs', false], ['link-metrics.mjs', false]] : []),
   ['apply-pipeline-backbone.mjs', false],
   ['prune-logs.mjs', false],
   ['lint.mjs', false],
