@@ -1,6 +1,7 @@
 #!/usr/bin/env node
 /**
  * Bundle recent digests; optional OpenRouter summary; update cost.json.
+ * Budget-friendly models + robust HTTP/JSON handling.
  */
 import { readFileSync, writeFileSync, existsSync, mkdirSync, readdirSync, statSync } from 'fs';
 import { join, dirname } from 'path';
@@ -75,27 +76,59 @@ let deltaBody = bundleTitle + digests;
 
 const apiKey = process.env.OPENROUTER_API_KEY;
 
+function extractSummaryFromOpenRouterJson(response) {
+  if (!response || typeof response !== 'object') return '';
+  const ch0 = response?.choices?.[0];
+  const msg = ch0?.message;
+  return (
+    (typeof msg?.content === 'string' && msg.content.trim()) ||
+    (typeof ch0?.text === 'string' && ch0.text.trim()) ||
+    ''
+  );
+}
+
+function appendCostEntry(usageTokens, note) {
+  if (!existsSync(COST_FILE)) return;
+  const estCost = usageTokens * 0.0000004;
+  const cost = JSON.parse(readFileSync(COST_FILE, 'utf8'));
+  cost.entries = cost.entries || [];
+  cost.entries.push({
+    date: todayIsoDate(),
+    operation: 'generate-delta summary',
+    tier: 1,
+    estimated_tokens: usageTokens,
+    estimated_cost_usd: estCost,
+    note,
+  });
+  cost.total_usd = Number(cost.total_usd ?? 0) + estCost;
+  writeFileSync(COST_FILE, JSON.stringify(cost, null, 2));
+}
+
 if (apiKey) {
   console.log('Calling OpenRouter for summary...');
-  const context = digests.slice(0, 2000);
+  const context = digests.slice(0, 1200);
 
-  const payload = {
-    model: 'openai/gpt-4o-mini',
-    max_tokens: 300,
-    messages: [
-      {
-        role: 'system',
-        content:
-          'You summarise developer activity for an Obsidian wiki. Be concise: 3-5 bullet points, use [[wikilinks]] where appropriate. Output markdown only.',
-      },
-      {
-        role: 'user',
-        content: `Summarise this delta:\n\n${context}`,
-      },
-    ],
-  };
+  const primaryModel = 'openai/gpt-4o-mini';
+  const fallbackModel = 'google/gemini-flash-1.5-8b';
+  const freeFallbackModel = 'meta-llama/llama-3.2-3b-instruct:free';
 
-  try {
+  async function callOpenRouter(model) {
+    const payload = {
+      model,
+      max_tokens: 220,
+      messages: [
+        {
+          role: 'system',
+          content:
+            'You summarise developer activity for an Obsidian wiki. Be concise: 3-5 bullet points, use [[wikilinks]] where appropriate. Output markdown only.',
+        },
+        {
+          role: 'user',
+          content: `Summarise this delta:\n\n${context}`,
+        },
+      ],
+    };
+
     const res = await fetch('https://openrouter.ai/api/v1/chat/completions', {
       method: 'POST',
       headers: {
@@ -107,31 +140,54 @@ if (apiKey) {
       body: JSON.stringify(payload),
     });
 
-    const response = await res.json();
-    const summary = response?.choices?.[0]?.message?.content?.trim() || '';
+    const rawText = await res.text();
+    let response = null;
+    try {
+      response = JSON.parse(rawText);
+    } catch {
+      response = null;
+    }
+
+    if (!res.ok) {
+      const errObj = response?.error;
+      const errStr =
+        typeof errObj === 'string'
+          ? errObj
+          : errObj && typeof errObj === 'object'
+            ? JSON.stringify(errObj)
+            : rawText.slice(0, 600);
+      console.warn(`WARNING: OpenRouter HTTP ${res.status}: ${errStr}`);
+    } else if (response?.error) {
+      console.warn(`WARNING: OpenRouter payload error: ${JSON.stringify(response.error).slice(0, 600)}`);
+    }
+
+    const summary = extractSummaryFromOpenRouterJson(response);
     const usageTokens = Number(response?.usage?.total_tokens ?? 0);
+    return { summary, usageTokens, model };
+  }
+
+  try {
+    let { summary, usageTokens, model } = await callOpenRouter(primaryModel);
+    if (!summary) {
+      console.warn(`WARNING: empty summary from ${primaryModel}; retrying ${fallbackModel}...`);
+      const second = await callOpenRouter(fallbackModel);
+      summary = second.summary;
+      usageTokens = (usageTokens || 0) + second.usageTokens;
+      model = second.model;
+    }
+    if (!summary) {
+      console.warn(`WARNING: empty summary; retrying free tier ${freeFallbackModel}...`);
+      const third = await callOpenRouter(freeFallbackModel);
+      summary = third.summary;
+      usageTokens = (usageTokens || 0) + third.usageTokens;
+      model = third.model;
+    }
 
     if (summary) {
       deltaBody += '\n---\n\n## LLM Summary\n\n' + summary + '\n';
-
-      const estCost = usageTokens * 0.0000004;
-
-      if (existsSync(COST_FILE)) {
-        const cost = JSON.parse(readFileSync(COST_FILE, 'utf8'));
-        cost.entries = cost.entries || [];
-        cost.entries.push({
-          date: todayIsoDate(),
-          operation: 'generate-delta summary',
-          tier: 1,
-          estimated_tokens: usageTokens,
-          estimated_cost_usd: estCost,
-          note: 'auto: gpt-4o-mini via OpenRouter',
-        });
-        cost.total_usd = Number(cost.total_usd ?? 0) + estCost;
-        writeFileSync(COST_FILE, JSON.stringify(cost, null, 2));
-      }
+      appendCostEntry(usageTokens, `auto: ${model} via OpenRouter`);
     } else {
-      console.warn('WARNING: LLM returned empty summary. Raw delta preserved.');
+      console.warn('WARNING: LLM returned empty summary after all fallbacks. Raw delta preserved.');
     }
   } catch (e) {
     console.warn(`WARNING: OpenRouter request failed: ${e.message}. Raw delta preserved.`);

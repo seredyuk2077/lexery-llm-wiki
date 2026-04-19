@@ -13,6 +13,10 @@ status: observed
 layer: data
 ---
 
+> [!info] Compiled from
+> - Automated wiki maintenance + repository sources
+> - See [[Lexery - Source Map]] for trust model
+
 # Lexery — Storage Topology
 
 This note lists **where durable and ephemeral data live**. Use it alongside [[Lexery - Provider Topology]] when tracing a bug from **UI** → **API** → **worker** → **DB/vector/object store**.

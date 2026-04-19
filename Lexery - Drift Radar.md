@@ -12,6 +12,10 @@ status: observed
 layer: governance
 ---
 
+> [!info] Compiled from
+> - Automated wiki maintenance + repository sources
+> - See [[Lexery - Source Map]] for trust model
+
 # Lexery - Drift Radar
 
 **Drift** means: documented intent, tooling, or org rhythm no longer matches observable reality. This page lists **active contradictions** so they are not silently normalized into "probably fine."

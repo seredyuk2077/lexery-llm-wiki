@@ -13,6 +13,10 @@ status: observed
 layer: brain
 ---
 
+> [!info] Compiled from
+> - Automated wiki maintenance + repository sources
+> - See [[Lexery - Source Map]] for trust model
+
 # Lexery — Retry and Recovery
 
 The Legal Agent uses several **retry** and **resume** mechanisms. Each has explicit **bounds** so cost and oscillation stay predictable. This note ties [[Lexery - U6 Recovery|U6]], [[Lexery - U4 Retrieval|U4]], [[Lexery - U10 Writer|U10]], [[Lexery - U11 Verify|U11]], and [[Lexery - ORCH and Clarification|ORCH]].

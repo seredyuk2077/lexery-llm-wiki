@@ -16,8 +16,16 @@
       "estimated_tokens": 518,
       "estimated_cost_usd": 0.0002072,
       "note": "auto: gpt-4o-mini via OpenRouter"
+    },
+    {
+      "date": "2026-04-19",
+      "operation": "generate-delta summary",
+      "tier": 1,
+      "estimated_tokens": 468,
+      "estimated_cost_usd": 0.0001872,
+      "note": "auto: openai/gpt-4o-mini via OpenRouter"
     }
   ],
-  "total_usd": 5.0002072,
+  "total_usd": 5.0003944,
   "monthly_average_usd": null
 }

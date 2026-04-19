@@ -13,6 +13,10 @@ status: observed
 layer: brain
 ---
 
+> [!info] Compiled from
+> - Automated wiki maintenance + repository sources
+> - See [[Lexery - Source Map]] for trust model
+
 # Lexery — Coverage Gap Honesty
 
 When the Legal Agent **cannot** ground an answer in sufficient retrieved legal evidence, the system must **say so** — not invent citations. This note captures the **coverage gap** model and how [[Lexery - U10 Writer|U10]] / [[Lexery - U11 Verify|U11]] cooperate.

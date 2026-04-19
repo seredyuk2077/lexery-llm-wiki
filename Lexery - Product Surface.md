@@ -10,6 +10,10 @@ status: observed
 layer: product
 ---
 
+> [!info] Compiled from
+> - Automated wiki maintenance + repository sources
+> - See [[Lexery - Source Map]] for trust model
+
 # Lexery - Product Surface
 
 ## What “Product Surface” Means Here

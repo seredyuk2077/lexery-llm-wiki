@@ -13,6 +13,10 @@ status: observed
 layer: data
 ---
 
+> [!info] Compiled from
+> - Automated wiki maintenance + repository sources
+> - See [[Lexery - Source Map]] for trust model
+
 # Lexery — Provider Topology
 
 Lexery's backend spans multiple **external providers**. This note is a **map**, not a billing sheet: use it to know **who owns what dependency** when debugging [[Lexery - Brain Architecture|Brain]], [[Lexery - LLDBI Surface|LLDBI]], and [[Lexery - API and Control Plane|API]].

@@ -4,7 +4,9 @@
 
 ## Прямий лінк (працює в браузері без логіну)
 
-**Репозиторій (перегляд + клон):** [github.com/seredyuk2077/lexery-llm-wiki](https://github.com/seredyuk2077/lexery-llm-wiki)
+**Канонічний репозиторій вікі (перегляд + клон):** [github.com/seredyuk2077/lexery-llm-wiki](https://github.com/seredyuk2077/lexery-llm-wiki)
+
+Якщо вікі лежить **всередині** monorepo Lexery як `Lexery/LLM Wiki/`, це нормально: корінь репо `lexeryAI/Lexery` ігнорує цю папку в git, а **джерело правди для вікі** — окремий репо `seredyuk2077/lexery-llm-wiki` (пуш/пул саме звідти).
 
 ## Безпека
 

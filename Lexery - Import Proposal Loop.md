@@ -13,6 +13,10 @@ status: observed
 layer: data
 ---
 
+> [!info] Compiled from
+> - Automated wiki maintenance + repository sources
+> - See [[Lexery - Source Map]] for trust model
+
 # Lexery — Import Proposal Loop
 
 This note describes the **closed loop** from a user query through [[Lexery - Brain Architecture|Brain]] to a **human- or AI-governed** import decision in Supabase. It is the operational bridge between [[Lexery - DocList Surface|catalog truth]] and [[Lexery - LLDBI Surface|indexed corpus]].

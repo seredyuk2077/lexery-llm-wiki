@@ -12,6 +12,10 @@ status: observed
 layer: governance
 ---
 
+> [!info] Compiled from
+> - Automated wiki maintenance + repository sources
+> - See [[Lexery - Source Map]] for trust model
+
 # Decision registry
 
 Central list of **architectural and product decisions** for Lexery. Sources: `docs/adr/` in the repo, recurring **code patterns**, and **Linear** issues. Use this note as a map; the repo remains **source of truth** for full ADR text.

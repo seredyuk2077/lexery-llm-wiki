@@ -1,164 +1,168 @@
 {
   "files": {
     "raw/architecture-docs/CURRENT_PIPELINE_STATE.md": {
-      "mtime": "2026-04-10T15:09:50.752Z",
-      "ingested_at": "2026-04-10T15:09:55.791Z"
+      "mtime": "2026-04-19T15:17:27.175Z",
+      "ingested_at": "2026-04-19T15:22:58.854Z"
     },
     "raw/architecture-docs/LEXERY_LEGAL_AI_AGENT_ARCHITECTURE.md": {
-      "mtime": "2026-04-10T15:09:50.750Z",
-      "ingested_at": "2026-04-10T15:09:55.791Z"
+      "mtime": "2026-04-19T15:17:27.176Z",
+      "ingested_at": "2026-04-19T15:22:58.855Z"
     },
     "raw/architecture-docs/MEGA_DIAGRAM_FULL.md": {
-      "mtime": "2026-04-10T15:09:50.751Z",
-      "ingested_at": "2026-04-10T15:09:55.791Z"
+      "mtime": "2026-04-19T15:17:27.177Z",
+      "ingested_at": "2026-04-19T15:22:58.855Z"
     },
     "raw/architecture-docs/app-README.md": {
-      "mtime": "2026-04-09T18:30:56.931Z",
-      "ingested_at": "2026-04-10T15:09:55.792Z"
+      "mtime": "2026-04-19T15:17:27.177Z",
+      "ingested_at": "2026-04-19T15:22:58.856Z"
     },
     "raw/codebase-snapshots/monorepo-packages-2026-04-09.md": {
-      "mtime": "2026-04-10T13:33:46.661Z",
-      "ingested_at": "2026-04-10T15:09:55.792Z"
+      "mtime": "2026-04-19T15:17:27.179Z",
+      "ingested_at": "2026-04-19T15:22:58.856Z"
     },
     "raw/codebase-snapshots/supabase-schema-2026-04-09.md": {
-      "mtime": "2026-04-10T13:33:46.775Z",
-      "ingested_at": "2026-04-10T15:09:55.793Z"
+      "mtime": "2026-04-19T15:17:27.181Z",
+      "ingested_at": "2026-04-19T15:22:58.857Z"
     },
     "raw/github-commits/commits-2026.txt": {
-      "mtime": "2026-04-09T16:00:25.644Z",
-      "ingested_at": "2026-04-09T16:04:39.746Z"
+      "mtime": "2026-04-19T15:17:27.184Z",
+      "ingested_at": "2026-04-19T15:22:58.858Z"
     },
     "raw/github-commits/commits-pre-2026.txt": {
-      "mtime": "2026-04-09T16:00:25.649Z",
-      "ingested_at": "2026-04-09T16:04:39.746Z"
+      "mtime": "2026-04-19T15:17:27.185Z",
+      "ingested_at": "2026-04-19T15:22:58.858Z"
     },
     "raw/github-prs/all-prs.json": {
-      "mtime": "2026-04-10T15:09:43.866Z",
-      "ingested_at": "2026-04-10T15:09:55.794Z"
+      "mtime": "2026-04-19T15:17:27.191Z",
+      "ingested_at": "2026-04-19T15:22:58.858Z"
     },
     "raw/github-prs/pr-1.json": {
-      "mtime": "2026-04-10T15:09:50.743Z",
-      "ingested_at": "2026-04-10T15:09:55.794Z"
+      "mtime": "2026-04-19T15:17:27.192Z",
+      "ingested_at": "2026-04-19T15:22:58.858Z"
     },
     "raw/github-prs/pr-1.md": {
-      "mtime": "2026-04-10T15:09:50.743Z",
-      "ingested_at": "2026-04-10T15:09:55.795Z"
+      "mtime": "2026-04-19T15:17:27.193Z",
+      "ingested_at": "2026-04-19T15:22:58.858Z"
     },
     "raw/github-prs/pr-10.json": {
-      "mtime": "2026-04-10T15:09:44.590Z",
-      "ingested_at": "2026-04-10T15:09:55.795Z"
+      "mtime": "2026-04-19T15:17:27.193Z",
+      "ingested_at": "2026-04-19T15:22:58.858Z"
     },
     "raw/github-prs/pr-10.md": {
-      "mtime": "2026-04-10T15:09:44.591Z",
-      "ingested_at": "2026-04-10T15:09:55.795Z"
+      "mtime": "2026-04-19T15:17:27.194Z",
+      "ingested_at": "2026-04-19T15:22:58.858Z"
     },
     "raw/github-prs/pr-2.json": {
-      "mtime": "2026-04-10T15:09:49.958Z",
-      "ingested_at": "2026-04-10T15:09:55.795Z"
+      "mtime": "2026-04-19T15:17:27.195Z",
+      "ingested_at": "2026-04-19T15:22:58.859Z"
     },
     "raw/github-prs/pr-2.md": {
-      "mtime": "2026-04-10T15:09:49.959Z",
-      "ingested_at": "2026-04-10T15:09:55.795Z"
+      "mtime": "2026-04-19T15:17:27.196Z",
+      "ingested_at": "2026-04-19T15:22:58.859Z"
     },
     "raw/github-prs/pr-3.json": {
-      "mtime": "2026-04-10T15:09:49.330Z",
-      "ingested_at": "2026-04-10T15:09:55.795Z"
+      "mtime": "2026-04-19T15:17:27.196Z",
+      "ingested_at": "2026-04-19T15:22:58.859Z"
     },
     "raw/github-prs/pr-3.md": {
-      "mtime": "2026-04-10T15:09:49.330Z",
-      "ingested_at": "2026-04-10T15:09:55.795Z"
+      "mtime": "2026-04-19T15:17:27.197Z",
+      "ingested_at": "2026-04-19T15:22:58.859Z"
     },
     "raw/github-prs/pr-4.json": {
-      "mtime": "2026-04-10T15:09:48.616Z",
-      "ingested_at": "2026-04-10T15:09:55.796Z"
+      "mtime": "2026-04-19T15:17:27.197Z",
+      "ingested_at": "2026-04-19T15:22:58.859Z"
     },
     "raw/github-prs/pr-4.md": {
-      "mtime": "2026-04-10T15:09:48.616Z",
-      "ingested_at": "2026-04-10T15:09:55.796Z"
+      "mtime": "2026-04-19T15:17:27.198Z",
+      "ingested_at": "2026-04-19T15:22:58.859Z"
     },
     "raw/github-prs/pr-5.json": {
-      "mtime": "2026-04-10T15:09:48.010Z",
-      "ingested_at": "2026-04-10T15:09:55.796Z"
+      "mtime": "2026-04-19T15:17:27.198Z",
+      "ingested_at": "2026-04-19T15:22:58.859Z"
     },
     "raw/github-prs/pr-5.md": {
-      "mtime": "2026-04-10T15:09:48.010Z",
-      "ingested_at": "2026-04-10T15:09:55.796Z"
+      "mtime": "2026-04-19T15:17:27.201Z",
+      "ingested_at": "2026-04-19T15:22:58.859Z"
     },
     "raw/github-prs/pr-6.json": {
-      "mtime": "2026-04-10T15:09:47.339Z",
-      "ingested_at": "2026-04-10T15:09:55.796Z"
+      "mtime": "2026-04-19T15:17:27.213Z",
+      "ingested_at": "2026-04-19T15:22:58.859Z"
     },
     "raw/github-prs/pr-6.md": {
-      "mtime": "2026-04-10T15:09:47.339Z",
-      "ingested_at": "2026-04-10T15:09:55.796Z"
+      "mtime": "2026-04-19T15:17:27.214Z",
+      "ingested_at": "2026-04-19T15:22:58.859Z"
     },
     "raw/github-prs/pr-7.json": {
-      "mtime": "2026-04-10T15:09:46.720Z",
-      "ingested_at": "2026-04-10T15:09:55.796Z"
+      "mtime": "2026-04-19T15:17:27.214Z",
+      "ingested_at": "2026-04-19T15:22:58.860Z"
     },
     "raw/github-prs/pr-7.md": {
-      "mtime": "2026-04-10T15:09:46.721Z",
-      "ingested_at": "2026-04-10T15:09:55.796Z"
+      "mtime": "2026-04-19T15:17:27.216Z",
+      "ingested_at": "2026-04-19T15:22:58.860Z"
     },
     "raw/github-prs/pr-8.json": {
-      "mtime": "2026-04-10T15:09:45.920Z",
-      "ingested_at": "2026-04-10T15:09:55.797Z"
+      "mtime": "2026-04-19T15:17:27.216Z",
+      "ingested_at": "2026-04-19T15:22:58.860Z"
     },
     "raw/github-prs/pr-8.md": {
-      "mtime": "2026-04-10T15:09:45.920Z",
-      "ingested_at": "2026-04-10T15:09:55.797Z"
+      "mtime": "2026-04-19T15:17:27.216Z",
+      "ingested_at": "2026-04-19T15:22:58.860Z"
     },
     "raw/github-prs/pr-9.json": {
-      "mtime": "2026-04-10T15:09:45.270Z",
-      "ingested_at": "2026-04-10T15:09:55.798Z"
+      "mtime": "2026-04-19T15:17:27.216Z",
+      "ingested_at": "2026-04-19T15:22:58.860Z"
     },
     "raw/github-prs/pr-9.md": {
-      "mtime": "2026-04-10T15:09:45.270Z",
-      "ingested_at": "2026-04-10T15:09:55.798Z"
+      "mtime": "2026-04-19T15:17:27.217Z",
+      "ingested_at": "2026-04-19T15:22:58.860Z"
     },
     "raw/architecture-docs/README.md": {
-      "mtime": "2026-04-10T15:09:50.751Z",
-      "ingested_at": "2026-04-10T15:09:55.792Z"
+      "mtime": "2026-04-19T15:17:27.177Z",
+      "ingested_at": "2026-04-19T15:22:58.855Z"
     },
     "raw/codebase-snapshots/root-package.json": {
-      "mtime": "2026-04-10T15:09:50.753Z",
-      "ingested_at": "2026-04-10T15:09:55.793Z"
+      "mtime": "2026-04-19T15:17:27.180Z",
+      "ingested_at": "2026-04-19T15:22:58.856Z"
     },
     "raw/codebase-snapshots/supabase-live-stats-2026-04-09.md": {
-      "mtime": "2026-04-10T13:33:46.661Z",
-      "ingested_at": "2026-04-10T15:09:55.793Z"
+      "mtime": "2026-04-19T15:17:27.180Z",
+      "ingested_at": "2026-04-19T15:22:58.856Z"
     },
     "raw/codebase-snapshots/supabase-refresh-request-2026-04-09.md": {
-      "mtime": "2026-04-09T17:20:48.989Z",
-      "ingested_at": "2026-04-09T17:20:49.185Z"
+      "mtime": "2026-04-19T15:17:27.180Z",
+      "ingested_at": "2026-04-19T15:22:58.856Z"
     },
     "raw/codebase-snapshots/test-inventory.txt": {
-      "mtime": "2026-04-10T15:09:50.772Z",
-      "ingested_at": "2026-04-10T15:09:55.793Z"
+      "mtime": "2026-04-19T15:17:27.182Z",
+      "ingested_at": "2026-04-19T15:22:58.857Z"
     },
     "raw/github-commits/branches.txt": {
-      "mtime": "2026-04-10T15:09:43.279Z",
-      "ingested_at": "2026-04-10T15:09:55.794Z"
+      "mtime": "2026-04-19T15:17:27.184Z",
+      "ingested_at": "2026-04-19T15:22:58.857Z"
     },
     "raw/github-commits/commits-recent.txt": {
-      "mtime": "2026-04-10T15:09:43.264Z",
-      "ingested_at": "2026-04-10T15:09:55.794Z"
+      "mtime": "2026-04-19T15:17:27.186Z",
+      "ingested_at": "2026-04-19T15:22:58.858Z"
     },
     "raw/github-commits/uncommitted-diff.txt": {
-      "mtime": "2026-04-10T15:09:43.354Z",
-      "ingested_at": "2026-04-10T15:09:55.794Z"
+      "mtime": "2026-04-19T15:17:27.188Z",
+      "ingested_at": "2026-04-19T15:22:58.858Z"
     },
     "raw/codebase-snapshots/monorepo-packages-2026-04-10.md": {
-      "mtime": "2026-04-10T15:09:50.776Z",
-      "ingested_at": "2026-04-10T15:09:55.792Z"
+      "mtime": "2026-04-19T15:17:27.180Z",
+      "ingested_at": "2026-04-19T15:22:58.856Z"
     },
     "raw/codebase-snapshots/supabase-refresh-request-2026-04-10.md": {
-      "mtime": "2026-04-10T15:09:55.703Z",
-      "ingested_at": "2026-04-10T15:09:55.793Z"
+      "mtime": "2026-04-19T15:17:27.181Z",
+      "ingested_at": "2026-04-19T15:22:58.857Z"
     },
     "raw/linear/refs-from-prs.txt": {
-      "mtime": "2026-04-09T17:20:49.300Z",
-      "ingested_at": "2026-04-10T15:09:55.798Z"
+      "mtime": "2026-04-19T15:17:27.218Z",
+      "ingested_at": "2026-04-19T15:22:58.860Z"
+    },
+    "raw/codebase-snapshots/supabase-refresh-request-2026-04-19.md": {
+      "mtime": "2026-04-19T15:22:54.849Z",
+      "ingested_at": "2026-04-19T15:22:58.857Z"
     }
   }
 }

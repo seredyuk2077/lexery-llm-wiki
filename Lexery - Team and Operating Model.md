@@ -11,6 +11,10 @@ status: observed
 layer: team
 ---
 
+> [!info] Compiled from
+> - Automated wiki maintenance + repository sources
+> - See [[Lexery - Source Map]] for trust model
+
 # Lexery — Team and Operating Model
 
 ## Команда

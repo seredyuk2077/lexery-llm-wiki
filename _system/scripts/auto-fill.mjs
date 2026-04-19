@@ -59,8 +59,13 @@ status: observed
 layer: meta
 ---
 
+> [!lexery-hero] Live metrics
+> ![[_assets/brand/lexery-mark-dark-bg.svg|44]]
+>
+> Автозріз з \`raw/\` (**перезапис** на кожному \`auto-fill\`). Контекст: [[Lexery - Current State]] · [[Lexery - PR Chronology]] · [[Lexery - Data Integrity Dashboard]]
+
 > [!warning] Автогенерація
-> Ця нотатка **перезаписується** кожним успішним \`auto-fill.mjs\`. Для оповіді та контексту див. [[Lexery - Current State]], [[Lexery - PR Chronology]], [[Lexery - Neural Link Hub]].
+> Не покладайся на ручні правки тут — вони зникнуть на наступному прогоні.
 
 # Lexery - Auto Snapshot
 

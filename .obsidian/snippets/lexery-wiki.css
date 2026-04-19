@@ -1,0 +1,59 @@
+/* Lexery wiki — Settings → Appearance → CSS snippets → lexery-wiki */
+
+.callout[data-callout='lexery-hero'] {
+  --callout-color: 56, 189, 248;
+  --callout-icon: lucide-layout-dashboard;
+  background: linear-gradient(145deg, rgba(15, 23, 42, 0.97) 0%, rgba(30, 41, 59, 0.94) 55%, rgba(15, 23, 42, 0.98) 100%);
+  border: 1px solid rgba(148, 163, 184, 0.28);
+  border-radius: 16px;
+  box-shadow: 0 12px 40px rgba(0, 0, 0, 0.18);
+  padding: 0.85rem 1.1rem 1rem;
+  margin-bottom: 1.25rem;
+}
+
+.callout[data-callout='lexery-hero'] .callout-title {
+  color: #f8fafc;
+}
+
+.callout[data-callout='lexery-hero'] .callout-content {
+  color: #cbd5e1;
+}
+
+.callout[data-callout='lexery-hero'] .callout-content a {
+  color: #7dd3fc !important;
+  font-weight: 500;
+}
+
+.callout[data-callout='lexery-hero'] img {
+  display: block;
+  max-width: min(320px, 100%);
+  height: auto;
+  margin: 0.15rem 0 0.5rem;
+  filter: drop-shadow(0 2px 12px rgba(0, 0, 0, 0.35));
+}
+
+.markdown-preview-view table {
+  border-collapse: separate;
+  border-spacing: 0;
+  border-radius: 10px;
+  overflow: hidden;
+  border: 1px solid rgba(148, 163, 184, 0.35);
+}
+
+.markdown-preview-view th {
+  background: rgba(37, 99, 235, 0.12);
+  font-weight: 600;
+}
+
+.theme-dark .markdown-preview-view th {
+  background: rgba(56, 189, 248, 0.12);
+}
+
+.markdown-preview-view td,
+.markdown-preview-view th {
+  padding: 0.45rem 0.65rem;
+}
+
+.markdown-preview-view tr:nth-child(even) td {
+  background: rgba(148, 163, 184, 0.06);
+}

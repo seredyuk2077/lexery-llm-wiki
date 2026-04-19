@@ -5,18 +5,23 @@ tags:
   - lexery
   - meta
   - metrics
-created: 2026-04-10
-updated: 2026-04-10
+created: 2026-04-19
+updated: 2026-04-19
 status: observed
 layer: meta
 ---
 
+> [!lexery-hero] Live metrics
+> ![[_assets/brand/lexery-mark-dark-bg.svg|44]]
+>
+> Автозріз з `raw/` (**перезапис** на кожному `auto-fill`). Контекст: [[Lexery - Current State]] · [[Lexery - PR Chronology]] · [[Lexery - Data Integrity Dashboard]]
+
 > [!warning] Автогенерація
-> Ця нотатка **перезаписується** кожним успішним `auto-fill.mjs`. Для оповіді та контексту див. [[Lexery - Current State]], [[Lexery - PR Chronology]], [[Lexery - Neural Link Hub]].
+> Не покладайся на ручні правки тут — вони зникнуть на наступному прогоні.
 
 # Lexery - Auto Snapshot
 
-Зріз **2026-04-10** з `raw/` (джерело правди для цифр тут — файли на диску після `scan-codebase` / `sync-github`).
+Зріз **2026-04-19** з `raw/` (джерело правди для цифр тут — файли на диску після `scan-codebase` / `sync-github`).
 
 ## Git (30d window у commits-recent)
 

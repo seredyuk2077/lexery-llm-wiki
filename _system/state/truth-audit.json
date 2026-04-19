@@ -1,0 +1,30 @@
+{
+  "generatedAt": "2026-04-19T15:22:58.970Z",
+  "trustScore": 92,
+  "summary": {
+    "pages": 78,
+    "freshnessIssues": 0,
+    "consistencyIssues": 0,
+    "provenanceIssues": 0,
+    "suspiciousClaims": 2
+  },
+  "freshnessIssues": [],
+  "consistency": [],
+  "provenanceIssues": [],
+  "suspiciousClaims": [
+    {
+      "page": "Lexery - Glossary",
+      "line": 77,
+      "text": "| **query_rewrite** | U4 always-on LLM step that enriches short or raw user text into a rewritten query plus variants and optional negative terms when confidenc"
+    },
+    {
+      "page": "Lexery - Source Registry",
+      "line": 128,
+      "text": "1. **Select scope**: never ingest entire `node_modules` or build artifacts — mirror `.gitignore` and repo conventions."
+    }
+  ],
+  "metrics": {
+    "prSnapshot": 10,
+    "prChronologyCount": 10
+  }
+}

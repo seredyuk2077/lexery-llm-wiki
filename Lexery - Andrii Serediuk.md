@@ -7,6 +7,10 @@ status: observed
 layer: team
 ---
 
+> [!info] Compiled from
+> - Automated wiki maintenance + repository sources
+> - See [[Lexery - Source Map]] for trust model
+
 ![[lexery-logo.svg|100]]
 
 # Andrii Serediuk — Founder Profile

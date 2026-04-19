@@ -13,6 +13,9 @@ const VAULT_DIR = dirname(SYSTEM_DIR);
 const LOGS_DIR = join(SYSTEM_DIR, 'logs');
 const STATE_DIR = join(SYSTEM_DIR, 'state');
 
+const runMode = (process.env.WIKI_RUN_MODE || 'deep').toLowerCase();
+const lite = runMode === 'lite';
+
 /** Code paths → canonical wiki pages (curated; extend as repo evolves). */
 const CODE_PATH_HINTS = [
   { re: /apps\/brain\/gateway\b/i, page: 'Lexery - U1 Gateway', w: 4 },
@@ -248,7 +251,7 @@ function scoreSuggestion(reasons) {
 }
 
 const suggestions = [];
-const MAX_PER_PAGE = 14;
+const MAX_PER_PAGE = lite ? 8 : 14;
 
 function addSuggestion(from, target, reasons, weightBoost = 0) {
   if (!target || target === from) return;
@@ -306,22 +309,24 @@ for (const p of pages) {
     addSuggestion(p.title, other, ['title appears in body (unlinked)']);
   }
 
-  for (const other of titles) {
-    if (other === p.title) continue;
-    const j = tokenOverlapScore(p.title, other);
-    if (j >= 0.35) addSuggestion(p.title, other, [`title token overlap (Jaccard ${j.toFixed(2)})`], 1);
-  }
+  if (!lite) {
+    for (const other of titles) {
+      if (other === p.title) continue;
+      const j = tokenOverlapScore(p.title, other);
+      if (j >= 0.35) addSuggestion(p.title, other, [`title token overlap (Jaccard ${j.toFixed(2)})`], 1);
+    }
 
-  const hop = outbound.get(p.title);
-  if (hop) {
-    for (const mid of hop) {
-      if (!titleSet.has(mid)) continue;
-      const second = outbound.get(mid);
-      if (!second) continue;
-      for (const tgt of second) {
-        if (tgt === p.title) continue;
-        if (hop.has(tgt)) continue;
-        addSuggestion(p.title, tgt, [`via [[${mid}]] (2-hop)`], 0.5);
+    const hop = outbound.get(p.title);
+    if (hop) {
+      for (const mid of hop) {
+        if (!titleSet.has(mid)) continue;
+        const second = outbound.get(mid);
+        if (!second) continue;
+        for (const tgt of second) {
+          if (tgt === p.title) continue;
+          if (hop.has(tgt)) continue;
+          addSuggestion(p.title, tgt, [`via [[${mid}]] (2-hop)`], 0.5);
+        }
       }
     }
   }
@@ -447,8 +452,13 @@ status: observed
 layer: meta
 ---
 
+> [!lexery-hero] Neural graph
+> ![[_assets/brand/lexery-wordmark-dark-bg.svg|220]]
+>
+> Автоген MOC + scored ideas. **Мінімум wikilinkів** тут — граф у Obsidian лишається читабельним.
+
 > [!info] Auto-generated
-> Оновлюється скриптом \`suggest-links.mjs\` під час maintenance. Тут зведені **пропозиції** зв’язків і міні-MOC по шарах — джерело правди лишаються окремі сторінки та \`link-graph.json\`.
+> Оновлюється скриптом \`suggest-links.mjs\` під час maintenance.
 
 # Lexery - Neural Link Hub
 

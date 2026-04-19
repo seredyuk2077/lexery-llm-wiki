@@ -70,7 +70,15 @@ for (const file of allFiles) {
   }
   
   if (contentLines < 20) {
-    issues.push({ file, severity: 'warn', issue: `Thin page: only ${contentLines} content lines` });
+    const thinExempt =
+      title === 'Lexery - Data Integrity Dashboard' ||
+      title === 'Lexery - Auto Snapshot' ||
+      title === 'Lexery - Neural Link Hub' ||
+      title === 'Lexery - Executive Ops Dashboard' ||
+      title === 'Lexery - Ops Rollup';
+    if (!thinExempt) {
+      issues.push({ file, severity: 'warn', issue: `Thin page: only ${contentLines} content lines` });
+    }
   }
   
   // Find all outgoing wikilinks

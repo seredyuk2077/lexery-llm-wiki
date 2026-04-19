@@ -10,6 +10,10 @@ status: observed
 layer: history
 ---
 
+> [!info] Compiled from
+> - Automated wiki maintenance + repository sources
+> - See [[Lexery - Source Map]] for trust model
+
 # Lexery - Branch before-LawDatabase
 
 ## Branch Identity
